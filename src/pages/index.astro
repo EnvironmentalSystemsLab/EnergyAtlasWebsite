@@ -1,0 +1,1596 @@
+---
+// Astro component script (optional)
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="EnergyAtlas.io - Your city-scale digital twin for fast, validated urban energy insight. ISO-compliant UBEM platform with ~150× faster simulations." />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/EnergyAtlasWebsite/assets/img/EnergyAtlasIcon.svg" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="EnergyAtlas.io - Digital Twin Tool for Urban Energy Insight" />
+  <meta property="og:description" content="Your city-scale digital twin for fast, validated urban energy insight. ISO-compliant UBEM platform with ~150× faster simulations." />
+  <meta property="og:url" content="https://energyatlas.io" />
+  <meta property="og:image" content="https://energyatlas.io/assets/img/EnergyAtlasIcon.svg" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="EnergyAtlas.io - Digital Twin Tool for Urban Energy Insight" />
+  <meta property="twitter:description" content="Your city-scale digital twin for fast, validated urban energy insight. ISO-compliant UBEM platform with ~150× faster simulations." />
+  <meta property="twitter:image" content="https://energyatlas.io/assets/img/EnergyAtlasIcon.svg" />
+
+  <title>EnergyAtlas.io - Digital Twin Tool for Urban Energy Insight</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:wdth,wght@25..151,100..1000&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-color: #003978;
+      --secondary-color: #f1392a;
+      --accent-color:rgb(18, 93, 174);
+      --text-dark: #1a1a1a;
+      --text-light: #666666;
+      --bg-light: #f8f9fa;
+      --bg-white: #ffffff;
+      --border-color: #e9ecef;
+      --success-color: #28a745;
+      --warning-color: #ffc107;
+      
+      --font-family: 'Roboto Flex', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-size-xs: 0.75rem;
+      --font-size-sm: 0.875rem;
+      --font-size-base: 1rem;
+      --font-size-lg: 1.125rem;
+      --font-size-xl: 1.25rem;
+      --font-size-2xl: 1.5rem;
+      --font-size-3xl: 1.875rem;
+      --font-size-4xl: 2.25rem;
+      --font-size-5xl: 3rem;
+      
+      --spacing-xs: 0.25rem;
+      --spacing-sm: 0.5rem;
+      --spacing-md: 1rem;
+      --spacing-lg: 1.5rem;
+      --spacing-xl: 2rem;
+      --spacing-2xl: 3rem;
+      --spacing-3xl: 4rem;
+      
+      --max-width: 1200px;
+      --border-radius: 8px;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    body {
+      font-family: var(--font-family);
+      font-weight: 200;
+      font-variation-settings: 'wdth' 100, 'wght' 200;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background-color: var(--bg-white);
+      font-size: var(--font-size-base);
+    }
+
+    /* Skip link for accessibility */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 6px;
+      background: var(--primary-color);
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+      border-radius: var(--border-radius);
+      z-index: 1000;
+    }
+
+    .skip-link:focus {
+      top: 6px;
+    }
+
+    /* Container */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--spacing-lg);
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--spacing-md) 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      text-decoration: none;
+      color: var(--text-dark);
+    }
+
+    .logo img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .logo-text {
+      font-weight: 600;
+      font-size: var(--font-size-xl);
+      font-family: var(--font-family);
+      font-variation-settings: 'wdth' 150, 'wght' 700;
+      letter-spacing: -0.05em;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: var(--spacing-xl);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 300;
+      font-size: var(--font-size-sm);
+      font-variation-settings: 'wdth' 150, 'wght' 200;
+      letter-spacing: -0.02em;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--primary-color);
+    }
+
+    nav a:focus {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      padding: calc(var(--spacing-3xl) * 2) 0;
+      background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
+      text-align: center;
+      overflow: hidden;
+      height: 93vh;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    .hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      .hero video {
+        display: block;
+        object-fit: cover;
+        object-position: center;
+      }
+      
+      .hero {
+        background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
+      }
+      
+      .hero::before {
+        display: none;
+      }
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .hero h1 {
+      font-weight: 600;
+      font-size: var(--font-size-5xl);
+      margin-bottom: var(--spacing-lg);
+      color: white;
+      font-family: var(--font-family);
+      font-variation-settings: 'wdth' 150, 'wght' 700;
+      letter-spacing: -0.05em;
+    }
+
+    .hero-subtitle {
+      font-size: var(--font-size-xl);
+      color: white;
+      margin-bottom: var(--spacing-2xl);
+      font-weight: 200;
+      font-variation-settings: 'wdth' 150, 'wght' 200;
+      letter-spacing: -0.02em;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-xl);
+      margin-bottom: var(--spacing-2xl);
+      flex-wrap: wrap;
+    }
+
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      padding: var(--spacing-sm) var(--spacing-md);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: var(--border-radius);
+      font-size: var(--font-size-sm);
+      font-weight: 400;
+      font-variation-settings: 'wdth' 150, 'wght' 200;
+      letter-spacing: -0.02em;
+      color: white;
+      backdrop-filter: blur(10px);
+    }
+
+    .trust-badge::before {
+      content: "✓";
+      color: white;
+      font-weight: 600;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-md);
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: var(--spacing-md) var(--spacing-xl);
+      text-decoration: none;
+      border-radius: var(--border-radius);
+      font-weight: 400;
+      font-size: var(--font-size-base);
+      font-variation-settings: 'wdth' 150, 'wght' 200;
+      letter-spacing: -0.02em;
+      transition: all 0.2s ease;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      box-shadow: 
+        0 0 20px rgba(255, 0, 106, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+      transform: translateY(-1px);
+      box-shadow: 
+        0 0 40px rgb(255, 21, 40);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-color)t;
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .btn:focus {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
+    }
+
+    /* Value Strip */
+    .value-strip {
+      padding: var(--spacing-3xl) 0;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
+    }
+
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-xl);
+      text-align: center;
+    }
+
+    .value-item h3 {
+      font-weight: 300;
+      font-size: var(--font-size-xl);
+      margin-bottom: var(--spacing-sm);
+      color: var(--text-dark);
+      font-family: var(--font-family);
+      font-variation-settings: 'wdth' 150, 'wght' 400;
+      letter-spacing: -0.02em;
+    }
+
+    .value-item p {
+      color: var(--text-light);
+      font-weight: 200;
+      font-variation-settings: 'wdth' 150, 'wght' 200;
+      letter-spacing: -0.02em;
+    }
+
+    /* Sections */
+    section {
+      padding: var(--spacing-3xl) 0;
+    }
+
+    section:nth-child(even) {
+      background: var(--bg-light);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--spacing-3xl);
+    }
+
+    .section-header h2 {
+      font-weight: 300;
+      font-size: var(--font-size-3xl);
+      margin-bottom: var(--spacing-md);
+      color: var(--text-dark);
+      font-family: var(--font-family);
+      font-variation-settings: 'wdth' 150, 'wght' 400;
+      letter-spacing: -0.02em;
+    }
+
+    .section-header p {
+      color: var(--text-light);
+      font-weight: 200;
+      font-variation-settings: 'wdth' 100, 'wght' 200;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Key Features */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: var(--spacing-xl);
+    }
+
+    .feature-item {
+      padding: var(--spacing-lg);
+      background: var(--bg-white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .feature-item img {
+      width: 100%;
+      max-width: 520px;
+      height: 300px;
+      object-fit: cover;
+      margin-bottom: var(--spacing-md);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .feature-item h3 {
+      font-weight: 400;
+      font-variation-settings: 'wdth' 150, 'wght' 400;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--spacing-sm);
+      color: var(--text-dark);
+    }
+
+    .feature-item p {
+      color: var(--text-light);
+      font-weight: 200;
+      font-variation-settings: 'wdth' 150, 'wght' 200;
+      letter-spacing: -0.02em;
+      line-height: 1.5;
+      margin-bottom: 0;
+      text-align: left;
+    }
+
+    /* Modules */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-xl);
+    }
+
+    .module-card {
+      background: var(--bg-white);
+      border-radius: var(--border-radius);
+      padding: var(--spacing-xl);
+      box-shadow: var(--shadow);
+      text-align: center;
+      transition: transform 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .module-card::before {
+      content: '';
+      position: absolute;
+      top: +80px;
+      right: +200px;
+      width: 240px;
+      height: 240px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.08;
+      z-index: 1;
+    }
+
+    .module-card.dataconnect::before {
+      background-image: url('/assets/img/ModuleIcon_DataConnect.svg');
+    }
+
+    .module-card.operationalenergy::before {
+      background-image: url('/assets/img/ModuleIcon_OperationalEnergy.svg');
+    }
+
+    .module-card.renewables::before {
+      background-image: url('/assets/img/ModuleIcon_Renewables.svg');
+    }
+
+    .module-card.retrofiteconomics::before {
+      background-image: url('/assets/img/ModuleIcon_RetrofitEconomics.svg');
+    }
+
+    .module-card.geospatial3d::before {
+      background-image: url('/assets/img/ModuleIcon_GeoSpatial3D.svg');
+    }
+
+    .module-card.API::before {
+      background-image: url('/assets/img/ModuleIcon_API.svg');
+    }
+
+    .module-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .module-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto var(--spacing-md);
+      position: relative;
+      z-index: 2;
+    }
+
+    .module-card h3 {
+      font-weight: 300;
+      font-size: var(--font-size-xl);
+      margin-bottom: var(--spacing-md);
+      color: var(--text-dark);
+      font-family: var(--font-family);
+      font-variation-settings: 'wdth' 150, 'wght' 400;
+      letter-spacing: -0.02em;
+      position: relative;
+      z-index: 2;
+    }
+
+    .module-card ul {
+      list-style: none;
+      text-align: left;
+      position: relative;
+      z-index: 2;
+    }
+
+    .module-card li {
+      position: relative;
+      padding-left: var(--spacing-lg);
+      margin-bottom: var(--spacing-sm);
+      color: var(--text-light);
+      font-weight: 200;
+      font-variation-settings: 'wdth' 150, 'wght' 200;
+      letter-spacing: -0.02em;
+      font-size: var(--font-size-sm);
+    }
+
+    .module-card li::before {
+      content: "•";
+      color: var(--primary-color);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    /* Use Cases */
+    .use-cases {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-lg);
+    }
+
+    .use-case-item {
+      padding: var(--spacing-lg);
+      background: var(--bg-white);
+      border-radius: var(--border-radius);
+      text-align: center;
+      font-weight: 200;
+      font-variation-settings: 'wdth' 150, 'wght' 200;
+      letter-spacing: -0.02em;
+      color: var(--text-light);
+    }
+
+    /* Research & Validation */
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-xl);
+      margin-bottom: var(--spacing-2xl);
+    }
+
+    .research-item {
+      text-align: center;
+      padding: var(--spacing-lg);
+    }
+
+    .research-item h4 {
+      font-weight: 400;
+      font-variation-settings: 'wdth' 150, 'wght' 400;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--spacing-sm);
+      color: var(--text-dark);
+    }
+
+    .research-item p {
+      color: var(--text-light);
+      font-weight: 200;
+      font-variation-settings: 'wdth' 150, 'wght' 200;
+      letter-spacing: -0.02em;
+      font-size: var(--font-size-sm);
+    }
+
+    .methods-pipeline {
+      background: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      text-align: center;
+      font-weight: 200;
+      font-variation-settings: 'wdth' 150, 'wght' 200;
+      letter-spacing: -0.02em;
+      color: var(--text-light);
+    }
+
+    /* Publications Section */
+    .publications-section {
+      margin-top: var(--spacing-3xl);
+    }
+
+    .publications-section h3 {
+      font-size: var(--font-size-xl);
+      font-weight: 600;
+      font-variation-settings: 'wdth' 150, 'wght' 400;
+      letter-spacing: -0.02em;
+      color: var(--text-dark);
+      margin-bottom: var(--spacing-xl);
+      text-align: center;
+    }
+
+    .publications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: var(--spacing-lg);
+    }
+
+    .publication-item {
+      background: var(--bg-white);
+      padding: var(--spacing-lg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .publication-item h4 {
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      font-variation-settings: 'wdth' 150, 'wght' 400;
+      letter-spacing: -0.02em;
+      color: var(--primary-color);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .publication-title {
+      font-size: var(--font-size-base);
+      font-weight: 500;
+      font-variation-settings: 'wdth' 150, 'wght' 400;
+      letter-spacing: -0.02em;
+      color: var(--text-dark);
+      margin-bottom: var(--spacing-sm);
+      line-height: 1.4;
+    }
+
+    .publication-authors {
+      font-size: var(--font-size-sm);
+      font-weight: 400;
+      font-variation-settings: 'wdth' 150, 'wght' 200;
+      letter-spacing: -0.02em;
+      color: var(--text-light);
+      margin-bottom: var(--spacing-xs);
+      font-style: italic;
+    }
+
+    .publication-doi {
+      font-size: var(--font-size-xs);
+      font-weight: 400;
+      font-variation-settings: 'wdth' 125, 'wght' 400;
+      color: var(--primary-color);
+      margin-bottom: 0;
+      font-family: monospace;
+    }
+
+    .publication-doi a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .publication-doi a:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+
+    /* Media Section */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: var(--spacing-lg);
+    }
+
+    .media-item {
+      background: var(--bg-white);
+      padding: var(--spacing-lg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .media-item h4 {
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      font-variation-settings: 'wdth' 150, 'wght' 400;
+      letter-spacing: -0.02em;
+      color: var(--primary-color);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .media-title {
+      font-size: var(--font-size-base);
+      font-weight: 500;
+      font-variation-settings: 'wdth' 150, 'wght' 400;
+      letter-spacing: -0.02em;
+      color: var(--text-dark);
+      margin-bottom: var(--spacing-sm);
+      line-height: 1.4;
+    }
+
+    .media-authors {
+      font-size: var(--font-size-sm);
+      font-weight: 400;
+      font-variation-settings: 'wdth' 150, 'wght' 200;
+      letter-spacing: -0.02em;
+      color: var(--text-light);
+      margin-bottom: var(--spacing-xs);
+      font-style: italic;
+    }
+
+    .media-doi {
+      font-size: var(--font-size-xs);
+      font-weight: 400;
+      font-variation-settings: 'wdth' 125, 'wght' 400;
+      color: var(--primary-color);
+      margin-bottom: 0;
+      font-family: monospace;
+    }
+
+    .media-doi a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .media-doi a:hover {
+      color: var(--secondary-color);
+      text-decoration: underline;
+    }
+
+    /* Tech & Integrations */
+    .tech-icons {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-xl);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .tech-icon {
+      padding: var(--spacing-md);
+      background: var(--bg-white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      font-size: var(--font-size-sm);
+      font-weight: 400;
+      font-variation-settings: 'wdth' 150, 'wght' 600;
+      letter-spacing: -0.02em;
+      color: var(--text-dark);
+      min-width: 120px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-sm);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+    }
+
+    .tech-icon img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+
+    .tech-icon span {
+      font-size: var(--font-size-xs);
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .tech-icon:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      text-decoration: none;
+    }
+
+    .tech-icon:visited {
+      color: var(--text-dark);
+    }
+
+    /* Callouts */
+    .callouts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: var(--spacing-xl);
+    }
+
+    .callout {
+      background: var(--bg-white);
+      border-radius: var(--border-radius);
+      padding: var(--spacing-xl);
+      box-shadow: var(--shadow);
+    }
+
+    .callout img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: var(--border-radius);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .callout h3 {
+      font-weight: 400;
+      font-variation-settings: 'wdth' 150, 'wght' 400;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--spacing-sm);
+      color: var(--text-dark);
+    }
+
+    .callout p {
+      color: var(--text-light);
+      font-weight: 200;
+      font-variation-settings: 'wdth' 150, 'wght' 200;
+      letter-spacing: -0.02em;
+      font-size: var(--font-size-sm);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--text-dark);
+      color: white;
+      text-align: center;
+      padding: var(--spacing-2xl) 0;
+    }
+
+    footer p {
+      font-weight: 200;
+      font-variation-settings: 'wdth' 150, 'wght' 200;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    footer a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 var(--spacing-md);
+      }
+
+      .header-content {
+        flex-direction: column;
+        gap: var(--spacing-md);
+      }
+
+      nav ul {
+        gap: var(--spacing-md);
+      }
+
+      .hero h1 {
+        font-size: var(--font-size-4xl);
+      }
+
+      .hero-subtitle {
+        font-size: var(--font-size-lg);
+      }
+
+      .trust-badges {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .value-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .features-grid,
+      .modules-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .callouts-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tech-icons {
+        gap: var(--spacing-md);
+      }
+
+      /* Fix card widths for mobile */
+      .research-grid,
+      .publications-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .research-item,
+      .publication-item,
+      .media-item {
+        max-width: 100%;
+        word-wrap: break-word;
+      }
+      
+      .media-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      /* Make navigation smaller on mobile */
+      nav ul {
+        gap: var(--spacing-sm);
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      nav a {
+        font-size: 0.8rem;
+        padding: 4px 8px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: var(--font-size-3xl);
+      }
+
+      .section-header h2 {
+        font-size: var(--font-size-2xl);
+      }
+
+      .module-card,
+      .callout {
+        padding: var(--spacing-lg);
+      }
+    }
+
+    /* Team Section */
+    .team-tabs {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .tab-button {
+      padding: var(--spacing-sm) var(--spacing-lg);
+      background: transparent;
+      border: 2px solid var(--primary-color);
+      border-radius: var(--border-radius);
+      color: var(--primary-color);
+      font-size: var(--font-size-base);
+      font-weight: 500;
+      font-variation-settings: 'wdth' 150, 'wght' 400;
+      letter-spacing: -0.02em;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-button:hover {
+      background: var(--primary-color);
+      color: var(--bg-white);
+    }
+
+    .tab-button.active {
+      background: var(--primary-color);
+      color: var(--bg-white);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-xl);
+      margin-top: var(--spacing-lg);
+    }
+
+    .team-member {
+      text-align: center;
+      padding: var(--spacing-lg);
+      background: var(--bg-white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .team-card {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .team-card:hover,
+    .team-card:focus {
+      text-decoration: none;
+    }
+
+    .team-member:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .team-photo {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto var(--spacing-md);
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .team-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .team-member h3 {
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+      font-variation-settings: 'wdth' 150, 'wght' 500;
+      letter-spacing: -0.02em;
+      color: var(--text-dark);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .team-member h3 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .team-member h3 a:hover,
+    .team-member h3 a:focus {
+      text-decoration: underline;
+      outline: none;
+    }
+
+    .team-title {
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+      font-variation-settings: 'wdth' 150, 'wght' 400;
+      letter-spacing: -0.02em;
+      color: var(--primary-color);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .team-description {
+      font-size: var(--font-size-sm);
+      font-weight: 300;
+      font-variation-settings: 'wdth' 150, 'wght' 300;
+      letter-spacing: -0.02em;
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-bottom: 0;
+      text-align: left;
+    }
+
+    /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text-dark: #f8f9fa;
+        --text-light: #adb5bd;
+        --bg-white: #212529;
+        --bg-light: #343a40;
+        --border-color: #495057;
+      }
+
+      body {
+        background-color: var(--bg-white);
+      }
+
+      header {
+        background: rgba(33, 37, 41, 0.95);
+      }
+
+      /* Keep footer appearance consistent with light mode */
+      footer {
+        background: #1a1a1a; /* same as light-mode footer base */
+        color: white;
+      }
+
+      /* Team roles: use secondary color in dark mode */
+      .team-title {
+        color: var(--secondary-color);
+      }
+
+      /* Publications: switch accents to secondary in dark mode */
+      .publication-item {
+        border-left-color: var(--secondary-color);
+      }
+
+      .publication-item h4,
+      .publication-doi,
+      .publication-doi a {
+        color: var(--secondary-color);
+      }
+
+      /* Media: switch accents to secondary in dark mode */
+      .media-item {
+        border-left-color: var(--secondary-color);
+      }
+
+      .media-item h4,
+      .media-doi,
+      .media-doi a {
+        color: var(--secondary-color);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  
+  <header role="banner">
+    <div class="container">
+      <div class="header-content">
+        <a href="#main" class="logo" aria-label="EnergyAtlas.io Home">
+          <img src="/EnergyAtlasWebsite/assets/img/EnergyAtlasIcon.svg" alt="EnergyAtlas Logo" />
+          <span class="logo-text">EnergyAtlas.io</span>
+        </a>
+        
+        <nav role="navigation" aria-label="Main navigation">
+          <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#modules">Modules</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#media">Media</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#demo">Demo</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" role="banner">
+      <video autoplay muted loop playsinline>
+        <source src="/EnergyAtlasWebsite/assets/video/Web.mp4" type="video/mp4">
+      </video>
+      <div class="container">
+        <h1>EnergyAtlas.io</h1>
+        <p class="hero-subtitle">City-scale digital twin for urban energy insight.</p>
+        
+        <div class="trust-badges">
+          <div class="trust-badge">Installation-free solutions</div>
+          <div class="trust-badge">150× faster energy simulations</div>
+          <div class="trust-badge">ISO 52016-1 compliant</div>
+          <div class="trust-badge">Cross-platform integration</div>
+        </div>
+
+        <div class="cta-buttons">
+          <a href="#features" class="btn btn-primary">Explore Features</a>
+          <!-- <a href="#use-cases" class="btn btn-secondary">Explore Use Cases</a> -->
+        </div>
+      </div>
+    </section>
+
+    <!--
+    <section class="value-strip">
+      <div class="container">
+        <div class="value-grid">
+          <div class="value-item">
+            <h3>Integrate</h3>
+            <p>Unify tax records, LiDAR, zoning, permits, and utility meter data into automated workflows.</p>
+          </div>
+          <div class="value-item">
+            <h3>Simulate</h3>
+            <p>Run ISO-compliant 5R1C hourly simulations at building-to-city scales with validated accuracy.</p>
+          </div>
+          <div class="value-item">
+            <h3>Prioritize</h3>
+            <p>Identify cost-effective retrofits with payback analysis and scenario comparison tools.</p>
+          </div>
+          <div class="value-item">
+            <h3>Communicate</h3>
+            <p>Share results through interactive 3D visualizations and cross-platform dashboards.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    -->
+
+    <section id="features">
+      <div class="container">
+        <div class="section-header">
+          <h2>Key Features</h2>
+        </div>
+        
+        <div class="features-grid">
+          <div class="feature-item">
+            <img src="/EnergyAtlasWebsite/assets/img/feature-digital-twin.jpg" alt="Urban Digital Twin visualization showing integrated city data" loading="lazy" />
+            <h3>Urban Digital Twin Builder</h3>
+            <p>Seamlessly unify tax records, parcels, zoning data, LiDAR, permits, and meter information into a single platform. Automated data conversion and attribute joining simplify integration, while localized archetypes and usage schedules ensure high-fidelity urban models that scale effortlessly from buildings to entire cities.</p>
+          </div>
+          
+          <div class="feature-item">
+            <img src="/EnergyAtlasWebsite/assets/img/feature-energy-simulation.jpg" alt="City-scale energy simulation showing building energy consumption patterns" loading="lazy" />
+            <h3>City-Scale Energy Simulation</h3>
+            <p>ISO-compliant 5R1C models power hourly simulations 150x faster than traditional baselines. Generate validated forecasts of energy demand and carbon emissions at both building and district scales, enabling accurate, city-scale insights into operational energy performance with minimal data requirements.</p>
+          </div>
+          
+          <div class="feature-item">
+            <img src="/EnergyAtlasWebsite/assets/img/feature-renewables.jpg" alt="Renewable energy integration showing solar panels and wind turbines on buildings" loading="lazy" />
+            <h3>Renewables Integration</h3>
+            <p>Simulate rooftop photovoltaics using fast voxel shading and ray marching algorithms, alongside geothermal and district-scale energy networks. EnergyAtlas Renewables integrates on-site and off-site sources, providing high-resolution insights into how solar panels, wind turbines, and ground-source systems contribute to sustainable urban energy supply.</p>
+          </div>
+
+          <div class="feature-item">
+            <img src="/EnergyAtlasWebsite/assets/img/feature-scenario-planning.jpg" alt="Scenario planning interface showing different energy system configurations" loading="lazy" />
+            <h3>Scenario Planning & Retrofit Prioritization</h3>
+            <p>Explore electrification, envelope upgrades, photovoltaics, geothermal, and district systems with lifecycle cost, payback, and incentive analyses. EnergyAtlas RetrofitEconomics enables rapid scenario planning to compare configurations at scale, empowering stakeholders to prioritize retrofit strategies with financial clarity and carbon reduction outcomes.</p>
+          </div>
+          
+          <div class="feature-item">
+            <img src="/EnergyAtlasWebsite/assets/img/feature-facadescanner.jpg" alt="Retrofit prioritization dashboard showing building upgrade recommendations" loading="lazy" />
+            <h3>3D Reconstruction & Facade Texture Segmentation</h3>
+            <p>FacadeScanner™ delivers photogrammetric reconstruction and computer vision-powered façade texture segmentation to extract window-to-wall ratios and material features. These workflows transform aerial imagery and street-level data into detailed 3D geometries, supporting high-fidelity digital twins and enhancing urban energy modeling accuracy.</p>
+          </div>
+          
+          <div class="feature-item">
+            <img src="/EnergyAtlasWebsite/assets/img/feature-visualization.jpg" alt="Cross-platform visualization showing 3D city models and interactive maps" loading="lazy" />
+            <h3>Cross-Platform Visualization</h3>
+            <p>EnergyAtlas Geospatial3D enables seamless visualization across Rhino/Grasshopper, Unity/Cesium, and React/Mapbox web platforms. With interactive 3D city models and plug-and-play interfaces, users can explore digital twins, compare scenarios, and communicate insights through accessible, cross-platform dashboards.</p>
+          </div>
+        </div>
+      </div>
+      </section>
+
+
+      <section id="modules">
+      <div class="container">
+        <div class="section-header">
+          <h2>Modules</h2>
+        </div>
+        
+        <div class="modules-grid">
+          <div class="module-card dataconnect">
+            <img src="/EnergyAtlasWebsite/assets/img/ModuleIcon_DataConnect.svg" alt="DataConnect Icon" class="module-icon" loading="lazy" />
+            <h3>EnergyAtlas.DataConnect</h3>
+            <ul>
+              <li>Hassle-free urban GIS ingest with automatic conversion & joins</li>
+              <li>Localized DOE/RECS archetypes and high-fidelity usage schedules</li>
+            </ul>
+          </div>
+          
+          <div class="module-card operationalenergy">
+            <img src="/EnergyAtlasWebsite/assets/img/ModuleIcon_OperationalEnergy.svg" alt="OperationalEnergy Icon" class="module-icon" loading="lazy" />
+            <h3>EnergyAtlas.OperationalEnergy</h3>
+            <ul>
+              <li>ISO 52016-1 5R1C hourly simulations, ~150× faster vs. traditional baselines</li>
+              <li>Validated against EnergyPlus and measured energy; BOBYQA calibration</li>
+            </ul>
+          </div>
+          
+          <div class="module-card renewables">
+            <img src="/EnergyAtlasWebsite/assets/img/ModuleIcon_Renewables.svg" alt="Renewables Icon" class="module-icon" loading="lazy" />
+            <h3>EnergyAtlas.Renewables</h3>
+            <ul>
+              <li>PV potential via fast voxel shading & ray marching</li>
+              <li>Geothermal and district energy modeling at city scale</li>
+            </ul>
+          </div>
+          
+          <div class="module-card retrofiteconomics">
+            <img src="/EnergyAtlasWebsite/assets/img/ModuleIcon_RetrofitEconomics.svg" alt="RetrofitEconomics Icon" class="module-icon" loading="lazy" />
+            <h3>EnergyAtlas.RetrofitEconomics</h3>
+            <ul>
+              <li>Payback, incentives, lifecycle costs for portfolio design</li>
+              <li>Map "lower-hanging fruit" and compare scenario mixes</li>
+            </ul>
+          </div>
+          
+          <div class="module-card geospatial3d">
+            <img src="/EnergyAtlasWebsite/assets/img/ModuleIcon_GeoSpatial3D.svg" alt="Geospatial3D Icon" class="module-icon" loading="lazy" />
+            <h3>EnergyAtlas.Geospatial3D</h3>
+            <ul>
+              <li>Live connection with Rhino/Grasshopper, web, and Unity/Cesium</li>
+              <li>FacadeScanner™ 3D reconstruction & façade texture segmentation (e.g., WWR)</li>
+            </ul>
+          </div>
+
+          <div class="module-card API">
+            <img src="/EnergyAtlasWebsite/assets/img/ModuleIcon_API.svg" alt="API Icon" class="module-icon" loading="lazy" />
+            <h3>EnergyAtlas.API</h3>
+            <ul>
+              <li>RESTful endpoints for automated data, models, and results</li>
+              <li>Develop custom tools and workflows for EnergyAtlas.io</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!--
+    <section id="use-cases">
+      <div class="container">
+        <div class="section-header">
+          <h2>Use Cases</h2>
+        </div>
+        
+        <div class="use-cases">
+          <div class="use-case-item">Municipal climate action planning</div>
+          <div class="use-case-item">Resilience under extreme weather</div>
+          <div class="use-case-item">Policy simulations & compliance tracking</div>
+          <div class="use-case-item">Equity mapping for interventions</div>
+          <div class="use-case-item">Academic & policy research at urban scale</div>
+        </div>
+      </div>
+    </section>
+    -->
+    <section id="research">
+      <div class="container">
+        <div class="section-header">
+          <h2>Selected Publications</h2>
+        </div>
+        
+        <!--
+        <div class="research-grid">
+          <div class="research-item">
+            <h4>Standards</h4>
+            <p>Reduced-order 5R1C per ISO 52016-1:2017</p>
+          </div>
+          
+          <div class="research-item">
+            <h4>Speed</h4>
+            <p>Up to ~150× faster hourly simulations vs. traditional baselines</p>
+          </div>
+          
+          <div class="research-item">
+            <h4>Validation</h4>
+            <p>Benchmarked vs. EnergyPlus and billed energy; calibrated with BOBYQA</p>
+          </div>
+          
+          <div class="research-item">
+            <h4>Outcomes</h4>
+            <p>Accurate peak-load, electrification impact, and retrofit assessments across building stocks</p>
+          </div>
+        </div>
+        
+        <div class="methods-pipeline">
+          <p>Our automated pipeline integrates multiple data sources (tax records, LiDAR, zoning, DOE/RECS archetypes, permits, utility meters) into validated simulation workflows, enabling city-scale energy modeling with unprecedented speed and accuracy.</p>
+        </div>
+        -->
+
+        <div class="publications-section">
+          <!-- <h3>Publications</h3> -->
+          <div class="publications-grid">
+            <div class="publication-item">
+              <h4>Journal of Building Performance Simulation</h4>
+              <p class="publication-title">"A bottom-up urban building energy model for evaluating thermal load electrification measures"</p>
+              <p class="publication-authors">Dogan, T., et al. (2025)</p>
+              <p class="publication-doi"><a href="https://doi.org/10.1080/19401493.2025.2536261" target="_blank" rel="noopener noreferrer">DOI: 10.1080/19401493.2025.2536261</a></p>
+            </div>
+            
+            <div class="publication-item">
+              <h4>Journal of Building Performance Simulation</h4>
+              <p class="publication-title">"Scalable building reconstruction and window detection for urban building energy modelling applications"</p>
+              <p class="publication-authors">Su, A. J., et al. (2025)</p>
+              <p class="publication-doi"><a href="https://doi.org/10.1080/19401493.2025.2501151" target="_blank" rel="noopener noreferrer">DOI: 10.1080/19401493.2025.2501151</a></p>
+            </div>
+            
+            <div class="publication-item">
+              <h4>Energy and Buildings</h4>
+              <p class="publication-title">"Towards auto-calibrated UBEM using readily available, underutilized urban data: A case study for Ithaca, NY"</p>
+              <p class="publication-authors">Kastner, P., et al. (2024)</p>
+              <p class="publication-doi"><a href="https://doi.org/10.1016/j.enbuild.2024.114286" target="_blank" rel="noopener noreferrer">DOI: 10.1016/j.enbuild.2024.114286</a></p>
+            </div>
+            
+            <div class="publication-item">
+              <h4>Building Simulation 2025 Conference</h4>
+              <p class="publication-title">"Deriving high-fidelity residential building archetypes and typical usage patterns from national energy use surveys to enhance "initial guesses" for Urban Building Energy Model (UBEM) inputs"</p>
+              <p class="publication-authors">Li, C., et al. (2025)</p>
+              <p class="publication-doi"><a href="https://www.researchgate.net/publication/395470641_Deriving_high-fidelity_residential_building_archetypes_and_typical_usage_patterns_from_national_energy_use_surveys_to_enhance_initial_guesses_for_Urban_Building_Energy_Model_UBEM_inputs" target="_blank" rel="noopener noreferrer">DOI: 10.26868/25222708.2025.1336</a></p>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section id="media">
+      <div class="container">
+        <div class="section-header">
+          <h2>Media & Professional Exposure</h2>
+        </div>
+        
+          <div class="media-grid">
+            <div class="media-item">
+              <h4>Bentley Systems</h4>
+              <p class="media-title">"Smart Heat: Digital twin helps college town move toward carbon neutrality. Are big cities next?"</p>
+              <p class="media-authors">Bentley Software Stories, Mar 2025</p>
+              <p class="media-doi"><a href="https://blog.bentley.com/insights/smart-heat-digital-twin-and-cornell-researchers-help-ithaca-stay-warm-while-moving-toward-carbon-neutrality/" target="_blank" rel="noopener noreferrer">blog.bentley.com</a></p>
+            </div>
+            
+            <div class="media-item">
+              <h4>Rocky Mountain Institute</h4>
+              <p class="media-title">"How 'Digital Twins' Are Enabling City-Wide Electrification"</p>
+              <p class="media-authors">RMI US Policy, Sep 2024</p>
+              <p class="media-doi"><a href="https://rmi.org/how-digital-twins-are-enabling-city-wide-electrification/" target="_blank" rel="noopener noreferrer">rmi.org</a></p>
+            </div>
+            
+            <div class="media-item">
+              <h4>Cornell University</h4>
+              <p class="media-title">"Building energy model offers cities decarbonization roadmap"</p>
+              <p class="media-authors">Cornell Chronicle, Aug 2025</p>
+              <p class="media-doi"><a href="https://news.cornell.edu/stories/2025/08/building-energy-model-offers-cities-decarbonization-roadmap" target="_blank" rel="noopener noreferrer">news.cornell.edu</a></p>
+            </div>
+            
+            <div class="media-item">
+              <h4>Bloomberg</h4>
+              <p class="media-title">"To Get to Net Zero, This City Is Making a Map"</p>
+              <p class="media-authors">Bloomberg CityLab | Green, Jun 2022</p>
+              <p class="media-doi"><a href="https://www.bloomberg.com/news/articles/2022-06-10/a-digital-map-to-net-zero-via-upstate-new-york" target="_blank" rel="noopener noreferrer">bloomberg.com/news</a></p>
+            </div>
+          </div>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Team</h2>
+        </div>
+        
+        <div id="leadership" class="tab-content active">
+          <div class="team-grid">
+            <div class="team-member">
+              <a class="team-card" href="https://www.linkedin.com/in/timur-dogan-b28340a9/" target="_blank" rel="noopener noreferrer" aria-label="Open Dr. Timur Dogan LinkedIn in a new tab">
+                <div class="team-photo">
+                  <img src="/EnergyAtlasWebsite/assets/img/team-dogan.jpg" alt="Dr. Timur Dogan" loading="lazy" />
+                </div>
+                <h3>Dr. Timur Dogan</h3>
+                <p class="team-title">Principal Investigator</p>
+                <p class="team-description">Dr. Timur Dogan is the Principal Investigator of EnergyAtlas.io, Associate Professor in the Department of Architecture, and Director of the Environmental Systems Lab at Cornell University. He supervises research direction, leads feature development, and coordinates collaborations and funding acquisition.</p>
+              </a>
+            </div>
+            
+            <div class="team-member">
+              <a class="team-card" href="https://www.linkedin.com/in/chengxl/" target="_blank" rel="noopener noreferrer" aria-label="Open Chengxuan Li LinkedIn in a new tab">
+                <div class="team-photo">
+                  <img src="/EnergyAtlasWebsite/assets/img/team-li.jpg" alt="Chengxuan Li" loading="lazy" />
+                </div>
+                <h3>Chengxuan Li</h3>
+                <p class="team-title">Lead Developer</p>
+                <p class="team-description">Chengxuan Li is a PhD student in Systems Engineering at Cornell University. As lead developer at EnergyAtlas.io, he is responsible for core simulation engine development and validation, building template development, and large-scale urban data processing.</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tech-stack">
+      <div class="container">
+        <div class="section-header">
+          <h2>Tech Stack</h2>
+        </div>
+        
+        <div class="tech-icons">
+          <a href="https://www.rhino3d.com/" target="_blank" rel="noopener noreferrer" class="tech-icon">
+            <img src="/EnergyAtlasWebsite/assets/img/Icon_Rhino.svg" alt="Rhino" loading="lazy" />
+            <span>Rhino</span>
+          </a>
+          <a href="https://www.grasshopper3d.com/" target="_blank" rel="noopener noreferrer" class="tech-icon">
+            <img src="/EnergyAtlasWebsite/assets/img/Icon_GH.svg" alt="Grasshopper" loading="lazy" />
+            <span>Grasshopper</span>
+          </a>
+          <a href="https://unity.com/" target="_blank" rel="noopener noreferrer" class="tech-icon">
+            <img src="/EnergyAtlasWebsite/assets/img/Icon_Unity.svg" alt="Unity" loading="lazy" />
+            <span>Unity</span>
+          </a>
+          <a href="https://cesium.com/" target="_blank" rel="noopener noreferrer" class="tech-icon">
+            <img src="/EnergyAtlasWebsite/assets/img/Icon_Cesium.svg" alt="Cesium" loading="lazy" />
+            <span>Cesium</span>
+          </a>
+          <a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer" class="tech-icon">
+            <img src="/EnergyAtlasWebsite/assets/img/Icon_React.svg" alt="React" loading="lazy" />
+            <span>React</span>
+          </a>
+          <a href="https://www.mapbox.com/" target="_blank" rel="noopener noreferrer" class="tech-icon">
+            <img src="/EnergyAtlasWebsite/assets/img/Icon_Mapbox.svg" alt="Mapbox" loading="lazy" />
+            <span>Mapbox</span>
+          </a>
+          <a href="https://www.bentley.com/itwin/" target="_blank" rel="noopener noreferrer" class="tech-icon">
+            <img src="/EnergyAtlasWebsite/assets/img/Icon_Twin.svg" alt="Bentley iTwin" loading="lazy" />
+            <span>Bentley iTwin</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+<!--
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <h2>Key Insights</h2>
+        </div>
+        
+        <div class="callouts-grid">
+          <div class="callout">
+            <img src="/EnergyAtlasWebsite/assets/img/pv-potential.svg" alt="Map of rooftop PV potential vs electricity demand" loading="lazy" />
+            <h3>PV Self-Sufficiency Mapping</h3>
+            <p>Identify buildings/sectors where rooftop PV can offset demand under multiple yield benchmarks.</p>
+          </div>
+          
+          <div class="callout">
+            <img src="/EnergyAtlasWebsite/assets/img/retrofit-payback.svg" alt="Histogram of retrofit scenario payback periods" loading="lazy" />
+            <h3>Retrofit Payback Distributions</h3>
+            <p>Visualize feasibility across scenarios (Electrification, Envelope, PV, combos) to target funds effectively.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+-->
+    <section id="demo">
+      <div class="container">
+        <div class="section-header">
+          <h2>Ready to Transform Your City?</h2>
+        </div>
+        
+        <div class="cta-buttons">
+          <!-- <a href="mailto:info@energyatlas.io?subject=Beta Program Inquiry" class="btn btn-primary">Join the Beta</a> -->
+          <a href="mailto:info@energyatlas.io?subject=Demo Request" class="btn btn-primary">Request a Demo</a>
+          <!-- <a href="#use-cases" class="btn btn-secondary">Explore Use Cases</a> -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <p><strong>Contact:</strong> <a href="mailto:info@energyatlas.io"> info@energyatlas.io</a></p>
+      <p>&copy; 2025 EnergyAtlas.io — Environmental Systems Lab, Cornell University</p>
+    </div>
+  </footer>
+  <script>
+    function switchTeamTab(evt, tabName) {
+      // Get all tab content elements
+      var tabContents = document.getElementsByClassName("tab-content");
+      for (var i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove("active");
+      }
+
+      // Get all tab button elements
+      var tabButtons = document.getElementsByClassName("tab-button");
+      for (var i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].classList.remove("active");
+      }
+
+      // Show the selected tab content and mark the button as active
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+  </script>
+  </body>
+</html>
