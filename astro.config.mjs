@@ -2,7 +2,7 @@
 
 // https://astro.build/config
 export default defineConfig({
-  site: "http://es.aap.cornell.edu",
+  site: "https://energyatlas.io",
   base: "/EnergyAtlasWebsite",
   output: "static"
 });
