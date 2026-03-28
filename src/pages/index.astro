@@ -420,7 +420,8 @@
       text-align: center;
     }
 
-    .feature-item img {
+    .feature-item img,
+    .feature-item video {
       width: 100%;
       max-width: 520px;
       height: 300px;
@@ -1230,19 +1231,25 @@
         
         <div class="features-grid">
           <div class="feature-item">
-            <img src="/assets/img/feature-digital-twin.jpg" alt="Urban Digital Twin visualization showing integrated city data" loading="lazy" />
+            <video autoplay muted loop playsinline aria-label="Urban Digital Twin visualization showing integrated city data">
+              <source src="/assets/video/ArchetypeCombined.mp4" type="video/mp4" />
+            </video>
             <h3>Urban Digital Twin Builder</h3>
             <p>Seamlessly unify tax records, parcels, zoning data, LiDAR, permits, and meter information into a single platform. Automated data conversion and attribute joining simplify integration, while localized archetypes and usage schedules ensure high-fidelity urban models that scale effortlessly from buildings to entire cities.</p>
           </div>
           
           <div class="feature-item">
-            <img src="/assets/img/feature-energy-simulation.jpg" alt="City-scale energy simulation showing building energy consumption patterns" loading="lazy" />
+            <video autoplay muted loop playsinline aria-label="City-scale energy simulation showing building energy consumption patterns">
+              <source src="/assets/video/ResultSelection.mp4" type="video/mp4" />
+            </video>
             <h3>City-Scale Energy Simulation</h3>
             <p>ISO-compliant 5R1C models power hourly simulations 150x faster than traditional baselines. Generate validated forecasts of energy demand and carbon emissions at both building and district scales, enabling accurate, city-scale insights into operational energy performance with minimal data requirements.</p>
           </div>
           
           <div class="feature-item">
-            <img src="/assets/img/feature-renewables.jpg" alt="Renewable energy integration showing solar panels and wind turbines on buildings" loading="lazy" />
+            <video autoplay muted loop playsinline aria-label="Renewable energy integration showing solar panels and wind turbines on buildings">
+              <source src="/assets/video/RadiationCesiumView.mp4" type="video/mp4" />
+            </video>
             <h3>Renewables Integration</h3>
             <p>Simulate rooftop photovoltaics using fast voxel shading and ray marching algorithms, alongside geothermal and district-scale energy networks. EnergyAtlas Renewables integrates on-site and off-site sources, providing high-resolution insights into how solar panels, wind turbines, and ground-source systems contribute to sustainable urban energy supply.</p>
           </div>
