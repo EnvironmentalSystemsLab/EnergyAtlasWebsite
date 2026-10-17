@@ -24,7 +24,8 @@ Repository settings:
 
 - Pages build and deployment source: **GitHub Actions**.
 - Custom domain: **www.energyatlas.io**.
-- The `github-pages` environment allows deployments from **main** only.
+- A repository administrator should restrict the `github-pages` environment
+  to **main** only. The workflow independently blocks deployment from other branches.
 
 Do not enable branch-based Pages publishing alongside the Astro workflow;
 it publishes repository files instead of the generated site and creates a
