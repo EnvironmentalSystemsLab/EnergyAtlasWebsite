@@ -1,0 +1,93 @@
+/* EnergyAtlas semantic roles. Keep the same colour roles in both schemes. */
+:root {
+  color-scheme: light;
+  --ui-bg: #ffffff;
+  --ui-surface: #f8fafc;
+  --ui-raised: #f4f7fb;
+  --ui-pressed: #e7edf5;
+  --ui-text: #18202c;
+  --ui-muted: #5f6b7a;
+  --ui-border-subtle: #cfd8e5;
+  --ui-border-interactive: #768599;
+  --ui-accent: #125dae;
+  --ui-accent-hover: #0d4e94;
+  --ui-accent-pressed: #083d78;
+  --ui-on-accent: #ffffff;
+  --ui-focus: #125dae;
+
+  /* Fixed dark roles for video-backed content and the footer in either scheme.
+     70% black over a white video frame produces the worst-case backdrop below. */
+  --ui-hero-backdrop: #4d4d4d;
+  --ui-hero-overlay: rgba(0, 0, 0, 0.7);
+  --ui-hero-surface: #1a1a1a;
+  --ui-hero-text: #ffffff;
+  --ui-hero-muted: #e5e5e5;
+  --ui-hero-link: #4da3ff;
+  --ui-hero-hover: #6cb3ff;
+  --ui-hero-pressed: #8fc5ff;
+  --ui-hero-on-accent: #000000;
+  --ui-hero-edge: #b0b0b0;
+  --ui-hero-rule: #666666;
+  --ui-icon-surface: #f4f7fb;
+
+  --ui-font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ui-font-brand: "Roboto Flex", "Geist", sans-serif;
+  --ui-font-mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+  --ui-type-small: 0.75rem;
+  --ui-type-label: 0.875rem;
+  --ui-type-body: 1rem;
+  --ui-type-lead: 1.125rem;
+  --ui-type-card: 1.25rem;
+  --ui-type-title: clamp(1.75rem, 3vw, 2.5rem);
+  --ui-type-hero: clamp(2.5rem, 6vw, 4.5rem);
+  --ui-type-wordmark: 1.25rem;
+  --ui-weight-body: 400;
+  --ui-weight-medium: 500;
+  --ui-weight-heading: 600;
+  --ui-brand-axes: "wdth" 150, "wght" 700;
+  --ui-tracking: -0.025em;
+  --ui-tracking-brand: -0.05em;
+  --ui-leading-body: 1.65;
+  --ui-leading-title: 1.15;
+  --ui-label-font: var(--ui-font-sans);
+  --ui-label-case: none;
+  --ui-label-size: var(--ui-type-label);
+  --ui-label-weight: var(--ui-weight-medium);
+  --ui-label-tracking: 0;
+  --ui-radius: 2px;
+  --ui-radius-portrait: 50%;
+  --ui-shadow: none;
+  --ui-rule: 1px solid var(--ui-border-subtle);
+  --ui-control-rule: 1px solid var(--ui-border-interactive);
+  --ui-focus-width: 2px;
+  --ui-focus-offset: 4px;
+  --ui-transition: 150ms ease;
+  --ui-max-width: 1280px;
+  --ui-gutter: clamp(1.25rem, 3vw, 2.5rem);
+  --ui-section-space: clamp(3rem, 6vw, 5rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --ui-bg: #000000;
+    --ui-surface: #1a1a1a;
+    --ui-raised: #2a2a2a;
+    --ui-pressed: #303030;
+    --ui-text: #e5e5e5;
+    --ui-muted: #999999;
+    --ui-border-subtle: #404040;
+    --ui-border-interactive: #808080;
+    --ui-accent: #4da3ff;
+    --ui-accent-hover: #6cb3ff;
+    --ui-accent-pressed: #8fc5ff;
+    --ui-on-accent: #000000;
+    --ui-focus: #4da3ff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ui-transition: 0s;
+  }
+}
