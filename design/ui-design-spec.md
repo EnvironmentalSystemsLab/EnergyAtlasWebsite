@@ -73,7 +73,7 @@ One semantic set in `src/styles/tokens.css`, identical roles in both themes:
 | Text | `#18202c` | `#e5e5e5` |
 | Muted | `#5f6b7a` | `#999999` |
 | Decorative rule | `#cfd8e5` | `#404040` |
-| Interactive edge | `#768599` | `#747474` |
+| Interactive edge | `#768599` | `#808080` |
 | Accent | `#125dae` | `#4da3ff` |
 | Text on accent | `#ffffff` | `#000000` |
 
@@ -96,5 +96,45 @@ appearance regressions. Keep local QA fixtures and screenshots outside the repo.
 
 ## 5. Implementation evidence and deviations
 
-Implementation and verification evidence will be appended after the approved
-design is built. No push, merge, tag, release, or deployment is authorized.
+- Implemented the approved framing, grids, typography, buttons, themes, and mobile
+  hero overlay. The page body and scripts match `064093c` byte-for-byte after
+  normalizing line endings: no wording, links, media, IDs, or functionality changed.
+- CSS is now split into tokens, font declarations, and component styles. The dark
+  interactive edge is `#808080` instead of the family's `#747474`, to retain 3.34:1
+  against the pressed surface `#303030`. Muted text on that surface is 4.63:1.
+- The hero uses fixed dark roles in either theme, including a light-blue primary
+  fill with black text. A 70% black overlay bounds the brightest video frame at
+  `#4d4d4d`; the blue indicator still reaches 3.22:1 there. Circular team portraits
+  and unmodified logos/icons are intentional exceptions to square framing.
+- Fonts are vendored from Fontsource 5.3.0 with unmodified OFL licenses and package
+  provenance in `public/assets/fonts/README.md`. The production page loads Geist
+  and Roboto Flex from its own origin; no external request was observed.
+- `npm test`: 2 passing theme tests, exercising 40 contrast assertions per theme.
+  Tests were first observed failing before the new token contract was implemented.
+  The repository previously had no tests; this uses Node's built-in runner.
+- `npm run build`: passes, producing 1 static page. The existing empty hoisted
+  script chunk message is also present in the baseline build. `git diff --check`
+  passes. No separate lint, typecheck, or format script is defined.
+- Final style audit: 0 colour literals outside tokens, 0 literal component font
+  sizes, 0 font-host URLs, 0 `!important` rules, and no uppercase transformations.
+  The only literal font families outside tokens are the five required `@font-face`
+  declarations. The shadow token resolves to `none`. Motion is colour-only and
+  resolves to 0s under reduced motion; smooth scrolling also becomes automatic.
+- Browser matrix: light and dark at confirmed 375 × 800, 1280 × 800, and
+  1920 × 800 viewports. All six have zero horizontal overflow, clipped labels,
+  missing images, external requests, or axe-core 4.14.0 WCAG A/AA violations.
+  Baseline scans found 1 failing contrast element in light and 19 in dark.
+- Because the site has no theme switch and follows system preference, a local,
+  ignored production QA server forces only the CSS media conditions for each
+  theme and reduced-motion state. It also forces CSS hover/pressed selectors for
+  state screenshots and makes lazy images eager for reliable full-page capture.
+  No QA script, override, or dependency is shipped. All state scans are clear.
+- Keyboard checks: all 29 links in each theme have visible focus rings (58 checks)
+  and 0s transitions with reduced motion. Mobile navigation fits all six links on
+  one row at 375px. Independent code review found no actionable issue.
+- Baseline/final screenshots and machine-readable reports are local, under
+  `tmp/ui-qa/` (ignored). Screenshots cover the hero, shared grids, long module
+  names, publications, team, integrations, and footer. The live development
+  preview remains on port 4321. Internal design records are absent from `dist/`.
+
+No push, merge, tag, release, or deployment was performed.
