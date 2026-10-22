@@ -524,3 +524,25 @@ click target, interaction fills, and keyboard focus ring. Browser checks confirm
 2px focus indicator. Reduced-motion handling remains unchanged.
 `npm test` (10 tests), `npm run build`, and `git diff --check` pass.
 Screenshot: `tmp/ui-ribbon-frameless.png`.
+
+## 21. Consolidate Features into three video stories (2026-10-22)
+
+Merged the six cards into three rows, keeping the original three videos and
+all playback/framing attributes. The new titles are "Agentic Digital Twin",
+"City-Scale Energy Insights", and "Distributed Energy Resources Integration".
+Rewrote the descriptions around agentic reasoning and assistance; load forecasts,
+power/grid studies, scenario planning and climate action planning; and distributed
+resources including storage, electric vehicle charging, demand response, smart
+building controls, and combined heat and power. Interactive maps and planning
+communication are folded into the new copy. Removed the three image-led cards
+and replaced the promotional reconstruction module blurb with planning/map copy.
+Existing publication citations remain accurate and unchanged.
+
+Live inspection confirms exactly three feature videos with their original URLs,
+no feature images, and no remaining promotional reconstruction/FacadeScanner
+reference in the rendered text. Production checks at 375, 1280, and 1920px in
+both themes confirm all three titles, correct desktop/phone arrangement, no
+clipped headings or page overflow, and zero axe WCAG A/AA violations.
+`npm test` (10 tests), `npm run build`, and `git diff --check` pass. Evidence:
+`tmp/ui-qa/three-features-light.json`, `tmp/ui-qa/three-features-dark.json`, and
+`tmp/ui-three-features.png`.
