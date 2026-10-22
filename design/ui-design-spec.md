@@ -3,7 +3,7 @@
 ## 0. Implementation decisions
 
 Approved by the owner on 2026-10-21, before implementation, with the font-family
-correction requested later that day. This section takes
+and page-frame corrections requested later that day. This section takes
 precedence over the reference recipes. This folder is internal and is not published.
 
 - Reference: the EnergyAtlas visual family described by the app-ui-alignment and
@@ -22,7 +22,10 @@ precedence over the reference recipes. This folder is internal and is not publis
   Keep the existing size hierarchy and wording; no mono caps.
 - Preserve the city video hero, heading, copy, trust badges, and actions. Tighten
   its spacing, keep a legible overlay on mobile, and allow its height to grow to
-  fit content. Do not change video playback behavior in this pass.
+  fit content. The video and its overlay span the full available page width,
+  independently of the centered text container. No vertical page-frame lines
+  appear anywhere, including the header, hero, sections, or footer. Do not change
+  video playback behavior in this pass.
 - Align section headings and card copy to the same content grid. Use shared-border
   grids for features, modules, publications, media, team, and integrations. Keep
   section titles on the page, without numbered strips or backdrops.
@@ -55,7 +58,7 @@ The mobile stylesheet removes the hero overlay even though its text stays white.
 | Reference element | Website treatment | Decision |
 | --- | --- | --- |
 | Neutral base and raised surfaces | Page, header, cards | Adopt for both themes |
-| Ruled frame and shared cells | Aligned sections and card grids | Adopt |
+| Ruled frame and shared cells | Aligned sections and card grids without outer page rails | Keep cell dividers; omit both vertical page-frame lines at owner's request |
 | Geist interface typography | Body, headings, navigation | Adopt |
 | Mono caps labels and editorial serif | Normal-case sans labels; one italic serif hero subtitle | Adopt serif after owner's font correction; keep normal case |
 | Brand mark assets in skills | Existing website logo/favicon | Keep existing identity |
@@ -211,3 +214,17 @@ earlier Roboto Flex and system-monospace exceptions. Section 0 reflects this upd
   WCAG A/AA violations. Evidence: `tmp/ui-qa/fonts.json` and font-matrix screenshots.
 - `npm test`, `npm run build`, and independent review pass. The preview server
   was restarted after its earlier process expired, then the live page refreshed.
+
+## 8. Remove outer vertical frame lines (2026-10-21)
+
+At the owner's request, removed the two outer page-frame borders from every
+container and the redundant hero/footer border overrides. The inner grid cell
+dividers remain. Removed the reserved scrollbar gutter so the hero fills the
+available page width as in the original layout. Its video remains positioned
+against the full hero rather than the centered copy container.
+
+The live browser confirms 0px left/right borders on all ten containers, including
+header and footer. Hero and video both extend from x=0 to the page's full 1745px
+content width, with zero horizontal overflow. `npm test` (2 tests),
+`npm run build`, and `git diff --check` pass. Screenshot:
+`tmp/ui-no-frame-lines.png`. Section 0 records this override to the template frame.
