@@ -42,6 +42,11 @@
   --ui-type-lead: 1.125rem;
   --ui-type-card: 1.25rem;
   --ui-feature-copy-size: 0.9375rem;
+  --ui-feature-copy-leading: 1.45;
+  --ui-feature-copy-gap: 0.75rem;
+  --ui-feature-bullet-gap: 0.5rem;
+  --ui-feature-list-inset: 1.25rem;
+  --ui-feature-row-gap: clamp(2rem, 4vw, 4rem);
   --ui-feature-media-radius: 1rem;
   --ui-feature-media-offset: 1rem;
   --ui-feature-media-mask: linear-gradient(to bottom, #000000 75%, transparent 100%);
@@ -102,7 +107,7 @@
   --ui-transition: 150ms ease;
   --ui-max-width: 1280px;
   --ui-gutter: clamp(1.25rem, 3vw, 2.5rem);
-  --ui-section-space: clamp(4.5rem, 9vw, 7.5rem);
+  --ui-section-space: clamp(6rem, 12vw, 10rem);
 }
 
 @media (prefers-color-scheme: dark) {

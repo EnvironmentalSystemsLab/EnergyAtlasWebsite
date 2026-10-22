@@ -50,21 +50,25 @@ precedence over the reference recipes. This folder is internal and is not publis
 - Align section headings and card copy to the same content grid. Use shared-border
   grids for modules, publications, media, team, and integrations. Keep
   section titles on the page, without numbered strips or backdrops.
-- The section is titled "Features" and uses three vertically stacked video rows:
+- Keep the `#features` bookmark and an accessible "Features" heading, but hide
+  that generic heading visually. Use three vertically stacked video rows:
   "Agentic Digital Twin", "City-Scale Energy Insights", and "Distributed Energy
   Resources Integration". Keep the original three videos in that order and merge
   the former six cards' relevant copy. Cover agentic reasoning and assistance;
   load forecasting, power/grid studies, scenario and climate action planning;
   and distributed resources including storage, EV charging, demand response,
   smart buildings, and combined heat and power. Remove promotional 3D
-  reconstruction references, including the module blurb. On desktop, enlarge each media
-  panel to roughly 62% of the row's inner width and put its heading and description
-  together on the right, vertically centered. At 768px and below, place the text
-  beneath full-width media. Preserve the order, media, descriptions, and playback.
+  reconstruction references, including the module blurb. Give each feature title
+  the same typography as a section heading, spanning the row above its media and
+  copy. On desktop, keep each media panel at roughly 62% of the row's inner width
+  and the description on the right, vertically centered. At 768px and below,
+  place the description beneath full-width media. Use one short summary sentence
+  and three concise bullets per feature. Preserve the order, media, and playback.
   Remove all feature grid rules and media outlines. Fade the bottom 25% of each
   visual smoothly into the page background, with 16px top corners and square
   bottom corners; offset visuals downward 16px. Feature paragraphs use the same
-  text colour as their titles and a slightly smaller 15px size.
+  text colour as their titles and a slightly smaller 15px size, with 1.45 line
+  height. Add 32–64px of extra space between feature rows responsively.
   Bottom-align the first two screen recordings within their existing 16:9 frames,
   with a 1px upward trim, to hide their captured white title ribbons. Keep the
   source files unchanged and retain the default framing of all other visuals.
@@ -84,9 +88,8 @@ precedence over the reference recipes. This folder is internal and is not publis
   fill in both modes; press uses the fixed hero pressed blue. No text underline
   appears on these two buttons, including hover; retain the focus ring and a
   visible edge over video. Other actions retain their current style.
-- Left-align the demo action group with its section heading. Increase section
-  spacing by 50%, from 48–80px to 72–120px responsively, keeping the shared grid
-  rules, content widths, and internal card spacing.
+- Left-align the demo action group with its section heading. Use 96–160px of
+  section spacing responsively, keeping the shared grid rules and content widths.
 - The theme switch has a 44px target around a frameless 24px square matching the navigation
   chips' visible height, an accessible dark-theme on/off state,
   sun/moon action icons, and visible hover/focus/pressed states. Keep it beside
@@ -546,3 +549,22 @@ clipped headings or page overflow, and zero axe WCAG A/AA violations.
 `npm test` (10 tests), `npm run build`, and `git diff --check` pass. Evidence:
 `tmp/ui-qa/three-features-light.json`, `tmp/ui-qa/three-features-dark.json`, and
 `tmp/ui-three-features.png`.
+
+## 22. Feature hierarchy, concise copy, and spacing (2026-10-22)
+
+Visually hid the generic Features heading while retaining its accessible heading
+and the `#features` bookmark. Each feature title now spans the full row above
+the media and description, using the same responsive 28–40px type as section
+headings. Replaced each long paragraph with one summary sentence and three
+bullets. Copy remains 15px in the title colour, with line height reduced from
+1.65 to 1.45. Added 32–64px between feature cards and increased shared section
+spacing from 72–120px to 96–160px. Video sources, crops, fades, and playback stay
+unchanged.
+
+Production checks at 375, 1280, and 1920px in light and dark themes show no
+horizontal overflow, clipped headings, or axe WCAG A/AA violations. Live
+inspection confirms all three headings sit above their visuals and match section
+heading sizes, with three bullets each and the original bookmark intact.
+`npm test` (10 tests), `npm run build`, and `git diff --check` pass. Evidence:
+`tmp/ui-qa/feature-hierarchy-light.json`,
+`tmp/ui-qa/feature-hierarchy-dark.json`, and `tmp/ui-feature-hierarchy.png`.
