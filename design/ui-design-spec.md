@@ -33,6 +33,11 @@ precedence over the reference recipes. This folder is internal and is not publis
 - Align section headings and card copy to the same content grid. Use shared-border
   grids for features, modules, publications, media, team, and integrations. Keep
   section titles on the page, without numbered strips or backdrops.
+- Horizontal separators span the full available page width, including grid row
+  boundaries and the hero's trust strip. Vertical separators are confined to
+  these rows, meeting horizontal rules above and below; no page-height rails.
+  Content remains centered at its existing readable width. Control borders,
+  image outlines, and link/focus indicators retain their component dimensions.
 - Primary buttons: solid blue. Secondary buttons: outlined with an opaque surface.
   Use visible hover, pressed, and focus indicators without moving controls.
 - Text must reach 4.5:1, and interactive borders and focus indicators 3:1, in both
@@ -252,3 +257,19 @@ endpoint returns 200 with the correct image content type from the local origin.
 The refreshed browser confirms the header mark is loaded, the expected favicon
 links are present, and placement matches the guideline. `npm test` (2 tests),
 `npm run build`, and `git diff --check` pass.
+
+## 10. Full-width horizontal separators (2026-10-21)
+
+At the owner's request, retained the horizontal separators and extended every
+grid row boundary to the page edges, including the hero trust strip. Column
+dividers remain inside rows bounded above and below by horizontal rules. The
+centered content widths, absent outer vertical rails, and full-width hero video
+are preserved. Control and media outlines remain local to their components.
+
+The live browser confirms full-width rules, zero horizontal overflow, zero outer
+container borders, and matching hero/video widths. Production fixtures at 375,
+1280, and 1920px in both themes confirm all seven ruled grids have top and row
+bottom rules, with no clipped labels, page overflow, or axe WCAG A/AA violations.
+Evidence: `tmp/ui-qa/separators-light.json`, `tmp/ui-qa/separators-dark.json`, and
+`tmp/ui-full-width-separators.png`. `npm test` (2 tests), `npm run build`, and
+`git diff --check` pass.

@@ -188,6 +188,36 @@ nav a:active {
   text-align: center;
 }
 
+main {
+  overflow-x: clip;
+}
+
+/* Extend row rules to the viewport; keep column rules inside each ruled row. */
+.ruled-grid,
+.ruled-grid > * {
+  position: relative;
+}
+
+.ruled-grid::before,
+.ruled-grid > *::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 200vw;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.ruled-grid::before {
+  top: -1px;
+  border-top: var(--ui-separator-rule, var(--ui-rule));
+}
+
+.ruled-grid > *::after {
+  bottom: -1px;
+  border-bottom: var(--ui-separator-rule, var(--ui-rule));
+}
+
 .hero::before {
   content: "";
   position: absolute;
@@ -232,6 +262,7 @@ nav a:active {
 }
 
 .trust-badges {
+  --ui-separator-rule: var(--ui-hero-divider);
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   max-width: 60rem;

@@ -67,6 +67,7 @@
   --ui-radius-portrait: 50%;
   --ui-shadow: none;
   --ui-rule: 1px solid var(--ui-border-subtle);
+  --ui-hero-divider: 1px solid var(--ui-hero-rule);
   --ui-control-rule: 1px solid var(--ui-border-interactive);
   --ui-focus-width: 2px;
   --ui-focus-offset: 4px;
