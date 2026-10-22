@@ -463,7 +463,7 @@ main > section:not(.hero) > .container {
   color: var(--ui-muted);
 }
 
-.features-grid, .modules-grid, .publications-grid, .media-grid, .team-grid, .tech-icons {
+.modules-grid, .publications-grid, .media-grid, .team-grid, .tech-icons {
   display: grid;
   gap: 1px;
   margin-inline: calc(-1 * var(--ui-gutter));
@@ -472,7 +472,9 @@ main > section:not(.hero) > .container {
 }
 
 .features-grid {
+  display: grid;
   grid-template-columns: minmax(0, 1fr);
+  margin-inline: calc(-1 * var(--ui-gutter));
 }
 
 .publications-grid, .media-grid, .team-grid {
@@ -505,15 +507,21 @@ main > section:not(.hero) > .container {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  border: var(--ui-rule);
-  border-radius: var(--ui-radius);
+  border-radius: var(--ui-feature-media-radius) var(--ui-feature-media-radius) 0 0;
+  mask-image: var(--ui-feature-media-mask);
+  transform: translateY(var(--ui-feature-media-offset));
 }
 
 .feature-item h3, .module-card h3 {
   margin-bottom: 1rem;
 }
 
-.feature-item p, .module-card li, .team-description {
+.feature-item p {
+  color: var(--ui-text);
+  font-size: var(--ui-feature-copy-size);
+}
+
+.module-card li, .team-description {
   color: var(--ui-muted);
 }
 

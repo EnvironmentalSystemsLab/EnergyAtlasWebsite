@@ -417,3 +417,22 @@ page overflow, and zero axe WCAG A/AA violations. Evidence is saved in
 `tmp/ui-qa/features-light.json`, `tmp/ui-qa/features-dark.json`, and
 `tmp/ui-feature-rows.png`. `npm test` (6 tests), `npm run build`, and
 `git diff --check` pass.
+
+## 16. Rule-free feature visuals with background fades (2026-10-22)
+
+Renamed the section heading to "Features" while preserving its #features anchor.
+Removed its ruled-grid decoration, grid borders, and visual outlines; all other
+sections retain their rules. Each feature visual now has 16px top corners,
+square bottom corners, and a CSS alpha mask fading its lower 45% into the page
+background. The visual shifts downward 16px while its row and copy remain in
+place. Feature paragraphs now use the title's text colour at 15px instead of
+16px muted text. Media, descriptions, and playback are unchanged.
+
+Live screenshots confirm the fade blends into both white and black page
+backgrounds. Production checks at 375, 1280, and 1920px in both themes confirm
+all six masks, top-only radii, absent row rules, title/paragraph colour equality,
+and 15px copy. There are no clipped labels, horizontal overflow, or axe WCAG A/AA
+violations. The phone layout keeps copy below the downward-shifted media without
+overlap. Evidence: `tmp/ui-qa/feature-fade-light.json`,
+`tmp/ui-qa/feature-fade-dark.json`, and `tmp/ui-features-fade-dark.png`.
+`npm test` (6 tests), `npm run build`, and `git diff --check` pass.
