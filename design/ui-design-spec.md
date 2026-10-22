@@ -52,12 +52,14 @@ precedence over the reference recipes. This folder is internal and is not publis
   the fills specified below. Keep a minimum 44px target and visible hover,
   pressed, and focus indicators without moving controls.
 - The hero actions read "explore features" and "wiki" (displayed uppercase by the
-  existing button style). In dark mode both use the wiki's white text colour
-  (#e5e5e5) as fill and black (#000000) text; in light mode use the wiki's dark
-  text colour (#18202c) as fill and white (#ffffff) text. Hover and keyboard focus
-  use the theme's blue accent fill (#4da3ff dark / #125dae light), with the
-  corresponding contrast-tested text. Press uses the theme's pressed blue.
-  Keep a visible edge over the video. Other actions retain their current style.
+  existing button style). In both modes use the wiki's white (#e5e5e5) fill and
+  black (#000000) text. Hover and keyboard focus use the same blue (#4da3ff)
+  fill in both modes; press uses the fixed hero pressed blue. No text underline
+  appears on these two buttons, including hover; retain the focus ring and a
+  visible edge over video. Other actions retain their current style.
+- Left-align the demo action group with its section heading. Increase section
+  spacing by 50%, from 48–80px to 72–120px responsively, keeping the shared grid
+  rules, content widths, and internal card spacing.
 - The theme switch has a 44px target, an accessible dark-theme on/off state,
   sun/moon action icons, and visible hover/focus/pressed states. Keep it beside
   the site name on phones, with all section navigation below it.
