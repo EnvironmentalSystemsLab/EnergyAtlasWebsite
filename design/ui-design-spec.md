@@ -41,6 +41,11 @@ precedence over the reference recipes. This folder is internal and is not publis
 - Align section headings and card copy to the same content grid. Use shared-border
   grids for features, modules, publications, media, team, and integrations. Keep
   section titles on the page, without numbered strips or backdrops.
+- Key Features uses six vertically stacked rows. On desktop, enlarge each media
+  panel to roughly 62% of the row's inner width and put its heading and description
+  together on the right, vertically centered. At 768px and below, place the text
+  beneath full-width media. Preserve the order, media, wording, playback behavior,
+  and full-width horizontal row separators.
 - Horizontal separators span the full available page width, including grid row
   boundaries and the hero's trust strip. Vertical separators are confined to
   these rows, meeting horizontal rules above and below; no page-height rails.
