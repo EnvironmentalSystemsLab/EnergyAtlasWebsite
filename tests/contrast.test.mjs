@@ -43,7 +43,7 @@ for (const [name, tokens] of [["light", light], ["dark", { ...light, ...dark }]]
       check(state, "bg", 3);
     }
     check("text", "selection", 4.5);
-    check("bg", "text", 4.5); // Neutral filled hero actions in either theme.
+    check("hero-on-accent", "hero-muted", 4.5); // Fixed white hero actions in both themes.
     check("hero-edge", "hero-backdrop", 3); // Edge stays visible over bright video.
     check("on-accent", "accent", 4.5);
     for (const foreground of ["hero-text", "hero-muted", "hero-link", "hero-edge"]) {

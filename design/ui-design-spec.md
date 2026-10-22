@@ -375,3 +375,20 @@ All six responsive checks and both hover fixtures report zero WCAG A/AA axe
 violations, no clipped labels, and no page overflow. Evidence is saved in
 `tmp/ui-qa/theme-switch-light.json`, `tmp/ui-qa/theme-switch-dark.json`, and
 `tmp/ui-theme-dark.png`. Independent code review found no material issues.
+
+## 14. Fixed hero fills, demo alignment, and section spacing (2026-10-22)
+
+At the owner's request, only the two hero actions now keep the same white
+(#e5e5e5) fill and black text in both modes. Hover/focus uses the fixed hero blue
+(#4da3ff), with no text underline; keyboard focus still has its visible ring.
+The demo action group now starts at the heading's left edge. Increased the
+shared section-spacing token by 50% to a responsive 72–120px, preserving grid
+rules and internal card spacing.
+
+Production browser checks at 375, 1280, and 1920px in both themes confirm the
+same hero fills, zero demo-button/heading horizontal offset, section padding of
+72px / 115.2px / 120px, and no clipped labels, page overflow, or axe WCAG A/AA
+violations. Hover fixtures in both themes confirm #4da3ff fill with no underline.
+Evidence: `tmp/ui-qa/spacing-light.json`, `tmp/ui-qa/spacing-dark.json`,
+`tmp/ui-fixed-hero-buttons.png`, and `tmp/ui-demo-left-spaced.png`.
+`npm test` (6 tests), `npm run build`, and `git diff --check` pass.

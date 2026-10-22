@@ -428,19 +428,20 @@ main {
 }
 
 .hero .btn {
-  background: var(--ui-text);
+  background: var(--ui-hero-muted);
   border-color: var(--ui-hero-edge);
-  color: var(--ui-bg);
+  color: var(--ui-hero-on-accent);
+  text-decoration: none;
 }
 
 .hero .btn:is(:hover, :focus-visible) {
-  background: var(--ui-accent);
-  color: var(--ui-on-accent);
+  background: var(--ui-hero-link);
+  color: var(--ui-hero-on-accent);
 }
 
 .hero .btn:active {
-  background: var(--ui-accent-pressed);
-  color: var(--ui-on-accent);
+  background: var(--ui-hero-pressed);
+  color: var(--ui-hero-on-accent);
 }
 
 .hero a:focus-visible {
@@ -658,7 +659,8 @@ main > section:not(.hero) > .container {
 }
 
 #demo .cta-buttons {
-  margin-left: 0;
+  justify-content: flex-start;
+  margin-inline: 0;
 }
 
 footer {
