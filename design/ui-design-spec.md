@@ -39,14 +39,17 @@ precedence over the reference recipes. This folder is internal and is not publis
   the title size, in exactly two lines with a break after "for". Keep the
   template serif italic family and a proportional scale on phone screens.
 - Align section headings and card copy to the same content grid. Use shared-border
-  grids for features, modules, publications, media, team, and integrations. Keep
+  grids for modules, publications, media, team, and integrations. Keep
   section titles on the page, without numbered strips or backdrops.
-- Key Features uses six vertically stacked rows. On desktop, enlarge each media
+- The section is titled "Features" and uses six vertically stacked rows. On desktop, enlarge each media
   panel to roughly 62% of the row's inner width and put its heading and description
   together on the right, vertically centered. At 768px and below, place the text
-  beneath full-width media. Preserve the order, media, wording, playback behavior,
-  and full-width horizontal row separators.
-- Horizontal separators span the full available page width, including grid row
+  beneath full-width media. Preserve the order, media, descriptions, and playback.
+  Remove all feature grid rules and media outlines. Fade the bottom 45% of each
+  visual smoothly into the page background, with 16px top corners and square
+  bottom corners; offset visuals downward 16px. Feature paragraphs use the same
+  text colour as their titles and a slightly smaller 15px size.
+- Horizontal separators outside Features span the full available page width, including grid row
   boundaries and the hero's trust strip. Vertical separators are confined to
   these rows, meeting horizontal rules above and below; no page-height rails.
   Content remains centered at its existing readable width. Control borders,
