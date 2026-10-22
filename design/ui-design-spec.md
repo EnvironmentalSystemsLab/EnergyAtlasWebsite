@@ -41,7 +41,7 @@ precedence over the reference recipes. This folder is internal and is not publis
   hero to grow on short screens so its content remains readable.
   At the initial top position, hide the ribbon background/border and brand name;
   retain the brand mark, navigation, and theme icon with legible light colours
-  over video. Fade the background and name in over 120ms whenever scrollY is
+  over video. Fade the background and name in over 240ms whenever scrollY is
   positive, including anchor navigation and restored scroll positions. Returning
   to the top restores the transparent state. Respect reduced-motion preference.
 - Left-align the hero title, subtitle, and actions. Set the subtitle to 60% of
@@ -80,10 +80,11 @@ precedence over the reference recipes. This folder is internal and is not publis
 - Left-align the demo action group with its section heading. Increase section
   spacing by 50%, from 48–80px to 72–120px responsively, keeping the shared grid
   rules, content widths, and internal card spacing.
-- The theme switch has a 44px target around a 24px square matching the navigation
+- The theme switch has a 44px target around a frameless 24px square matching the navigation
   chips' visible height, an accessible dark-theme on/off state,
   sun/moon action icons, and visible hover/focus/pressed states. Keep it beside
   the site name on phones, with all section navigation below it.
+  Remove its standing border; keep its keyboard focus ring.
 - The header navigation beside the site name follows
   `https://energy-atlas.github.io/archetype-atlas/`: muted Geist Mono 600,
   11.5px uppercase labels with 0.14em tracking, compact square 24px chips, and
@@ -506,3 +507,13 @@ Ten tests and the production build pass, as does `git diff --check`. Independent
 code review found no material issues. Evidence: `tmp/ui-qa/ribbon-light.json`,
 `tmp/ui-qa/ribbon-dark.json`, `tmp/ui-hero-fullscreen-overlay.png`,
 `tmp/ui-ribbon-revealed.png`, and `tmp/ui-ribbon-revealed-light.png`.
+
+## 20. Slower ribbon reveal and frameless theme icon (2026-10-22)
+
+Increased the shared ribbon/name fade from 120ms to 240ms. Removed the theme
+switch's standing frame while preserving its 24px square visual area, 44px
+click target, interaction fills, and keyboard focus ring. Browser checks confirm
+240ms transitions, zero border width, successful scroll reveal, and the retained
+2px focus indicator. Reduced-motion handling remains unchanged.
+`npm test` (10 tests), `npm run build`, and `git diff --check` pass.
+Screenshot: `tmp/ui-ribbon-frameless.png`.

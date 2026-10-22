@@ -164,10 +164,10 @@ nav {
   box-sizing: border-box;
   width: var(--ui-nav-chip-height);
   height: var(--ui-nav-chip-height);
-  border: var(--ui-control-rule);
+  border: 0;
   border-radius: var(--ui-button-radius);
   background: var(--ui-bg);
-  transition: background-color var(--ui-transition), border-color var(--ui-transition);
+  transition: background-color var(--ui-transition);
 }
 
 :where(:root[data-ribbon="overlay"]) .theme-toggle::before {
@@ -184,7 +184,6 @@ nav {
 
 .theme-toggle:is(:hover, :focus-visible)::before {
   background: var(--ui-raised);
-  border-color: var(--ui-accent);
 }
 
 .theme-toggle:active {
@@ -193,7 +192,6 @@ nav {
 
 .theme-toggle:active::before {
   background: var(--ui-accent);
-  border-color: var(--ui-accent);
 }
 
 .theme-toggle:focus-visible::before {
