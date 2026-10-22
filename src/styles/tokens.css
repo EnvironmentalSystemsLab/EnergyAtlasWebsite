@@ -42,7 +42,7 @@
   --ui-type-body: 1rem;
   --ui-type-lead: 1.125rem;
   --ui-type-card: 1.25rem;
-  --ui-feature-summary-size: var(--ui-type-card);
+  --ui-feature-summary-size: clamp(1.5rem, 2.4vw, 1.875rem);
   --ui-feature-copy-size: var(--ui-type-label);
   --ui-feature-copy-leading: 1.45;
   --ui-feature-copy-gap: 0.75rem;

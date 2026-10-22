@@ -71,9 +71,9 @@ precedence over the reference recipes. This folder is internal and is not publis
   Remove all feature grid rules and media outlines. Fade the bottom 25% of each
   visual smoothly into the page background, with 16px top corners and square
   bottom corners; offset visuals downward 16px. Feature copy uses the same text
-  colour as its titles and 1.45 line height: 20px summary sentences and 14px
+  colour as its titles and 1.45 line height: 24–30px responsive summary sentences and 14px
   supporting points. Summary sentences use the template's Cormorant Garamond
-  italic 500; supporting points retain Geist. Use the shared 96–160px section spacing between feature
+  italic 500; supporting points retain Geist and use concise phrases. Use the shared 96–160px section spacing between feature
   rows, with no extra vertical card padding.
   Give each visual a translucent neutral edge glow: black at 35% opacity on
   light backgrounds and white at 22% on dark backgrounds, with 96px blur and
@@ -103,11 +103,12 @@ precedence over the reference recipes. This folder is internal and is not publis
   visible edge over video. Other actions retain their current style.
 - Left-align the demo action group with its section heading. Use 96–160px of
   section spacing responsively, keeping the existing content widths.
-- The theme switch has a 44px target around a frameless 24px square matching the navigation
+- The theme switch has a 44px target around a 24px icon area matching the navigation
   chips' visible height, an accessible dark-theme on/off state,
-  sun/moon action icons, and visible hover/focus/pressed states. Keep it beside
+  and sun/moon action icons. Hover and press change only the icon colour;
+  no square background or animated fill appears in any state. Keep it beside
   the site name on phones, with all section navigation below it.
-  Remove its standing border; keep its keyboard focus ring.
+  Remove its standing border; keep its keyboard focus ring on the 24px area.
 - The header navigation beside the site name follows
   `https://energy-atlas.github.io/archetype-atlas/`: muted Geist Mono 600,
   11.5px uppercase labels with 0.14em tracking, compact square 24px chips, and
@@ -665,3 +666,25 @@ violations. All 10 tests, `npm run build`, and `git diff --check` pass. Evidence
 `tmp/ui-qa/serif-borderless-light.json`, `tmp/ui-qa/serif-borderless-dark.json`,
 `tmp/ui-serif-features.png`, `tmp/ui-footer-background-dark.png`, and
 `tmp/ui-footer-background-light.png`.
+
+## 28. Larger serif summaries and icon-only theme states (2026-10-22)
+
+Increased feature summary type from 20px to a responsive 24–30px scale, retaining
+Cormorant Garamond italic 500 and the existing line spacing. Shortened all nine
+supporting points while keeping the three feature themes and marker-free layout.
+The owner's glow settings remain unchanged.
+
+Removed the theme switch's square background in rest, hover, focus, and pressed
+states, along with its fill transition. Only icon colour transitions remain;
+hover uses accent and press uses pressed accent, with the video-backed pressed
+colour resolved from the existing hero palette. The 44px target and keyboard
+focus outline remain. Pointer activation from an unfocused state shows no ring
+or fill; keyboard navigation retains the 2px focus outline.
+
+All 10 tests, `npm run build`, and `git diff --check` pass. Production checks at
+375, 1280, and 1920px in both themes confirm 24px/30px summary sizes with no
+overflow, clipped headings, or axe WCAG A/AA violations. Hover/pressed fixtures
+in both themes confirm transparent button and pseudo-element backgrounds and
+colour-only transitions. Evidence: `tmp/ui-qa/feature-type-light.json`,
+`tmp/ui-qa/feature-type-dark.json`, `tmp/ui-qa/theme-icon-states.json`, and
+`tmp/ui-feature-summary-size.png`.

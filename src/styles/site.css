@@ -106,6 +106,7 @@ header {
   --ui-bg: var(--ui-hero-surface);
   --ui-raised: var(--ui-hero-surface);
   --ui-accent: var(--ui-hero-link);
+  --ui-accent-pressed: var(--ui-hero-pressed);
   --ui-on-accent: var(--ui-hero-on-accent);
   --ui-focus: var(--ui-hero-link);
   --ui-control-rule: 1px solid var(--ui-hero-edge);
@@ -153,8 +154,7 @@ nav {
   background: var(--ui-clear);
   color: var(--ui-text);
   cursor: pointer;
-  transition: color var(--ui-transition), background-color var(--ui-transition),
-    border-color var(--ui-transition);
+  transition: color var(--ui-transition);
 }
 
 .theme-toggle::before {
@@ -166,11 +166,6 @@ nav {
   height: var(--ui-nav-chip-height);
   border: 0;
   border-radius: var(--ui-button-radius);
-  background: var(--ui-bg);
-  transition: background-color var(--ui-transition);
-}
-
-:where(:root[data-ribbon="overlay"]) .theme-toggle::before {
   background: var(--ui-clear);
 }
 
@@ -182,16 +177,8 @@ nav {
   color: var(--ui-accent);
 }
 
-.theme-toggle:is(:hover, :focus-visible)::before {
-  background: var(--ui-raised);
-}
-
 .theme-toggle:active {
-  color: var(--ui-on-accent);
-}
-
-.theme-toggle:active::before {
-  background: var(--ui-accent);
+  color: var(--ui-accent-pressed);
 }
 
 .theme-toggle:focus-visible::before {
