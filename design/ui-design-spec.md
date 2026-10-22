@@ -439,3 +439,21 @@ violations. The phone layout keeps copy below the downward-shifted media without
 overlap. Evidence: `tmp/ui-qa/feature-fade-light.json`,
 `tmp/ui-qa/feature-fade-dark.json`, and `tmp/ui-features-fade-dark.png`.
 `npm test` (6 tests), `npm run build`, and `git diff --check` pass.
+
+## 17. Hide captured title ribbons and shorten fades (2026-10-22)
+
+The first two videos now bottom-align within their existing 16:9 frames, with
+an additional 1px upward trim. Their 1922×1130 source frames are taller than
+16:9, so object-fit cropping hides the captured white window ribbons without
+modifying the files or changing frame dimensions. The other four visuals retain
+their original centered framing. Shortened the shared fade from the lower 45%
+to the lower 25%, keeping the upper 75% fully visible.
+
+Browser inspection confirms both screen-capture ribbons are hidden, including
+the first recording at phone width. At 375, 1280, and 1920px in both themes,
+computed framing changes apply only to those two videos and all six masks start
+fading at 75%. There is no clipped text, horizontal page overflow, or axe WCAG
+A/AA violation. Evidence: `tmp/ui-qa/capture-crop-light.json`,
+`tmp/ui-qa/capture-crop-dark.json`, `tmp/ui-capture-crop-first.png`, and
+`tmp/ui-capture-crop-second.png`. `npm test` (6 tests), `npm run build`, and
+`git diff --check` pass.

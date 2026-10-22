@@ -516,6 +516,10 @@ main > section:not(.hero) > .container {
   margin-bottom: 1rem;
 }
 
+.feature-item .feature-screen-capture {
+  object-position: center calc(100% - var(--ui-feature-screen-trim));
+}
+
 .feature-item p {
   color: var(--ui-text);
   font-size: var(--ui-feature-copy-size);
