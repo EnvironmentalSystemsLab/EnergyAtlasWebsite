@@ -18,7 +18,7 @@
   --ui-clear: transparent;
   --ui-feature-glow-color: rgba(0, 0, 0, 0.35);
 
-  /* Fixed dark roles for video-backed content and the footer in either scheme.
+  /* Fixed dark roles for video-backed content in either scheme.
      70% black over a white video frame produces the worst-case backdrop below. */
   --ui-hero-backdrop: #4d4d4d;
   --ui-hero-overlay: rgba(0, 0, 0, 0.7);
@@ -49,9 +49,9 @@
   --ui-feature-bullet-gap: 0.5rem;
   --ui-feature-media-radius: 1rem;
   --ui-feature-media-offset: 1rem;
-  --ui-feature-glow-blur: 3rem;
-  --ui-feature-glow-space: 3rem;
-  --ui-feature-glow-spread: 3px;
+  --ui-feature-glow-blur: 6rem;
+  --ui-feature-glow-space: 6rem;
+  --ui-feature-glow-spread: 6px;
   --ui-feature-glow: 0 0 var(--ui-feature-glow-blur) var(--ui-feature-glow-spread) var(--ui-feature-glow-color);
   /* Account for the glow's padding while retaining the media's bottom 25% fade. */
   --ui-feature-media-mask: linear-gradient(to bottom, #000000 calc(75% - var(--ui-feature-glow-space) / 2), transparent calc(100% - var(--ui-feature-glow-space)));

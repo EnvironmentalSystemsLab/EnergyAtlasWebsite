@@ -15,7 +15,7 @@ precedence over the reference recipes. This folder is internal and is not publis
   gradient and drawing in both themes. Use the bundled SVG, PNG, ICO, and Apple
   touch assets from `app-ui-alignment/references/brand/`.
 - Use white/light-grey surfaces in light mode and black/charcoal in dark mode,
-  thin grid rules, blue links and actions, and near-square corners. Remove glow,
+  blue links and actions, and near-square corners. Remove glow,
   gradient buttons, floating card shadows, and card lift animations. Feature
   visuals alone use the faint, fading edge glow specified below.
 - Default to the system theme, with a CSS first-frame fallback. A sun/moon switch
@@ -25,7 +25,8 @@ precedence over the reference recipes. This folder is internal and is not publis
   No docking, grid, or chart libraries are involved.
 - Use the template families, locally hosted: Geist for interface, headings,
   wordmark, and normal-case labels; Geist Mono for DOI/media identifiers; Cormorant
-  Garamond italic 500 for the short hero subtitle. This replaces the earlier
+  Garamond italic 500 for the short hero subtitle and feature summary sentences.
+  This replaces the earlier
   Roboto Flex wordmark and system-monospace exceptions at the owner's request.
   Keep wording as written. Button labels use the BEMGen wiki's mono uppercase
   treatment. Header navigation follows Archetype Atlas's mono uppercase tabs;
@@ -48,7 +49,7 @@ precedence over the reference recipes. This folder is internal and is not publis
 - Left-align the hero title, subtitle, and actions. Set the subtitle to 60% of
   the title size, in exactly two lines with a break after "for". Keep the
   template serif italic family and a proportional scale on phone screens.
-- Align section headings and card copy to the same content grid. Use shared-border
+- Align section headings and card copy to the same content grid. Keep borderless
   grids for modules, publications, media, team, and integrations. Keep
   section titles on the page, without numbered strips or backdrops.
 - Keep the `#features` bookmark and an accessible "Features" heading, but hide
@@ -71,23 +72,24 @@ precedence over the reference recipes. This folder is internal and is not publis
   visual smoothly into the page background, with 16px top corners and square
   bottom corners; offset visuals downward 16px. Feature copy uses the same text
   colour as its titles and 1.45 line height: 20px summary sentences and 14px
-  supporting points. Use the shared 96–160px section spacing between feature
+  supporting points. Summary sentences use the template's Cormorant Garamond
+  italic 500; supporting points retain Geist. Use the shared 96–160px section spacing between feature
   rows, with no extra vertical card padding.
   Give each visual a translucent neutral edge glow: black at 35% opacity on
-  light backgrounds and white at 22% on dark backgrounds, with 48px blur and
-  3px spread. Preserve the owner's wider glow settings while making the dark
-  glow softer and the light-theme glow more visible on white.
+  light backgrounds and white at 22% on dark backgrounds, with 96px blur and
+  6px spread. These are the owner's chosen glow parameters; preserve them.
   Composite the glow and visual through one shared bottom fade, accounting for
-  the glow's 48px drawing space so the visual's original fade position is kept.
+  the glow's 96px drawing space so the visual's original fade position is kept.
   Both disappear completely at the visual's bottom edge, with no bottom glow.
   Bottom-align the first two screen recordings within their existing 16:9 frames,
   with a 1px upward trim, to hide their captured white title ribbons. Keep the
   source files unchanged and retain the default framing of all other visuals.
-- Horizontal separators outside Features span the full available page width, including grid row
-  boundaries. Vertical separators are confined to
-  these rows, meeting horizontal rules above and below; no page-height rails.
-  Content remains centered at its existing readable width. Control borders,
-  image outlines, and link/focus indicators retain their component dimensions.
+- Remove all section and grid separators, both horizontal and vertical. Retain
+  the top ribbon's existing bottom boundary and add a matching full-width top
+  boundary to the footer. The footer uses the page background and theme-aware
+  text/link colours in both modes; its copyright year is 2027. Publication and
+  media dates remain accurate. Content stays centered at its existing readable
+  width. Control borders and link/focus indicators retain their dimensions.
 - Buttons retain `https://energy-atlas.github.io/BEMGen-docs/` typography and
   shape: square blocks, Geist Mono 600, 11px labels, uppercase with 0.12em
   tracking, and 12px/16px padding. Demo actions stay outlined; hero actions use
@@ -100,7 +102,7 @@ precedence over the reference recipes. This folder is internal and is not publis
   appears on these two buttons, including hover; retain the focus ring and a
   visible edge over video. Other actions retain their current style.
 - Left-align the demo action group with its section heading. Use 96–160px of
-  section spacing responsively, keeping the shared grid rules and content widths.
+  section spacing responsively, keeping the existing content widths.
 - The theme switch has a 44px target around a frameless 24px square matching the navigation
   chips' visible height, an accessible dark-theme on/off state,
   sun/moon action icons, and visible hover/focus/pressed states. Keep it beside
@@ -142,7 +144,7 @@ The mobile stylesheet removes the hero overlay even though its text stays white.
 | Neutral base and raised surfaces | Page, header, cards | Adopt for both themes |
 | Ruled frame and shared cells | Aligned sections and card grids without outer page rails | Keep cell dividers; omit both vertical page-frame lines at owner's request |
 | Geist interface typography | Body and headings | Adopt |
-| Mono caps labels and editorial serif | Mono uppercase buttons/navigation; other labels normal-case sans; italic serif hero subtitle | Follow the owner's BEMGen and Archetype Atlas references |
+| Mono caps labels and editorial serif | Mono uppercase buttons/navigation; other labels normal-case sans; italic serif hero subtitle and feature summaries | Follow the owner's BEMGen and Archetype Atlas references |
 | Brand mark assets in skills | White-E header mark and favicon variants | Adopt at owner's request; retain site name and original gradient |
 | Dense application controls | Existing anchor buttons/navigation | Adapt; no new controls |
 | Numbered documentation strips | Left-aligned section headings | Drop |
@@ -165,7 +167,8 @@ One semantic set in `src/styles/tokens.css`, identical roles in both themes:
 | Accent | `#125dae` | `#4da3ff` |
 | Text on accent | `#ffffff` | `#000000` |
 
-Hero and footer have their own fixed dark-surface roles. Add explicit hover and
+The hero has its own fixed dark-surface roles; the footer uses the page roles.
+Add explicit hover and
 pressed roles and test every combination used. The brand blue `#003978` is a fill
 only on dark surfaces. Every colour, family, type size, radius, shadow, and motion
 value used by components comes from tokens. Layout lengths may remain local CSS.
@@ -639,3 +642,26 @@ clipped headings, or axe WCAG A/AA violations. All 10 tests, `npm run build`, an
 `tmp/ui-qa/feature-glow-translucent-dark.json`,
 `tmp/ui-feature-glow-translucent-light.png`, and
 `tmp/ui-feature-glow-translucent-dark.png`.
+
+## 27. Owner glow settings, serif summaries, and borderless sections (2026-10-22)
+
+Recorded the owner's chosen glow values without changing them: 6rem (96px)
+blur and drawing space, 6px spread, 35% black in light mode and 22% white in
+dark mode. Feature summary sentences now use the locally hosted Cormorant
+Garamond italic 500 face, retaining their 20px size and existing line spacing.
+Supporting points remain Geist.
+
+Removed grid boundary pseudo-elements, grid borders, and contrasting gap fills
+from all sections. Kept the ribbon boundary and control/focus indicators. The
+footer now shares the page background, text, and link roles, with a full-width
+1px top border using the ribbon's rule token. Updated its copyright to 2027;
+publication and media dates remain unchanged.
+
+Live checks confirm the serif family/style/weight on all three summaries,
+zero borders on all five content grids, preserved glow values, and matching
+footer/page backgrounds in both themes. Production checks at 375, 1280, and
+1920px in both themes report no overflow, clipped headings, or axe WCAG A/AA
+violations. All 10 tests, `npm run build`, and `git diff --check` pass. Evidence:
+`tmp/ui-qa/serif-borderless-light.json`, `tmp/ui-qa/serif-borderless-dark.json`,
+`tmp/ui-serif-features.png`, `tmp/ui-footer-background-dark.png`, and
+`tmp/ui-footer-background-light.png`.

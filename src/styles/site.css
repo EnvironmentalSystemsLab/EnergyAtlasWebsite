@@ -330,32 +330,6 @@ main {
   overflow-x: clip;
 }
 
-/* Extend row rules to the viewport; keep column rules inside each ruled row. */
-.ruled-grid,
-.ruled-grid > * {
-  position: relative;
-}
-
-.ruled-grid::before,
-.ruled-grid > *::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  width: 200vw;
-  transform: translateX(-50%);
-  pointer-events: none;
-}
-
-.ruled-grid::before {
-  top: -1px;
-  border-top: var(--ui-separator-rule, var(--ui-rule));
-}
-
-.ruled-grid > *::after {
-  bottom: -1px;
-  border-bottom: var(--ui-separator-rule, var(--ui-rule));
-}
-
 .hero::before {
   content: "";
   position: absolute;
@@ -496,8 +470,7 @@ main > section:not(.hero) > .container {
   display: grid;
   gap: 1px;
   margin-inline: calc(-1 * var(--ui-gutter));
-  border-block: var(--ui-rule);
-  background: var(--ui-border-subtle);
+  background: var(--ui-bg);
 }
 
 .features-grid {
@@ -582,6 +555,9 @@ main > section:not(.hero) > .container {
 
 .feature-copy p {
   font-size: var(--ui-feature-summary-size);
+  font-family: var(--ui-font-serif);
+  font-style: var(--ui-editorial-style);
+  font-weight: var(--ui-weight-medium);
 }
 
 .feature-copy li + li {
@@ -753,8 +729,9 @@ main > section:not(.hero) > .container {
 }
 
 footer {
-  background: var(--ui-hero-surface);
-  color: var(--ui-hero-muted);
+  background: var(--ui-bg);
+  color: var(--ui-text);
+  border-top: var(--ui-rule);
   font-size: var(--ui-type-label);
 }
 
@@ -767,11 +744,11 @@ footer .container {
 }
 
 footer a {
-  color: var(--ui-hero-link);
+  color: var(--ui-accent);
 }
 
 footer a:focus-visible {
-  outline-color: var(--ui-hero-link);
+  outline-color: var(--ui-focus);
 }
 
 @media (max-width: 1024px) {
