@@ -49,6 +49,9 @@ for (const [name, tokens] of [["light", light], ["dark", { ...light, ...dark }]]
     for (const foreground of ["hero-text", "hero-muted", "hero-link", "hero-edge"]) {
       check(foreground, "hero-surface", foreground === "hero-edge" ? 3 : 4.5);
     }
+    // Transparent ribbon labels must stay readable over the brightest video frame.
+    for (const foreground of ["hero-text", "hero-muted"])
+      check(foreground, "hero-backdrop", 4.5);
     // Hero primary blue sits on both black video frames and the opaque footer.
     for (const background of ["hero-surface", "hero-backdrop"]) {
       for (const state of ["hero-link", "hero-hover", "hero-pressed"])

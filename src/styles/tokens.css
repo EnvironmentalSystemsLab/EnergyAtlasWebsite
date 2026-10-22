@@ -75,6 +75,8 @@
   --ui-button-padding: 0.75rem 1rem;
   --ui-button-min-height: 2.75rem;
   --ui-hero-actions-gap: 2.5rem;
+  --ui-header-clearance: 5rem;
+  --ui-ribbon-transition: 120ms ease;
   --ui-theme-icon-size: 1.25rem;
   --ui-nav-font: var(--ui-font-mono);
   --ui-nav-size: 0.71875rem;
@@ -144,5 +146,6 @@
 @media (prefers-reduced-motion: reduce) {
   :root {
     --ui-transition: 0s;
+    --ui-ribbon-transition: 0s;
   }
 }

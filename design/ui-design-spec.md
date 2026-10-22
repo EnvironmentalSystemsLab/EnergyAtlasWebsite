@@ -476,3 +476,33 @@ and two actions remain, separated by 40px. Browser verification confirms zero
 badge elements, both action links present, full-width video, and no horizontal
 overflow. `npm test` (6 tests), `npm run build`, and `git diff --check` pass.
 Screenshot: `tmp/ui-hero-no-badges.png`.
+
+## 19. Viewport hero and scroll-revealed ribbon (2026-10-22)
+
+The fixed ribbon overlays the hero, which starts at y=0 and has a minimum height
+of the visible viewport (dvh with svh/vh fallbacks). Responsive padding clears
+the ribbon; short screens may grow to fit readable content. At the top, the
+ribbon background/border and brand name are transparent while the mark, links,
+and theme icon stay visible in contrast-tested light colours over video.
+Positive scroll reveals the theme's ribbon surface and name with a 120ms fade;
+returning to zero hides them again. Reduced-motion preference removes the fade.
+
+A small head script anticipates deep anchors before paint and reconciles actual
+scroll on scroll, DOM ready, pageshow, hash changes, and resizing. It batches
+scroll events into one animation frame. The existing anchors and scroll/history
+behavior remain intact. Without JavaScript, the ribbon stays opaque and named.
+The theme control now paints a 24px square matching the navigation chips inside
+its retained 44px native button target, with a visible keyboard focus ring.
+
+Production frames at 375, 1280, and 1920px in both themes confirm hero height
+matches the 800px viewport, hero top is zero, initial name opacity is zero,
+background is transparent, and control/nav chips are 24px. All content clears
+the ribbon, with no clipped labels, page overflow, or axe WCAG A/AA violations.
+Normal and reduced-motion fixtures report 120ms and 0ms respectively. Live checks
+cover Explore Features, PageDown scrolling, return to top, direct-anchor reload,
+history restoration, light/dark switching, and keyboard focus/activation.
+
+Ten tests and the production build pass, as does `git diff --check`. Independent
+code review found no material issues. Evidence: `tmp/ui-qa/ribbon-light.json`,
+`tmp/ui-qa/ribbon-dark.json`, `tmp/ui-hero-fullscreen-overlay.png`,
+`tmp/ui-ribbon-revealed.png`, and `tmp/ui-ribbon-revealed-light.png`.

@@ -3,6 +3,7 @@ import "../styles/tokens.css";
 import "../styles/fonts.css";
 import "../styles/site.css";
 import themeScript from "../scripts/theme.js?raw";
+import ribbonScript from "../scripts/ribbon.js?raw";
 ---
 
 <!DOCTYPE html>
@@ -11,6 +12,7 @@ import themeScript from "../scripts/theme.js?raw";
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script is:inline set:html={themeScript}></script>
+  <script is:inline set:html={ribbonScript}></script>
   <meta name="description" content="EnergyAtlas.io - Your city-scale digital twin for fast, validated urban energy insight. ISO-compliant UBEM platform with ~150× faster simulations." />
   
   <!-- Favicon -->
