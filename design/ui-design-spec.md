@@ -16,7 +16,8 @@ precedence over the reference recipes. This folder is internal and is not publis
   touch assets from `app-ui-alignment/references/brand/`.
 - Use white/light-grey surfaces in light mode and black/charcoal in dark mode,
   thin grid rules, blue links and actions, and near-square corners. Remove glow,
-  gradient buttons, floating card shadows, and card lift animations.
+  gradient buttons, floating card shadows, and card lift animations. Feature
+  visuals alone use the faint, fading edge glow specified below.
 - Default to the system theme, with a CSS first-frame fallback. A sun/moon switch
   in the top ribbon toggles light/dark and remembers an explicit choice locally.
   Apply saved preferences before first paint, follow system changes until a
@@ -72,6 +73,11 @@ precedence over the reference recipes. This folder is internal and is not publis
   colour as its titles and 1.45 line height: 20px summary sentences and 14px
   supporting points. Use the shared 96–160px section spacing between feature
   rows, with no extra vertical card padding.
+  Give each visual a very faint neutral edge glow: black at 10% opacity on
+  light backgrounds and white at 12% on dark backgrounds, with 16px blur.
+  Composite the glow and visual through one shared bottom fade, accounting for
+  the glow's 24px drawing space so the visual's original fade position is kept.
+  Both disappear completely at the visual's bottom edge, with no bottom glow.
   Bottom-align the first two screen recordings within their existing 16:9 frames,
   with a 1px upward trim, to hide their captured white title ribbons. Keep the
   source files unchanged and retain the default framing of all other visuals.
@@ -585,3 +591,19 @@ All 10 tests, the production build, and `git diff --check` pass. Browser checks
 at 375, 1280, and 1920px in both themes report no overflow, clipped headings, or
 axe WCAG A/AA violations. Evidence: `tmp/ui-qa/feature-spacing-light.json`,
 `tmp/ui-qa/feature-spacing-dark.json`, and `tmp/ui-feature-spacing.png`.
+
+## 24. Faint feature visual glow (2026-10-22)
+
+Added a neutral 16px edge glow to all three videos: 10% black in light mode and
+12% white in dark mode, including the system-theme fallback. A padded wrapper
+composites each video and its shadow through one mask. Adjusted gradient stops
+for the 24px drawing space preserve the original bottom-quarter fade and reach
+full transparency at the media's bottom edge. The framing, corners, video
+sources, playback, text layout, and card/section gaps remain unchanged.
+
+Verified both themes at 375, 1280, and 1920px: no overflow, clipped headings, or
+axe WCAG A/AA violations. Live theme switching resolves the correct glow colour;
+screenshots show the glow fading away before the bottom edge. All 10 tests,
+`npm run build`, and `git diff --check` pass. Evidence:
+`tmp/ui-qa/feature-glow-light.json`, `tmp/ui-qa/feature-glow-dark.json`,
+`tmp/ui-feature-glow-light.png`, and `tmp/ui-feature-glow-dark.png`.

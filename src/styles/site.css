@@ -540,13 +540,20 @@ main > section:not(.hero) > .container {
   min-width: 0;
 }
 
-.feature-item img, .feature-item video {
+.feature-visual {
+  min-width: 0;
+  padding: var(--ui-feature-glow-space);
+  margin: calc(-1 * var(--ui-feature-glow-space));
+  mask-image: var(--ui-feature-media-mask);
+  transform: translateY(var(--ui-feature-media-offset));
+}
+
+.feature-visual img, .feature-visual video {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
   border-radius: var(--ui-feature-media-radius) var(--ui-feature-media-radius) 0 0;
-  mask-image: var(--ui-feature-media-mask);
-  transform: translateY(var(--ui-feature-media-offset));
+  box-shadow: var(--ui-feature-glow);
 }
 
 .feature-item h3 {
