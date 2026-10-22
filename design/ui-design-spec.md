@@ -2,7 +2,8 @@
 
 ## 0. Implementation decisions
 
-Approved by the owner on 2026-10-21, before implementation. This section takes
+Approved by the owner on 2026-10-21, before implementation, with the font-family
+correction requested later that day. This section takes
 precedence over the reference recipes. This folder is internal and is not published.
 
 - Reference: the EnergyAtlas visual family described by the app-ui-alignment and
@@ -14,9 +15,11 @@ precedence over the reference recipes. This folder is internal and is not publis
   gradient buttons, floating card shadows, and card lift animations.
 - Keep system-preference themes with a CSS first-frame fallback. Do not add a
   theme switch or persistence. No docking, grid, or chart libraries are involved.
-- Use locally hosted Geist for interface, headings, and normal-case labels. Keep
-  the existing expanded Roboto Flex wordmark treatment, also locally hosted.
-  Use the system monospace for DOI identifiers. No serif accent or mono caps.
+- Use the template families, locally hosted: Geist for interface, headings,
+  wordmark, and normal-case labels; Geist Mono for DOI/media identifiers; Cormorant
+  Garamond italic 500 for the short hero subtitle. This replaces the earlier
+  Roboto Flex wordmark and system-monospace exceptions at the owner's request.
+  Keep the existing size hierarchy and wording; no mono caps.
 - Preserve the city video hero, heading, copy, trust badges, and actions. Tighten
   its spacing, keep a legible overlay on mobile, and allow its height to grow to
   fit content. Do not change video playback behavior in this pass.
@@ -54,7 +57,7 @@ The mobile stylesheet removes the hero overlay even though its text stays white.
 | Neutral base and raised surfaces | Page, header, cards | Adopt for both themes |
 | Ruled frame and shared cells | Aligned sections and card grids | Adopt |
 | Geist interface typography | Body, headings, navigation | Adopt |
-| Mono caps labels and editorial serif | Normal-case sans labels | Drop; approved proposal wins |
+| Mono caps labels and editorial serif | Normal-case sans labels; one italic serif hero subtitle | Adopt serif after owner's font correction; keep normal case |
 | Brand mark assets in skills | Existing website logo/favicon | Keep existing identity |
 | Dense application controls | Existing anchor buttons/navigation | Adapt; no new controls |
 | Numbered documentation strips | Left-aligned section headings | Drop |
@@ -185,3 +188,26 @@ Verification after these fixes:
 
 The remaining deviations are the approved landing-page adaptations documented
 above. No content, behavior, or publishing change is included in this follow-up.
+
+## 7. Template font-family correction (2026-10-21)
+
+The owner requested the font families required by the templates, superseding the
+earlier Roboto Flex and system-monospace exceptions. Section 0 reflects this update.
+
+- Geist now sets the wordmark, hero title, interface, headings, and labels. Its
+  brand weight is 700; the former Roboto-only width-axis settings are removed.
+- Geist Mono sets DOI and media identifiers. Cormorant Garamond italic 500 supplies
+  the template's sparse editorial accent on the existing short hero subtitle.
+  Text, sizes, colour roles, logo artwork, and all behavior stay as before.
+- All three families use local Latin/Latin Extended WOFF2 files and OFL licenses.
+  Roboto's unused binary, license, and preload have been removed. Provenance is
+  recorded in the font README. The prior evidence naming Roboto documents the
+  initial pass; the current three-family setup is verified below.
+- The browser viewport override was unavailable for reliable sizing during this
+  check, so production pages were rendered in same-origin frames at confirmed
+  375, 1280, and 1920px viewport widths, in both themes. All three fonts report
+  loaded in each frame, with the intended computed family/style/weight per role.
+  All six checks report no clipping, page overflow, external requests, or axe
+  WCAG A/AA violations. Evidence: `tmp/ui-qa/fonts.json` and font-matrix screenshots.
+- `npm test`, `npm run build`, and independent review pass. The preview server
+  was restarted after its earlier process expired, then the live page refreshed.

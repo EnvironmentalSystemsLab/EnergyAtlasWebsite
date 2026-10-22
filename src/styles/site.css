@@ -139,7 +139,7 @@ header {
 .logo-text {
   font-family: var(--ui-font-brand);
   font-size: var(--ui-type-wordmark);
-  font-variation-settings: var(--ui-brand-axes);
+  font-weight: var(--ui-weight-brand);
   letter-spacing: var(--ui-tracking-brand);
 }
 
@@ -220,7 +220,7 @@ nav a:active {
 .hero h1 {
   font-family: var(--ui-font-brand);
   font-size: var(--ui-type-hero);
-  font-variation-settings: var(--ui-brand-axes);
+  font-weight: var(--ui-weight-brand);
   letter-spacing: var(--ui-tracking-brand);
   margin-bottom: 1.25rem;
 }
@@ -228,6 +228,9 @@ nav a:active {
 .hero-subtitle {
   max-width: 36rem;
   color: var(--ui-hero-muted);
+  font-family: var(--ui-font-serif);
+  font-style: var(--ui-editorial-style);
+  font-weight: var(--ui-weight-medium);
   font-size: var(--ui-type-lead);
 }
 

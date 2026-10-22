@@ -33,8 +33,10 @@
   --ui-icon-surface: #f4f7fb;
 
   --ui-font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --ui-font-brand: "Roboto Flex", "Geist", sans-serif;
-  --ui-font-mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+  --ui-font-brand: var(--ui-font-sans);
+  --ui-font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+  --ui-font-serif: "Cormorant Garamond", Georgia, serif;
+  --ui-editorial-style: italic;
   --ui-type-small: 0.75rem;
   --ui-type-label: 0.875rem;
   --ui-type-body: 1rem;
@@ -46,7 +48,7 @@
   --ui-weight-body: 400;
   --ui-weight-medium: 500;
   --ui-weight-heading: 600;
-  --ui-brand-axes: "wdth" 150, "wght" 700;
+  --ui-weight-brand: 700;
   --ui-tracking: -0.025em;
   --ui-tracking-brand: -0.05em;
   --ui-leading-body: 1.65;
