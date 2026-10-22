@@ -471,7 +471,11 @@ main > section:not(.hero) > .container {
   background: var(--ui-border-subtle);
 }
 
-.features-grid, .publications-grid, .media-grid, .team-grid {
+.features-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.publications-grid, .media-grid, .team-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
@@ -486,11 +490,21 @@ main > section:not(.hero) > .container {
   text-align: left;
 }
 
+.feature-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--ui-gutter);
+}
+
+.feature-copy {
+  min-width: 0;
+}
+
 .feature-item img, .feature-item video {
   width: 100%;
   aspect-ratio: 16 / 9;
   object-fit: cover;
-  margin-bottom: 1.75rem;
   border: var(--ui-rule);
   border-radius: var(--ui-radius);
 }
@@ -745,7 +759,7 @@ footer a:focus-visible {
     border-bottom: 1px solid var(--ui-hero-rule);
   }
 
-  .features-grid, .publications-grid, .media-grid, .team-grid {
+  .feature-item, .publications-grid, .media-grid, .team-grid {
     grid-template-columns: minmax(0, 1fr);
   }
 

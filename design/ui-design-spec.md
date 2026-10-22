@@ -397,3 +397,20 @@ violations. Hover fixtures in both themes confirm #4da3ff fill with no underline
 Evidence: `tmp/ui-qa/spacing-light.json`, `tmp/ui-qa/spacing-dark.json`,
 `tmp/ui-fixed-hero-buttons.png`, and `tmp/ui-demo-left-spaced.png`.
 `npm test` (6 tests), `npm run build`, and `git diff --check` pass.
+
+## 15. Vertical Key Features layout (2026-10-22)
+
+Changed the six feature cards into one vertical list of full-width rows. Each
+heading and description is grouped beside its existing image/video. Desktop
+rows use a 1.6:1 media/text split with the shared gutter between them and centered
+vertical alignment; media is approximately 708–714px wide at checked desktop
+sizes, around 30% larger than before. At 768px and below, media and copy stack
+in their original reading order. Content, media attributes, playback, and other
+section layouts remain unchanged. Each feature row retains a full-width rule.
+
+Production checks at 375, 1280, and 1920px in both themes confirm six rows, text
+beside media on desktop and below it on phones, no clipped labels or horizontal
+page overflow, and zero axe WCAG A/AA violations. Evidence is saved in
+`tmp/ui-qa/features-light.json`, `tmp/ui-qa/features-dark.json`, and
+`tmp/ui-feature-rows.png`. `npm test` (6 tests), `npm run build`, and
+`git diff --check` pass.
