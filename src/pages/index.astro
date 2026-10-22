@@ -4,6 +4,14 @@ import "../styles/fonts.css";
 import "../styles/site.css";
 import themeScript from "../scripts/theme.js?raw";
 import ribbonScript from "../scripts/ribbon.js?raw";
+import EditorialIcon from "../components/EditorialIcon.astro";
+
+const products = [
+  { icon: "mcp", name: "EnergyAtlas-MCP", summary: "Connect AI assistants to EnergyAtlas tools and city energy data." },
+  { icon: "agent", name: "EnergyAtlas-Agent", summary: "Explore urban energy questions with an agentic modeling assistant." },
+  { icon: "api", name: "EnergyAtlas-API", summary: "Bring energy models and simulation results into your own workflows." },
+  { icon: "wiki", name: "EnergyAtlas-Wiki", summary: "Find guides, concepts, and examples for working with EnergyAtlas.", href: "https://energy-atlas.github.io/" },
+] as const;
 ---
 
 <!DOCTYPE html>
@@ -54,7 +62,7 @@ import ribbonScript from "../scripts/ribbon.js?raw";
         <nav role="navigation" aria-label="Main navigation">
           <ul>
             <li><a href="#features"><span>Features</span></a></li>
-            <li><a href="#modules"><span>Modules</span></a></li>
+            <li><a href="#products"><span>Products</span></a></li>
             <li><a href="#research"><span>Research</span></a></li>
             <li><a href="#media"><span>Media</span></a></li>
             <li><a href="#team"><span>Team</span></a></li>
@@ -129,6 +137,7 @@ import ribbonScript from "../scripts/ribbon.js?raw";
               </video>
             </div>
             <div class="feature-copy">
+              <EditorialIcon name="digital-twin" class="feature-icon" />
               <p>Explore connected city models with agentic reasoning and assistance.</p>
               <ul role="list">
                 <li>Connect building, parcel, zoning, and energy data.</li>
@@ -146,6 +155,7 @@ import ribbonScript from "../scripts/ribbon.js?raw";
               </video>
             </div>
             <div class="feature-copy">
+              <EditorialIcon name="energy-insights" class="feature-icon" />
               <p>Turn city-scale energy simulations into actionable climate plans.</p>
               <ul role="list">
                 <li>Forecast hourly loads for power and grid studies.</li>
@@ -163,6 +173,7 @@ import ribbonScript from "../scripts/ribbon.js?raw";
               </video>
             </div>
             <div class="feature-copy">
+              <EditorialIcon name="distributed-energy" class="feature-icon" />
               <p>Match distributed energy resources to local demand and network needs.</p>
               <ul role="list">
                 <li>Model solar, geothermal, district energy, and CHP.</li>
@@ -176,66 +187,25 @@ import ribbonScript from "../scripts/ribbon.js?raw";
       </section>
 
 
-      <section id="modules">
-      <div class="container">
+    <section id="products">
+      <div class="container" id="modules">
         <div class="section-header">
-          <h2>Modules</h2>
+          <h2>Products</h2>
         </div>
         
-        <div class="modules-grid">
-          <div class="module-card dataconnect">
-            <img src="/assets/img/ModuleIcon_DataConnect.svg" alt="DataConnect Icon" class="module-icon" loading="lazy" />
-            <h3>EnergyAtlas.DataConnect</h3>
-            <ul>
-              <li>Hassle-free urban GIS ingest with automatic conversion & joins</li>
-              <li>Localized DOE/RECS archetypes and high-fidelity usage schedules</li>
-            </ul>
-          </div>
-          
-          <div class="module-card operationalenergy">
-            <img src="/assets/img/ModuleIcon_OperationalEnergy.svg" alt="OperationalEnergy Icon" class="module-icon" loading="lazy" />
-            <h3>EnergyAtlas.OperationalEnergy</h3>
-            <ul>
-              <li>ISO 52016-1 5R1C hourly simulations, ~150× faster vs. traditional baselines</li>
-              <li>Validated against EnergyPlus and measured energy; BOBYQA calibration</li>
-            </ul>
-          </div>
-          
-          <div class="module-card renewables">
-            <img src="/assets/img/ModuleIcon_Renewables.svg" alt="Renewables Icon" class="module-icon" loading="lazy" />
-            <h3>EnergyAtlas.Renewables</h3>
-            <ul>
-              <li>PV potential via fast voxel shading & ray marching</li>
-              <li>Geothermal and district energy modeling at city scale</li>
-            </ul>
-          </div>
-          
-          <div class="module-card retrofiteconomics">
-            <img src="/assets/img/ModuleIcon_RetrofitEconomics.svg" alt="RetrofitEconomics Icon" class="module-icon" loading="lazy" />
-            <h3>EnergyAtlas.RetrofitEconomics</h3>
-            <ul>
-              <li>Payback, incentives, lifecycle costs for portfolio design</li>
-              <li>Map "lower-hanging fruit" and compare scenario mixes</li>
-            </ul>
-          </div>
-          
-          <div class="module-card geospatial3d">
-            <img src="/assets/img/ModuleIcon_GeoSpatial3D.svg" alt="Geospatial3D Icon" class="module-icon" loading="lazy" />
-            <h3>EnergyAtlas.Geospatial3D</h3>
-            <ul>
-              <li>Live connection with Rhino/Grasshopper, web, and Unity/Cesium</li>
-              <li>Interactive city maps and energy results for communicating planning decisions</li>
-            </ul>
-          </div>
-
-          <div class="module-card API">
-            <img src="/assets/img/ModuleIcon_API.svg" alt="API Icon" class="module-icon" loading="lazy" />
-            <h3>EnergyAtlas.API</h3>
-            <ul>
-              <li>RESTful endpoints for automated data, models, and results</li>
-              <li>Develop custom tools and workflows for EnergyAtlas.io</li>
-            </ul>
-          </div>
+        <div class="products-grid">
+          {products.map((product) => {
+            const href = "href" in product ? product.href : undefined;
+            const Card = href ? "a" : "article";
+            return (
+              <Card class:list={["product-card", { "product-card-link": href }]} href={href} aria-label={href ? product.name : undefined}>
+                <EditorialIcon name={product.icon} class="product-icon" />
+                <h3>{product.name}{href && <span class="product-link-mark" aria-hidden="true"> ↗</span>}</h3>
+                <p>{product.summary}</p>
+                <EditorialIcon name={product.icon} class="product-card-backdrop" />
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -397,7 +367,7 @@ import ribbonScript from "../scripts/ribbon.js?raw";
       </div>
     </section>
 
-    <section id="tech-stack">
+    <section id="tech-stack" hidden>
       <div class="container">
         <div class="section-header">
           <h2>Tech Stack</h2>

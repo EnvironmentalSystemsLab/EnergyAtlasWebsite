@@ -8,3 +8,5 @@
   `dist/`, `.astro/`, and `node_modules/` are generated; do not hand-edit them.
 - Run `npm run build` and any defined tests before handing back a commit.
 - Push, merge, tag, release, or deploy only with the owner's explicit approval.
+- Editorial icons are rendered from `design/editorial_icons.py`; edit the seeded
+  definitions and regenerate both weights rather than hand-editing their SVGs.

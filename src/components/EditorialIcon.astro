@@ -1,0 +1,15 @@
+---
+import mcp from "../assets/icons/mcp.svg?raw";
+import agent from "../assets/icons/agent.svg?raw";
+import api from "../assets/icons/api.svg?raw";
+import wiki from "../assets/icons/wiki.svg?raw";
+import digitalTwin from "../assets/icons/digital-twin.svg?raw";
+import energyInsights from "../assets/icons/energy-insights.svg?raw";
+import distributedEnergy from "../assets/icons/distributed-energy.svg?raw";
+
+const icons = { mcp, agent, api, wiki, "digital-twin": digitalTwin,
+  "energy-insights": energyInsights, "distributed-energy": distributedEnergy };
+interface Props { name: keyof typeof icons; class?: string; }
+const { name, class: className } = Astro.props;
+---
+<span class:list={["editorial-icon", className]} data-icon={name} aria-hidden="true" set:html={icons[name]} />

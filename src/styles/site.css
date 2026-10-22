@@ -294,7 +294,8 @@ nav a:active span {
 }
 
 body:has(#features:target) nav a[href="#features"],
-body:has(#modules:target) nav a[href="#modules"],
+body:has(#products:target) nav a[href="#products"],
+body:has(#modules:target) nav a[href="#products"],
 body:has(#research:target) nav a[href="#research"],
 body:has(#media:target) nav a[href="#media"],
 body:has(#team:target) nav a[href="#team"],
@@ -453,7 +454,7 @@ main > section:not(.hero) > .container {
   color: var(--ui-muted);
 }
 
-.modules-grid, .publications-grid, .media-grid, .team-grid, .tech-icons {
+.publications-grid, .media-grid, .team-grid, .tech-icons {
   display: grid;
   gap: 1px;
   margin-inline: calc(-1 * var(--ui-gutter));
@@ -477,11 +478,7 @@ main > section:not(.hero) > .container {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.modules-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.feature-item, .module-card, .publication-item, .media-item, .team-member {
+.feature-item, .publication-item, .media-item, .team-member {
   min-width: 0;
   padding: var(--ui-gutter);
   background: var(--ui-bg);
@@ -521,10 +518,6 @@ main > section:not(.hero) > .container {
   font-size: var(--ui-type-title);
 }
 
-.module-card h3 {
-  margin-bottom: 1rem;
-}
-
 .feature-item .feature-screen-capture {
   object-position: center calc(100% - var(--ui-feature-screen-trim));
 }
@@ -551,39 +544,127 @@ main > section:not(.hero) > .container {
   margin-top: var(--ui-feature-bullet-gap);
 }
 
-.module-card li, .team-description {
+.team-description {
   color: var(--ui-muted);
 }
 
-.module-icon {
-  width: 3.5rem;
-  height: 3.5rem;
-  object-fit: contain;
-  margin-bottom: 1.75rem;
-  padding: 0.5rem;
-  background: var(--ui-icon-surface);
-  border-radius: var(--ui-radius);
+.editorial-icon {
+  display: block;
+  flex-shrink: 0;
 }
 
-.module-card h3 {
-  font-size: var(--ui-type-lead);
+.editorial-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
 }
 
-.module-card ul {
-  padding-left: 1.1rem;
+.editorial-icon .ink { fill: currentColor; }
+.editorial-icon .accent {
+  fill: var(--ui-accent);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: var(--ui-icon-motion, sketch-pulse) var(--ui-icon-duration) ease-in-out infinite;
 }
 
-.module-card li {
-  padding-left: 0.25rem;
+.editorial-icon[data-icon="mcp"],
+.editorial-icon[data-icon="energy-insights"] { --ui-icon-motion: sketch-rise; }
+.editorial-icon[data-icon="agent"],
+.editorial-icon[data-icon="wiki"] { --ui-icon-motion: sketch-turn; }
+.editorial-icon[data-icon="api"] { --ui-icon-motion: sketch-lean; }
+
+.feature-icon {
+  width: var(--ui-feature-icon-size);
+  height: var(--ui-feature-icon-size);
+  margin-bottom: var(--ui-product-icon-gap);
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--ui-product-edge);
+  border: var(--ui-product-rule);
+  background: var(--ui-border-interactive);
+}
+
+.product-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-width: 0;
+  min-height: var(--ui-product-min-height);
+  padding: var(--ui-product-padding);
+  background: var(--ui-bg);
+  color: var(--ui-text);
+  text-align: left;
+  text-decoration: none;
+}
+
+.product-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--ui-product-wash);
+  opacity: 0;
+  transition: opacity var(--ui-transition);
+  pointer-events: none;
+}
+
+.product-card:is(:hover, :focus-visible)::before { opacity: 1; }
+.product-card-link:hover { text-decoration: none; }
+.product-card-link:hover h3 { text-decoration-thickness: var(--ui-link-rule-hover); }
+.product-card-link:active { text-decoration: none; }
+.product-card-link:active h3 { text-decoration-style: double; }
+.product-card-link:focus-visible { outline-offset: calc(-1 * var(--ui-focus-offset)); }
+.product-card-link h3 { text-decoration: underline; text-underline-offset: var(--ui-link-offset); }
+.product-link-mark { color: var(--ui-accent); }
+
+.product-icon {
+  width: var(--ui-product-icon-size);
+  height: var(--ui-product-icon-size);
+  margin-bottom: var(--ui-product-icon-gap);
+}
+
+.product-card h3 { font-size: var(--ui-type-lead); }
+.product-card p {
+  margin-top: var(--ui-product-copy-gap);
   font-size: var(--ui-type-label);
+  line-height: var(--ui-feature-copy-leading);
 }
 
-.module-card li + li {
-  margin-top: 0.75rem;
+.product-card-backdrop {
+  position: absolute;
+  z-index: -1;
+  left: var(--ui-product-backdrop-x);
+  top: var(--ui-product-backdrop-y);
+  width: var(--ui-product-backdrop-size);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--ui-transition);
 }
 
-.module-card li::marker {
-  color: var(--ui-accent);
+.product-card-backdrop :is(.ink, .accent) { fill: var(--ui-accent); animation: none; }
+.product-card:is(:hover, :focus-visible) .product-card-backdrop { opacity: var(--ui-product-backdrop-opacity); }
+
+@keyframes sketch-pulse {
+  0%, 100% { transform: scale(var(--ui-icon-scale-rest)); }
+  50% { transform: scale(var(--ui-icon-scale-peak)); }
+}
+@keyframes sketch-rise {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(var(--ui-icon-shift)); }
+}
+@keyframes sketch-turn {
+  0%, 100% { transform: rotate(0); }
+  50% { transform: rotate(var(--ui-icon-tilt)); }
+}
+@keyframes sketch-lean {
+  0%, 100% { transform: rotate(calc(-1 * var(--ui-icon-tilt))); }
+  50% { transform: rotate(var(--ui-icon-tilt)); }
 }
 
 .publication-item h4, .media-item h4 {
@@ -739,7 +820,7 @@ footer a:focus-visible {
 }
 
 @media (max-width: 1024px) {
-  .modules-grid {
+  .products-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -803,11 +884,6 @@ footer a:focus-visible {
     padding-inline: 0.25rem;
   }
 
-  .modules-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-
   .cta-buttons {
     flex-direction: column;
   }
@@ -819,7 +895,12 @@ footer a:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .editorial-icon .accent { animation: none; }
   html {
     scroll-behavior: auto;
   }
+}
+
+@media (max-width: 600px) {
+  .products-grid { grid-template-columns: minmax(0, 1fr); }
 }

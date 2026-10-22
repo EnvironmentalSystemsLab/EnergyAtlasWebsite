@@ -50,7 +50,8 @@ precedence over the reference recipes. This folder is internal and is not publis
   the title size, in exactly two lines with a break after "for". Keep the
   template serif italic family and a proportional scale on phone screens.
 - Align section headings and card copy to the same content grid. Keep borderless
-  grids for modules, publications, media, team, and integrations. Keep
+  grids for publications, media, and team. Products uses the bordered card row
+  described below; hide Tech Stack for now while preserving its content. Keep
   section titles on the page, without numbered strips or backdrops.
 - Keep the `#features` bookmark and an accessible "Features" heading, but hide
   that generic heading visually. Use three vertically stacked video rows:
@@ -75,6 +76,8 @@ precedence over the reference recipes. This folder is internal and is not publis
   supporting points. Summary sentences use the template's Cormorant Garamond
   italic 500; supporting points retain Geist and use concise phrases. Use the shared 96–160px section spacing between feature
   rows, with no extra vertical card padding.
+  Place one left-aligned editorial icon above each feature's serif summary,
+  sized to three summary line heights (104.4–130.5px responsively).
   Give each visual a translucent neutral edge glow: black at 35% opacity on
   light backgrounds and white at 22% on dark backgrounds, with 96px blur and
   6px spread. These are the owner's chosen glow parameters; preserve them.
@@ -84,7 +87,27 @@ precedence over the reference recipes. This folder is internal and is not publis
   Bottom-align the first two screen recordings within their existing 16:9 frames,
   with a 1px upward trim, to hide their captured white title ribbons. Keep the
   source files unchanged and retain the default framing of all other visuals.
-- Remove all section and grid separators, both horizontal and vertical. Retain
+- Replace Modules with Products in the heading and ribbon; use `#products` and
+  retain `#modules` as a legacy bookmark. Replace its six children with four
+  adjacent cards: EnergyAtlas-MCP, EnergyAtlas-Agent, EnergyAtlas-API, and
+  EnergyAtlas-Wiki. Each has one short sentence and a 64px regular sketch icon.
+  Only Wiki links to `https://energy-atlas.github.io/`; the other three remain
+  static articles without click targets or link affordances. Use one bordered
+  row of four equal cells spanning exactly the content width, with shared edges
+  and no gutters between cards; wrap to two columns on tablets and one on phones.
+  Adopt the wiki icon-card hover shade: a soft 16% accent gradient and a cropped
+  oversized copy of the icon at 14% opacity. Wiki also shows this on focus.
+- Draw seven seeded editorial icons using `design/editorial_icons.py`, with
+  regular (1.3) and bold (1.85) weights on the same 24-unit canvas. Deliver SVGs
+  in `src/assets/icons/` and include them inline through one component; edit the
+  generator, never the rendered SVGs. Ink follows text, the single accent follows
+  theme blue. Metaphors: MCP connector, Agent compass, API code brackets, Wiki
+  open book, linked city blocks, load chart, and distributed resource nodes.
+  Animate the blue accent gently; keep ink stable and disable all icon motion
+  for reduced-motion users. The owner delegated the complete initial icon set
+  for later revision, superseding the skill's separate pilot approval gate;
+  validate and inspect the API pilot before rendering the family.
+- Remove section and grid separators outside the requested Products cards. Retain
   the top ribbon's existing bottom boundary and add a matching full-width top
   boundary to the footer. The footer uses the page background and theme-aware
   text/link colours in both modes; its copyright year is 2027. Publication and
@@ -143,7 +166,7 @@ The mobile stylesheet removes the hero overlay even though its text stays white.
 | Reference element | Website treatment | Decision |
 | --- | --- | --- |
 | Neutral base and raised surfaces | Page, header, cards | Adopt for both themes |
-| Ruled frame and shared cells | Aligned sections and card grids without outer page rails | Keep cell dividers; omit both vertical page-frame lines at owner's request |
+| Ruled frame and shared cells | Connected Products cards; other grids borderless | Shared Products edges only; no outer page rails |
 | Geist interface typography | Body and headings | Adopt |
 | Mono caps labels and editorial serif | Mono uppercase buttons/navigation; other labels normal-case sans; italic serif hero subtitle and feature summaries | Follow the owner's BEMGen and Archetype Atlas references |
 | Brand mark assets in skills | White-E header mark and favicon variants | Adopt at owner's request; retain site name and original gradient |
@@ -688,3 +711,50 @@ in both themes confirm transparent button and pseudo-element backgrounds and
 colour-only transitions. Evidence: `tmp/ui-qa/feature-type-light.json`,
 `tmp/ui-qa/feature-type-dark.json`, `tmp/ui-qa/theme-icon-states.json`, and
 `tmp/ui-feature-summary-size.png`.
+
+## 29. Products and editorial icon family (2026-10-22)
+
+Replaced Modules with Products in the ribbon and page heading, with four equal,
+adjacent bordered cards spanning the title's content frame. MCP, Agent, and API
+are static articles; Wiki is a whole-card link to the wiki, with an underlined
+title and directional mark. Each has one summary sentence. The new bookmark is
+`#products`; `#modules` remains a compatible target with the same ribbon state.
+Tech Stack is hidden with its original content preserved for later restoration.
+
+Used the editorial-icons native-vector pipeline: a validated API pilot followed
+by seven seeded drawings, each in regular and bold weights (14 SVGs total).
+The owner requested the full initial design before advising on revisions, so
+the separate pilot approval pause was omitted. The pilot and complete set were
+visually checked on light and dark backgrounds at 120px and 24px. Definitions
+live in `design/editorial_icons.py`, validated assets in `src/assets/icons/`, and
+inline/theme integration in `src/components/EditorialIcon.astro`. The source
+rule is recorded in AGENTS.md; Python caches are ignored. No draw-plugin sketch
+or generated preview is shipped.
+
+Product icons render at 64px, with gently animated blue accents. Feature icons
+sit above and align with each serif summary: 104.4px on phones and 130.5px on
+desktop, exactly three summary line heights. Stable ink follows the text colour;
+each single accent follows theme blue. Reduced-motion mode disables all seven
+foreground animations. The wiki card recipe supplies a 16% gradient wash and
+a cropped regular icon at 14% opacity on hover (also Wiki keyboard focus), with
+no icon/card lift. Text contrast in the worst overlapping wash/backdrop region
+is 10.58:1 light and 11.10:1 dark. Wiki retains distinct hover, press, and focus
+indicators; static cards remain outside the tab order.
+
+Browser checks at 375, 800, 1280, and 1920px confirm 1/2/4/4 columns, matching
+heading and grid edges, one active product link, hidden Tech Stack with zero
+height, no horizontal overflow or clipped labels, and zero settled-state axe
+WCAG A/AA violations in both themes. An initial phone scan caught the existing
+ribbon palette transition mid-scroll; rechecking the settled state passed.
+The Wiki link was clicked successfully (the wiki redirects to `/quick-start/`),
+legacy bookmark/selection and keyboard focus were checked, and reduced motion
+reports `none` for all seven foreground icons. The style audit reports zero
+colour or font-size literals outside tokens (font-face definitions excluded).
+
+All 14 SVGs pass the custom-icons validator individually and the matching-canvas
+check. All 10 tests, `npm run build`, and `git diff --check` pass. Independent
+review found no material issues. Evidence: `tmp/ui-qa/products-light.json`,
+`tmp/ui-qa/products-dark.json`, `tmp/ui-qa/products-motion.json`,
+`tmp/ui-qa/products-hover.json`, `tmp/ui-qa/products-style-audit.json`,
+`tmp/ui-products-light.png`, `tmp/ui-products-dark.png`,
+`tmp/ui-feature-editorial-icons.png`, and `tmp/ui-icon-family.png`.
