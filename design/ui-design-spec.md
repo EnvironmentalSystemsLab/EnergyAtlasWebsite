@@ -23,13 +23,17 @@ precedence over the reference recipes. This folder is internal and is not publis
   wordmark, and normal-case labels; Geist Mono for DOI/media identifiers; Cormorant
   Garamond italic 500 for the short hero subtitle. This replaces the earlier
   Roboto Flex wordmark and system-monospace exceptions at the owner's request.
-  Keep the existing size hierarchy and wording; no mono caps.
+  Keep wording as written. Button labels use the BEMGen wiki's mono uppercase
+  treatment; other labels remain normal-case sans.
 - Preserve the city video hero, heading, copy, trust badges, and actions. Tighten
   its spacing, keep a legible overlay on mobile, and allow its height to grow to
   fit content. The video and its overlay span the full available page width,
   independently of the centered text container. No vertical page-frame lines
   appear anywhere, including the header, hero, sections, or footer. Do not change
   video playback behavior in this pass.
+- Left-align the hero title, subtitle, and actions. Set the subtitle to 60% of
+  the title size, in exactly two lines with a break after "for". Keep the
+  template serif italic family and a proportional scale on phone screens.
 - Align section headings and card copy to the same content grid. Use shared-border
   grids for features, modules, publications, media, team, and integrations. Keep
   section titles on the page, without numbered strips or backdrops.
@@ -38,8 +42,11 @@ precedence over the reference recipes. This folder is internal and is not publis
   these rows, meeting horizontal rules above and below; no page-height rails.
   Content remains centered at its existing readable width. Control borders,
   image outlines, and link/focus indicators retain their component dimensions.
-- Primary buttons: solid blue. Secondary buttons: outlined with an opaque surface.
-  Use visible hover, pressed, and focus indicators without moving controls.
+- Buttons follow `https://energy-atlas.github.io/BEMGen-docs/`: square outlined
+  blocks, Geist Mono 600, 11px labels, uppercase with 0.12em tracking, and
+  12px/16px padding. Both action kinds use the reference's outlined appearance.
+  Keep an opaque dark backing over video for contrast, a minimum 44px target,
+  and visible hover, pressed, and focus indicators without moving controls.
 - Text must reach 4.5:1, and interactive borders and focus indicators 3:1, in both
   themes and applicable states. Decorative rules are intentionally less prominent.
 - Keep the existing responsive scope, checking 375px phone width and 1280px and
