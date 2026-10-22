@@ -24,7 +24,8 @@ precedence over the reference recipes. This folder is internal and is not publis
   Garamond italic 500 for the short hero subtitle. This replaces the earlier
   Roboto Flex wordmark and system-monospace exceptions at the owner's request.
   Keep wording as written. Button labels use the BEMGen wiki's mono uppercase
-  treatment; other labels remain normal-case sans.
+  treatment. Header navigation follows Archetype Atlas's mono uppercase tabs;
+  other labels remain normal-case sans.
 - Preserve the city video hero, heading, copy, trust badges, and actions. Tighten
   its spacing, keep a legible overlay on mobile, and allow its height to grow to
   fit content. The video and its overlay span the full available page width,
@@ -47,6 +48,13 @@ precedence over the reference recipes. This folder is internal and is not publis
   12px/16px padding. Both action kinds use the reference's outlined appearance.
   Keep an opaque dark backing over video for contrast, a minimum 44px target,
   and visible hover, pressed, and focus indicators without moving controls.
+- The header navigation beside the site name follows
+  `https://energy-atlas.github.io/archetype-atlas/`: muted Geist Mono 600,
+  11.5px uppercase labels with 0.14em tracking, compact square 24px chips, and
+  8px horizontal inset. The targeted section's chip is inverted with a 1px blue
+  outline offset 3px. Retain 44px link targets, allow wrapping on phones, and
+  show distinct hover, focus, and pressed states. Selection follows the existing
+  section hash; no new scroll tracking or navigation behavior is introduced.
 - Text must reach 4.5:1, and interactive borders and focus indicators 3:1, in both
   themes and applicable states. Decorative rules are intentionally less prominent.
 - Keep the existing responsive scope, checking 375px phone width and 1280px and
