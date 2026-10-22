@@ -29,7 +29,8 @@ precedence over the reference recipes. This folder is internal and is not publis
   Keep wording as written. Button labels use the BEMGen wiki's mono uppercase
   treatment. Header navigation follows Archetype Atlas's mono uppercase tabs;
   other labels remain normal-case sans.
-- Preserve the city video hero, heading, copy, trust badges, and actions. Tighten
+- Preserve the city video hero, heading, copy, and actions. Remove the four
+  checkmarked trust items and their strip, with 40px between subtitle and actions. Tighten
   its spacing, keep a legible overlay on mobile, and allow its height to grow to
   fit content. The video and its overlay span the full available page width,
   independently of the centered text container. No vertical page-frame lines
@@ -53,7 +54,7 @@ precedence over the reference recipes. This folder is internal and is not publis
   with a 1px upward trim, to hide their captured white title ribbons. Keep the
   source files unchanged and retain the default framing of all other visuals.
 - Horizontal separators outside Features span the full available page width, including grid row
-  boundaries and the hero's trust strip. Vertical separators are confined to
+  boundaries. Vertical separators are confined to
   these rows, meeting horizontal rules above and below; no page-height rails.
   Content remains centered at its existing readable width. Control borders,
   image outlines, and link/focus indicators retain their component dimensions.
@@ -457,3 +458,12 @@ A/AA violation. Evidence: `tmp/ui-qa/capture-crop-light.json`,
 `tmp/ui-qa/capture-crop-dark.json`, `tmp/ui-capture-crop-first.png`, and
 `tmp/ui-capture-crop-second.png`. `npm test` (6 tests), `npm run build`, and
 `git diff --check` pass.
+
+## 18. Remove the hero's checkmarked strip (2026-10-22)
+
+Removed the four checkmarked trust items and their ruled strip from the hero,
+along with their unused desktop/mobile styles and divider tokens. The subtitle
+and two actions remain, separated by 40px. Browser verification confirms zero
+badge elements, both action links present, full-width video, and no horizontal
+overflow. `npm test` (6 tests), `npm run build`, and `git diff --check` pass.
+Screenshot: `tmp/ui-hero-no-badges.png`.

@@ -29,7 +29,6 @@
   --ui-hero-pressed: #8fc5ff;
   --ui-hero-on-accent: #000000;
   --ui-hero-edge: #b0b0b0;
-  --ui-hero-rule: #666666;
   --ui-icon-surface: #f4f7fb;
 
   --ui-font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -75,6 +74,7 @@
   --ui-button-leading: 1.6;
   --ui-button-padding: 0.75rem 1rem;
   --ui-button-min-height: 2.75rem;
+  --ui-hero-actions-gap: 2.5rem;
   --ui-theme-icon-size: 1.25rem;
   --ui-nav-font: var(--ui-font-mono);
   --ui-nav-size: 0.71875rem;
@@ -94,7 +94,6 @@
   --ui-radius-portrait: 50%;
   --ui-shadow: none;
   --ui-rule: 1px solid var(--ui-border-subtle);
-  --ui-hero-divider: 1px solid var(--ui-hero-rule);
   --ui-control-rule: 1px solid var(--ui-border-interactive);
   --ui-focus-width: 2px;
   --ui-focus-offset: 4px;
