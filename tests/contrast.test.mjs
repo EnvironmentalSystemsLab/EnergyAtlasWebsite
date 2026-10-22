@@ -10,7 +10,9 @@ function declarations(block) {
     .map((entry) => [entry[1], entry[2].trim()]));
 }
 const light = declarations(source.match(/:root\s*\{([^}]+)\}/)?.[1]);
-const dark = declarations(source.match(/@media\s*\(prefers-color-scheme: dark\)\s*\{\s*:root\s*\{([^}]+)\}/)?.[1]);
+const dark = declarations(source.match(/:root\[data-theme="dark"\]\s*\{([^}]+)\}/)?.[1]);
+const fallback = declarations(source.match(/@media\s*\(prefers-color-scheme: dark\)\s*\{\s*:root:not\(\[data-theme\]\)\s*\{([^}]+)\}/)?.[1]);
+assert.deepEqual(dark, fallback, "Explicit and system dark palettes must agree");
 
 function luminance(hex) {
   assert.match(hex ?? "", /^#[\da-f]{6}$/i, `Expected an opaque colour, got ${hex}`);
@@ -41,6 +43,8 @@ for (const [name, tokens] of [["light", light], ["dark", { ...light, ...dark }]]
       check(state, "bg", 3);
     }
     check("text", "selection", 4.5);
+    check("bg", "text", 4.5); // Neutral filled hero actions in either theme.
+    check("hero-edge", "hero-backdrop", 3); // Edge stays visible over bright video.
     check("on-accent", "accent", 4.5);
     for (const foreground of ["hero-text", "hero-muted", "hero-link", "hero-edge"]) {
       check(foreground, "hero-surface", foreground === "hero-edge" ? 3 : 4.5);

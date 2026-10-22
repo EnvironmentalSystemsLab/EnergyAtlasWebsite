@@ -70,6 +70,7 @@
   --ui-button-leading: 1.6;
   --ui-button-padding: 0.75rem 1rem;
   --ui-button-min-height: 2.75rem;
+  --ui-theme-icon-size: 1.25rem;
   --ui-nav-font: var(--ui-font-mono);
   --ui-nav-size: 0.71875rem;
   --ui-nav-weight: 600;
@@ -99,7 +100,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {
     color-scheme: dark;
     --ui-bg: #000000;
     --ui-surface: #1a1a1a;
@@ -116,6 +117,24 @@
     --ui-focus: #4da3ff;
     --ui-selection: #112438;
   }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ui-bg: #000000;
+  --ui-surface: #1a1a1a;
+  --ui-raised: #2a2a2a;
+  --ui-pressed: #303030;
+  --ui-text: #e5e5e5;
+  --ui-muted: #999999;
+  --ui-border-subtle: #404040;
+  --ui-border-interactive: #808080;
+  --ui-accent: #4da3ff;
+  --ui-accent-hover: #6cb3ff;
+  --ui-accent-pressed: #8fc5ff;
+  --ui-on-accent: #000000;
+  --ui-focus: #4da3ff;
+  --ui-selection: #112438;
 }
 
 @media (prefers-reduced-motion: reduce) {

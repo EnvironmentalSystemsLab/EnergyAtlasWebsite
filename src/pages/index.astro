@@ -2,6 +2,7 @@
 import "../styles/tokens.css";
 import "../styles/fonts.css";
 import "../styles/site.css";
+import themeScript from "../scripts/theme.js?raw";
 ---
 
 <!DOCTYPE html>
@@ -9,6 +10,7 @@ import "../styles/site.css";
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script is:inline set:html={themeScript}></script>
   <meta name="description" content="EnergyAtlas.io - Your city-scale digital twin for fast, validated urban energy insight. ISO-compliant UBEM platform with ~150× faster simulations." />
   
   <!-- Favicon -->
@@ -57,6 +59,15 @@ import "../styles/site.css";
             <li><a href="#demo"><span>Demo</span></a></li>
           </ul>
         </nav>
+        <button id="theme-toggle" class="theme-toggle" type="button" role="switch" aria-label="Dark theme" aria-checked="false" hidden>
+          <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5" />
+          </svg>
+          <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M20 15.5A8.5 8.5 0 0 1 8.5 4a8.5 8.5 0 1 0 11.5 11.5Z" />
+          </svg>
+        </button>
       </div>
     </div>
   </header>
@@ -78,8 +89,8 @@ import "../styles/site.css";
         </div>
 
         <div class="cta-buttons">
-          <a href="#features" class="btn btn-primary">Explore Features</a>
-          <a href="https://energy-atlas.github.io/" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Explore EnergyAtlasWiki</a>
+          <a href="#features" class="btn btn-primary">explore features</a>
+          <a href="https://energy-atlas.github.io/" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">wiki</a>
           <!-- <a href="#use-cases" class="btn btn-secondary">Explore Use Cases</a> -->
         </div>
       </div>

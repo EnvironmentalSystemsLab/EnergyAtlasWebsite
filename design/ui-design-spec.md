@@ -46,11 +46,11 @@ precedence over the reference recipes. This folder is internal and is not publis
   these rows, meeting horizontal rules above and below; no page-height rails.
   Content remains centered at its existing readable width. Control borders,
   image outlines, and link/focus indicators retain their component dimensions.
-- Buttons follow `https://energy-atlas.github.io/BEMGen-docs/`: square outlined
-  blocks, Geist Mono 600, 11px labels, uppercase with 0.12em tracking, and
-  12px/16px padding. Both action kinds use the reference's outlined appearance.
-  Keep an opaque dark backing over video for contrast, a minimum 44px target,
-  and visible hover, pressed, and focus indicators without moving controls.
+- Buttons retain `https://energy-atlas.github.io/BEMGen-docs/` typography and
+  shape: square blocks, Geist Mono 600, 11px labels, uppercase with 0.12em
+  tracking, and 12px/16px padding. Demo actions stay outlined; hero actions use
+  the fills specified below. Keep a minimum 44px target and visible hover,
+  pressed, and focus indicators without moving controls.
 - The hero actions read "explore features" and "wiki" (displayed uppercase by the
   existing button style). In dark mode both use the wiki's white text colour
   (#e5e5e5) as fill and black (#000000) text; in light mode use the wiki's dark
@@ -345,3 +345,31 @@ the next link with a 2px blue outline. Evidence: `tmp/ui-qa/navigation-light.jso
 `tmp/ui-qa/navigation-dark.json`, `tmp/ui-qa/navigation-selection.json`, and
 `tmp/ui-header-navigation.png`. `npm test` (2 tests), `npm run build`, and
 `git diff --check` pass.
+
+## 13. Theme-aware hero actions and ribbon switch (2026-10-22)
+
+Renamed the hero actions to "explore features" and "wiki", preserving their
+links and uppercase presentation. Their neutral fills now use the wiki skill's
+palette: #e5e5e5 with #000000 text in dark mode, #18202c with #ffffff text in light
+mode. Hover/focus fills use the theme's blue (#4da3ff / #125dae), and pressed fills
+use the existing pressed-blue tokens. A contrast-tested edge remains visible
+over the video. Demo actions retain their outlined treatment.
+
+Added a native sun/moon button with switch semantics to the top ribbon. It
+announces the dark-theme state, supports keyboard activation, and has a 44px
+target and visible interaction states. On phones it sits beside the name, with
+section navigation below. An inline head script restores a saved local choice
+before paint, otherwise follows system preference and system changes until the
+visitor toggles. Blocked storage does not prevent switching. CSS retains a
+system-based fallback with JavaScript disabled; the inactive switch stays hidden.
+Explicit and fallback dark palettes are checked for equality to prevent drift.
+
+Six tests pass, covering both contrast palettes, saved preference precedence,
+system changes before a choice, invalid saved values, and unavailable storage.
+The production build and whitespace check pass. Browser checks confirm mouse
+and Space-key toggles, state announcements, persistence after reload, the correct
+neutral/blue fills in both themes, and a 44px switch at 375, 1280, and 1920px.
+All six responsive checks and both hover fixtures report zero WCAG A/AA axe
+violations, no clipped labels, and no page overflow. Evidence is saved in
+`tmp/ui-qa/theme-switch-light.json`, `tmp/ui-qa/theme-switch-dark.json`, and
+`tmp/ui-theme-dark.png`. Independent code review found no material issues.
