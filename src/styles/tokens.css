@@ -41,12 +41,11 @@
   --ui-type-body: 1rem;
   --ui-type-lead: 1.125rem;
   --ui-type-card: 1.25rem;
-  --ui-feature-copy-size: 0.9375rem;
+  --ui-feature-summary-size: var(--ui-type-card);
+  --ui-feature-copy-size: var(--ui-type-label);
   --ui-feature-copy-leading: 1.45;
   --ui-feature-copy-gap: 0.75rem;
   --ui-feature-bullet-gap: 0.5rem;
-  --ui-feature-list-inset: 1.25rem;
-  --ui-feature-row-gap: clamp(2rem, 4vw, 4rem);
   --ui-feature-media-radius: 1rem;
   --ui-feature-media-offset: 1rem;
   --ui-feature-media-mask: linear-gradient(to bottom, #000000 75%, transparent 100%);

@@ -63,12 +63,15 @@ precedence over the reference recipes. This folder is internal and is not publis
   copy. On desktop, keep each media panel at roughly 62% of the row's inner width
   and the description on the right, vertically centered. At 768px and below,
   place the description beneath full-width media. Use one short summary sentence
-  and three concise bullets per feature. Preserve the order, media, and playback.
+  and three concise supporting points per feature, without visible bullet
+  markers or indentation. Preserve list semantics for assistive technology.
+  Preserve the order, media, and playback.
   Remove all feature grid rules and media outlines. Fade the bottom 25% of each
   visual smoothly into the page background, with 16px top corners and square
-  bottom corners; offset visuals downward 16px. Feature paragraphs use the same
-  text colour as their titles and a slightly smaller 15px size, with 1.45 line
-  height. Add 32–64px of extra space between feature rows responsively.
+  bottom corners; offset visuals downward 16px. Feature copy uses the same text
+  colour as its titles and 1.45 line height: 20px summary sentences and 14px
+  supporting points. Use the shared 96–160px section spacing between feature
+  rows, with no extra vertical card padding.
   Bottom-align the first two screen recordings within their existing 16:9 frames,
   with a 1px upward trim, to hide their captured white title ribbons. Keep the
   source files unchanged and retain the default framing of all other visuals.
@@ -568,3 +571,17 @@ heading sizes, with three bullets each and the original bookmark intact.
 `npm test` (10 tests), `npm run build`, and `git diff --check` pass. Evidence:
 `tmp/ui-qa/feature-hierarchy-light.json`,
 `tmp/ui-qa/feature-hierarchy-dark.json`, and `tmp/ui-feature-hierarchy.png`.
+
+## 23. Feature summary emphasis and matching gaps (2026-10-22)
+
+Removed visible list markers and indentation, retaining accessible list semantics
+and all supporting text. Summary sentences now use the existing 20px card type
+scale; supporting points use the 14px label scale. Both retain 1.45 line height
+and the title text colour. Feature rows now use the section-spacing token, with
+vertical card padding removed so the actual gaps match: at 1280px, both the
+card-to-card gap and the gap before Modules measure 153.59375px.
+
+All 10 tests, the production build, and `git diff --check` pass. Browser checks
+at 375, 1280, and 1920px in both themes report no overflow, clipped headings, or
+axe WCAG A/AA violations. Evidence: `tmp/ui-qa/feature-spacing-light.json`,
+`tmp/ui-qa/feature-spacing-dark.json`, and `tmp/ui-feature-spacing.png`.

@@ -503,7 +503,7 @@ main > section:not(.hero) > .container {
 .features-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  row-gap: var(--ui-feature-row-gap);
+  row-gap: var(--ui-section-space);
   margin-inline: calc(-1 * var(--ui-gutter));
 }
 
@@ -533,6 +533,7 @@ main > section:not(.hero) > .container {
   grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
   align-items: center;
   gap: var(--ui-gutter);
+  padding-block: 0;
 }
 
 .feature-copy {
@@ -569,7 +570,11 @@ main > section:not(.hero) > .container {
 
 .feature-copy ul {
   margin-top: var(--ui-feature-copy-gap);
-  padding-left: var(--ui-feature-list-inset);
+  list-style: none;
+}
+
+.feature-copy p {
+  font-size: var(--ui-feature-summary-size);
 }
 
 .feature-copy li + li {
