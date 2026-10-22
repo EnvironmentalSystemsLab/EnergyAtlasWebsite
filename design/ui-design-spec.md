@@ -73,11 +73,12 @@ precedence over the reference recipes. This folder is internal and is not publis
   colour as its titles and 1.45 line height: 20px summary sentences and 14px
   supporting points. Use the shared 96–160px section spacing between feature
   rows, with no extra vertical card padding.
-  Give each visual a soft neutral edge glow: black at 20% opacity on
-  light backgrounds and white at 28% on dark backgrounds, with 24px blur and
-  2px spread. The owner requested more visibility after the initial faint pass.
+  Give each visual a translucent neutral edge glow: black at 35% opacity on
+  light backgrounds and white at 22% on dark backgrounds, with 48px blur and
+  3px spread. Preserve the owner's wider glow settings while making the dark
+  glow softer and the light-theme glow more visible on white.
   Composite the glow and visual through one shared bottom fade, accounting for
-  the glow's 40px drawing space so the visual's original fade position is kept.
+  the glow's 48px drawing space so the visual's original fade position is kept.
   Both disappear completely at the visual's bottom edge, with no bottom glow.
   Bottom-align the first two screen recordings within their existing 16:9 frames,
   with a 1px upward trim, to hide their captured white title ribbons. Keep the
@@ -622,3 +623,19 @@ at 375, 1280, and 1920px in both themes show no overflow, clipped headings, or
 axe WCAG A/AA violations. Evidence: `tmp/ui-qa/feature-glow-visible-light.json`,
 `tmp/ui-qa/feature-glow-visible-dark.json`, `tmp/ui-feature-glow-visible.png`, and
 `tmp/ui-feature-glow-visible-light.png`.
+
+## 26. Balance glow transparency across themes (2026-10-22)
+
+The working tree already had a wider 48px blur, 48px drawing space, and 3px
+spread, with the light-theme opacity reduced to 10%. Preserved those wider
+dimensions. Set the translucent black halo to 35% opacity so it remains visible
+on white; softened the white halo to 22% opacity in both dark-theme paths.
+The video opacity and bottom fade remain unchanged.
+
+Screenshots confirm the light-theme halo is visible and the bottom stays clear.
+Both themes pass browser checks at 375, 1280, and 1920px with no overflow,
+clipped headings, or axe WCAG A/AA violations. All 10 tests, `npm run build`, and
+`git diff --check` pass. Evidence: `tmp/ui-qa/feature-glow-translucent-light.json`,
+`tmp/ui-qa/feature-glow-translucent-dark.json`,
+`tmp/ui-feature-glow-translucent-light.png`, and
+`tmp/ui-feature-glow-translucent-dark.png`.
