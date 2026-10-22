@@ -97,7 +97,7 @@ precedence over the reference recipes. This folder is internal and is not publis
   static articles without click targets or link affordances. Use one borderless
   row of four equal cells spanning exactly the content width
   and no gutters between cards; wrap to two columns on tablets and one on phones.
-  Hover reveals a very faint, fully filled sketch-paper rectangle (4% text-colour
+  Hover reveals a faint, fully filled sketch-paper rectangle (8% text-colour
   tint), a soft 16% accent gradient, and a cropped backdrop icon at 14% opacity.
   Clip all three through the same irregular SVG mask, generated from hardcoded
   geometry in `design/product_hover_shape.py`. Edit the source and regenerate
@@ -105,10 +105,10 @@ precedence over the reference recipes. This folder is internal and is not publis
   The paper layer has no border, shadow, or outline and extends slightly beyond
   the unchanged card hit area. Keep text and foreground icons untransformed.
   Each paper layer has its own hardcoded translation, rotation, and scale:
-  MCP (-3px, 2px), -1.6deg, (1.045, 1.035); Agent (4px, -3px), 1.2deg,
-  (1.055, 1.025); API (-2px, 4px), -0.9deg, (1.035, 1.055); Wiki (3px, -1px),
-  1.7deg, (1.045, 1.04). Both scale axes always enlarge; use no random values.
-  Reveal the fill, gradient, and motif together with a 0.4s left-to-right marker
+  MCP (-3px, 2px), -3.6deg, (1.045, 1.035); Agent (4px, -3px), 2.8deg,
+  (1.055, 1.025); API (-2px, 4px), -2.6deg, (1.035, 1.055); Wiki (3px, -1px),
+  3.8deg, (1.045, 1.04). Both scale axes always enlarge; use no random values.
+  Reveal the fill, gradient, and motif together with a 0.24s left-to-right marker
   sweep and an uneven advancing edge. Restart it on each hover. Wiki also shows
   the paper on keyboard focus. Under reduced motion reveal it immediately.
 - Draw seven seeded editorial icons using `design/editorial_icons.py`, with
@@ -840,3 +840,15 @@ style audit finds no colour or font-size literals outside tokens. All 10 tests,
 `tmp/ui-qa/sketch-paper-light.json`, `tmp/ui-qa/sketch-paper-dark.json`,
 `tmp/ui-qa/products-sketch-light.png`, `tmp/ui-qa/products-sketch-dark.png`, and
 `tmp/ui-qa/products-sketch-midpoint.png`.
+
+## 32. Stronger paper treatment (2026-10-22)
+
+At the owner's request, increased the fixed Product paper rotations to
+-3.6, 2.8, -2.6, and 3.8 degrees respectively, doubled the neutral fill from
+4% to 8%, and shortened the marker reveal from 0.4s to 0.24s. Offsets, scales,
+mask geometry, icon timing, and reduced-motion handling remain as specified.
+Browser checks in both themes confirm the stronger fill and rotation, a 0.24s
+computed reveal duration, and no horizontal overflow. Worst overlapping text
+contrast remains above 9:1 in both themes. All 10 tests, production build, and
+diff whitespace check pass. Evidence: `tmp/ui-qa/products-stronger-light.png`
+and `tmp/ui-qa/products-stronger-dark.png`.
