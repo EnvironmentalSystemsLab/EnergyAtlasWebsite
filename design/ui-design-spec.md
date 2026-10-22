@@ -50,7 +50,14 @@ precedence over the reference recipes. This folder is internal and is not publis
 - Align section headings and card copy to the same content grid. Use shared-border
   grids for modules, publications, media, team, and integrations. Keep
   section titles on the page, without numbered strips or backdrops.
-- The section is titled "Features" and uses six vertically stacked rows. On desktop, enlarge each media
+- The section is titled "Features" and uses three vertically stacked video rows:
+  "Agentic Digital Twin", "City-Scale Energy Insights", and "Distributed Energy
+  Resources Integration". Keep the original three videos in that order and merge
+  the former six cards' relevant copy. Cover agentic reasoning and assistance;
+  load forecasting, power/grid studies, scenario and climate action planning;
+  and distributed resources including storage, EV charging, demand response,
+  smart buildings, and combined heat and power. Remove promotional 3D
+  reconstruction references, including the module blurb. On desktop, enlarge each media
   panel to roughly 62% of the row's inner width and put its heading and description
   together on the right, vertically centered. At 768px and below, place the text
   beneath full-width media. Preserve the order, media, descriptions, and playback.
