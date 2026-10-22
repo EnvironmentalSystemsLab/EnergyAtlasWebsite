@@ -36,6 +36,14 @@ precedence over the reference recipes. This folder is internal and is not publis
   independently of the centered text container. No vertical page-frame lines
   appear anywhere, including the header, hero, sections, or footer. Do not change
   video playback behavior in this pass.
+- The hero begins at y=0 and fills at least the visible viewport height, with
+  the fixed ribbon overlaid. Keep enough padding for the ribbon and allow the
+  hero to grow on short screens so its content remains readable.
+  At the initial top position, hide the ribbon background/border and brand name;
+  retain the brand mark, navigation, and theme icon with legible light colours
+  over video. Fade the background and name in over 120ms whenever scrollY is
+  positive, including anchor navigation and restored scroll positions. Returning
+  to the top restores the transparent state. Respect reduced-motion preference.
 - Left-align the hero title, subtitle, and actions. Set the subtitle to 60% of
   the title size, in exactly two lines with a break after "for". Keep the
   template serif italic family and a proportional scale on phone screens.
@@ -72,7 +80,8 @@ precedence over the reference recipes. This folder is internal and is not publis
 - Left-align the demo action group with its section heading. Increase section
   spacing by 50%, from 48–80px to 72–120px responsively, keeping the shared grid
   rules, content widths, and internal card spacing.
-- The theme switch has a 44px target, an accessible dark-theme on/off state,
+- The theme switch has a 44px target around a 24px square matching the navigation
+  chips' visible height, an accessible dark-theme on/off state,
   sun/moon action icons, and visible hover/focus/pressed states. Keep it beside
   the site name on phones, with all section navigation below it.
 - The header navigation beside the site name follows
