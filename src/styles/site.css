@@ -158,25 +158,58 @@ nav a, .btn, .publication-item h4, .media-item h4, .tech-icon span, .team-title 
 nav a {
   display: flex;
   align-items: center;
-  min-height: 2.75rem;
-  padding: 0.5rem 0.75rem;
-  border-bottom: var(--ui-focus-width) solid var(--ui-clear);
-  color: var(--ui-text);
-  font-size: var(--ui-label-size);
+  min-height: var(--ui-nav-min-target);
+  min-width: var(--ui-nav-min-target);
+  padding-inline: 0.25rem;
+  font-family: var(--ui-nav-font);
+  font-size: var(--ui-nav-size);
+  font-weight: var(--ui-nav-weight);
+  letter-spacing: var(--ui-nav-tracking);
+  text-transform: var(--ui-nav-case);
+  line-height: var(--ui-nav-leading);
+  color: var(--ui-nav-chip-text, var(--ui-muted));
   text-decoration: none;
 }
 
-nav a:hover {
-  background: var(--ui-raised);
-  border-bottom-color: var(--ui-accent);
-  color: var(--ui-accent);
-  text-decoration: none;
+nav a span {
+  display: flex;
+  align-items: center;
+  min-height: var(--ui-nav-chip-height);
+  padding-inline: var(--ui-nav-chip-padding);
+  background: var(--ui-nav-chip-bg, var(--ui-clear));
+  outline: var(--ui-nav-chip-outline, none);
+  outline-offset: var(--ui-nav-chip-offset);
 }
 
-nav a:active {
-  background: var(--ui-pressed);
-  border-bottom-color: var(--ui-accent);
+nav a:is(:hover, :focus-visible) {
+  color: var(--ui-nav-chip-text, var(--ui-text));
   text-decoration: underline;
+}
+
+nav a:focus-visible {
+  outline: none;
+}
+
+nav a:focus-visible span {
+  outline: var(--ui-focus-width) solid var(--ui-focus);
+}
+
+nav a:active span {
+  background: var(--ui-text);
+  color: var(--ui-bg);
+  outline: var(--ui-nav-active-rule);
+  text-decoration: underline double;
+}
+
+body:has(#features:target) nav a[href="#features"],
+body:has(#modules:target) nav a[href="#modules"],
+body:has(#research:target) nav a[href="#research"],
+body:has(#media:target) nav a[href="#media"],
+body:has(#team:target) nav a[href="#team"],
+body:has(#demo:target) nav a[href="#demo"] {
+  --ui-nav-chip-bg: var(--ui-text);
+  --ui-nav-chip-text: var(--ui-bg);
+  --ui-nav-chip-outline: var(--ui-nav-active-rule);
 }
 
 .hero {
@@ -622,11 +655,6 @@ footer a:focus-visible {
 
   nav ul {
     gap: 0;
-  }
-
-  nav a {
-    padding-inline: 0.5rem;
-    font-size: var(--ui-type-small);
   }
 
   .hero .container {

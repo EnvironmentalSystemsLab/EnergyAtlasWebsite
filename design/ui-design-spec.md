@@ -83,8 +83,8 @@ The mobile stylesheet removes the hero overlay even though its text stays white.
 | --- | --- | --- |
 | Neutral base and raised surfaces | Page, header, cards | Adopt for both themes |
 | Ruled frame and shared cells | Aligned sections and card grids without outer page rails | Keep cell dividers; omit both vertical page-frame lines at owner's request |
-| Geist interface typography | Body, headings, navigation | Adopt |
-| Mono caps labels and editorial serif | Normal-case sans labels; one italic serif hero subtitle | Adopt serif after owner's font correction; keep normal case |
+| Geist interface typography | Body and headings | Adopt |
+| Mono caps labels and editorial serif | Mono uppercase buttons/navigation; other labels normal-case sans; italic serif hero subtitle | Follow the owner's BEMGen and Archetype Atlas references |
 | Brand mark assets in skills | White-E header mark and favicon variants | Adopt at owner's request; retain site name and original gradient |
 | Dense application controls | Existing anchor buttons/navigation | Adapt; no new controls |
 | Numbered documentation strips | Left-aligned section headings | Drop |
@@ -311,3 +311,24 @@ confirms the blue 2px focus ring and blue underlined label. Evidence is saved in
 `tmp/ui-qa/hero-light.json`, `tmp/ui-qa/hero-dark.json`, and
 `tmp/ui-hero-left-aligned.png`. `npm test` (2 tests), `npm run build`, and
 `git diff --check` pass. Hero video sizing and separator rules remain unchanged.
+
+## 12. Archetype Atlas header navigation (2026-10-21)
+
+The owner requested alignment of the buttons in the top row near the site title
+with Archetype Atlas. Inspected its header tabs and live `assets/site.css`.
+Header links now use Geist Mono 600 at 11.5px, uppercase with 0.14em tracking,
+muted resting text, and compact 24px square chips with 8px horizontal inset.
+Each link retains a 44px target. The section matching the existing URL hash
+uses inverted neutral colours and a 1px blue outline offset 3px; this is CSS
+only, with unchanged links and anchor navigation. Hover adds primary text and
+an underline, pressed adds an inverted double-underlined chip, and keyboard
+focus uses a 2px blue ring. Hero and demo action styling is unchanged.
+
+At 375px the navigation wraps into two rows of three labels; at 1280 and 1920px
+it remains one row. Both themes have no clipped labels, page overflow, or axe
+WCAG A/AA violations. All six section links were clicked in the live browser;
+each hash selects exactly its own chip. Keyboard navigation confirms focus on
+the next link with a 2px blue outline. Evidence: `tmp/ui-qa/navigation-light.json`,
+`tmp/ui-qa/navigation-dark.json`, `tmp/ui-qa/navigation-selection.json`, and
+`tmp/ui-header-navigation.png`. `npm test` (2 tests), `npm run build`, and
+`git diff --check` pass.
