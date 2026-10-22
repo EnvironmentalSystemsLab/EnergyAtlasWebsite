@@ -108,7 +108,7 @@ header {
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: var(--ui-brand-mark-gap);
   flex-shrink: 0;
   color: var(--ui-text);
   text-decoration: none;
@@ -130,8 +130,8 @@ header {
 }
 
 .logo img {
-  width: 2rem;
-  height: 2rem;
+  width: var(--ui-brand-mark-size);
+  height: var(--ui-brand-mark-size);
 }
 
 .logo-text {

@@ -3,13 +3,17 @@
 ## 0. Implementation decisions
 
 Approved by the owner on 2026-10-21, before implementation, with the font-family
-and page-frame corrections requested later that day. This section takes
+and subsequent frame/brand corrections requested later that day. This section takes
 precedence over the reference recipes. This folder is internal and is not published.
 
 - Reference: the EnergyAtlas visual family described by the app-ui-alignment and
   wiki-ui-alignment skills, rather than a particular live site or screenshot.
-- Scope: appearance of the existing Astro landing page. Preserve the name, logo,
-  favicon, wording, section order, anchor IDs, links, media, and functionality.
+- Scope: appearance of the existing Astro landing page. Preserve the name,
+  wording, section order, anchor IDs, links, media, and functionality. The owner
+  chose the skills' unmodified white-E EnergyAtlas mark for the header and all
+  favicon variants, replacing the earlier knockout mark. Keep its original
+  gradient and drawing in both themes. Use the bundled SVG, PNG, ICO, and Apple
+  touch assets from `app-ui-alignment/references/brand/`.
 - Use white/light-grey surfaces in light mode and black/charcoal in dark mode,
   thin grid rules, blue links and actions, and near-square corners. Remove glow,
   gradient buttons, floating card shadows, and card lift animations.
@@ -61,7 +65,7 @@ The mobile stylesheet removes the hero overlay even though its text stays white.
 | Ruled frame and shared cells | Aligned sections and card grids without outer page rails | Keep cell dividers; omit both vertical page-frame lines at owner's request |
 | Geist interface typography | Body, headings, navigation | Adopt |
 | Mono caps labels and editorial serif | Normal-case sans labels; one italic serif hero subtitle | Adopt serif after owner's font correction; keep normal case |
-| Brand mark assets in skills | Existing website logo/favicon | Keep existing identity |
+| Brand mark assets in skills | White-E header mark and favicon variants | Adopt at owner's request; retain site name and original gradient |
 | Dense application controls | Existing anchor buttons/navigation | Adapt; no new controls |
 | Numbered documentation strips | Left-aligned section headings | Drop |
 | Documentation sidebars | Existing landing-page sections | Drop |
@@ -228,3 +232,23 @@ header and footer. Hero and video both extend from x=0 to the page's full 1745px
 content width, with zero horizontal overflow. `npm test` (2 tests),
 `npm run build`, and `git diff --check` pass. Screenshot:
 `tmp/ui-no-frame-lines.png`. Section 0 records this override to the template frame.
+
+## 9. White-E site mark and favicons (2026-10-21)
+
+The owner selected the skills' white-E mark for the site icon and favicon. Copied
+the supplied brand assets unchanged to `public/brand/`: header SVG, vector favicon,
+32px PNG favicon, 16/32/48px ICO, and 180px Apple touch icon. The conventional
+`/favicon.ico` and legacy icon SVG URL also serve the new assets. Sharing metadata
+uses the white-E SVG. No knockout variant is used on the page.
+
+The header mark is 26px beside the 20px name (the guideline's 1.3× ratio), with a
+one-third-height gap and centered alignment. Its empty alt text avoids repeating
+the visible name; the home link keeps its existing accessible name. Colours and
+geometry are unchanged from the source artwork.
+
+Verified byte identity with the skill assets in both `public/` and `dist/`, the
+white SVG fill, PNG dimensions, and all three ICO sizes. Every header/favicon
+endpoint returns 200 with the correct image content type from the local origin.
+The refreshed browser confirms the header mark is loaded, the expected favicon
+links are present, and placement matches the guideline. `npm test` (2 tests),
+`npm run build`, and `git diff --check` pass.
