@@ -51,10 +51,8 @@
   --ui-product-min-height: 17rem;
   --ui-product-icon-gap: 1.5rem;
   --ui-product-copy-gap: 0.75rem;
-  --ui-reference-title-size: 1rem;
-  --ui-reference-leading: 1.45;
   --ui-reference-meta-gap: 0.25rem;
-  --ui-reference-row-space: 0.75rem;
+  --ui-reference-row-space: 0.375rem;
   --ui-product-wash: linear-gradient(140deg, transparent 30%, color-mix(in srgb, var(--ui-accent) 16%, transparent) 100%);
   --ui-product-paper: color-mix(in srgb, var(--ui-text) 8%, transparent);
   --ui-product-reveal-duration: 0.24s;

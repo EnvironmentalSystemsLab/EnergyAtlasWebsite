@@ -57,9 +57,11 @@ precedence over the reference recipes. This folder is internal and is not publis
   section titles on the page, without numbered strips or backdrops.
   Publications and Media each use exactly one full-width column at every
   viewport; retain all entries and links in their existing order. Compact each
-  entry to two lines: a 16px linked title, then one 14px metadata line combining
-  venue/source with authors and date. Use 1.45 line height, 4px between lines,
-  and 12px vertical row padding. Remove separate DOI/domain rows and link the
+  entry to two lines: a linked title matching Product titles (18px Geist 600,
+  1.15 line height, -0.025em tracking), then one metadata line matching Product
+  descriptions (14px Geist 400, 1.45 line height), combining venue/source with
+  authors and date. Both use the main text colour in every theme and state.
+  Use 4px between lines and 6px vertical row padding. Remove separate DOI/domain rows and link the
   title to the original destination. Keep full title/metadata strings in the
   DOM and native tooltips; truncate each visual line with an ellipsis as needed
   so entries never exceed two lines, including phones.
@@ -916,3 +918,19 @@ Evidence: `tmp/ui-qa/compact-references-light.json`,
 `tmp/ui-qa/compact-references-style-audit.json`,
 `tmp/ui-qa/compact-research-dark.png`, and
 `tmp/ui-qa/compact-media-light.png`.
+
+## 35. Reference typography matched to Products (2026-10-22)
+
+Halved entry padding to 6px above and below. Reference titles now share the
+Product heading rule and inherit its 18px/600/1.15 typography and tracking.
+Metadata shares the Product description rule (14px/400/1.45). Both roles use
+the main theme text colour, with linked titles retaining their underline and
+focus affordances. Removed obsolete reference-only title/leading tokens.
+
+Computed browser styles match the corresponding Product roles exactly.
+Both themes at 375/800/1280/1920px retain two-line entries, now about 57px tall,
+with no overflow or axe WCAG A/AA violations. All 10 tests, build, whitespace
+check, and token audit pass. Evidence: `tmp/ui-qa/reference-type-light.json`,
+`tmp/ui-qa/reference-type-dark.json`, `tmp/ui-qa/reference-type-light.png`,
+`tmp/ui-qa/reference-type-dark.png`, and
+`tmp/ui-qa/reference-type-style-audit.json`.

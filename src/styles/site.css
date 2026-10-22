@@ -651,9 +651,11 @@ main > section:not(.hero) > .container {
   margin-bottom: var(--ui-product-icon-gap);
 }
 
-.product-card h3 { font-size: var(--ui-type-lead); }
+.product-card h3, .reference-title { font-size: var(--ui-type-lead); }
 .product-card p {
   margin-top: var(--ui-product-copy-gap);
+}
+.product-card p, .reference-meta {
   font-size: var(--ui-type-label);
   line-height: var(--ui-feature-copy-leading);
 }
@@ -700,12 +702,7 @@ main > section:not(.hero) > .container {
   padding-block: var(--ui-reference-row-space);
 }
 
-.reference-title {
-  font-size: var(--ui-reference-title-size);
-  font-weight: var(--ui-weight-medium);
-  line-height: var(--ui-reference-leading);
-  letter-spacing: var(--ui-label-tracking);
-}
+.reference-title a { color: var(--ui-text); }
 
 .reference-title a, .reference-meta {
   display: block;
@@ -716,9 +713,7 @@ main > section:not(.hero) > .container {
 
 .reference-meta {
   margin-top: var(--ui-reference-meta-gap);
-  color: var(--ui-muted);
-  font-size: var(--ui-type-label);
-  line-height: var(--ui-reference-leading);
+  color: var(--ui-text);
 }
 
 .team-member {
