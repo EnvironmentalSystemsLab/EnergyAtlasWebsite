@@ -45,10 +45,13 @@ precedence over the reference recipes. This folder is internal and is not publis
   panel to roughly 62% of the row's inner width and put its heading and description
   together on the right, vertically centered. At 768px and below, place the text
   beneath full-width media. Preserve the order, media, descriptions, and playback.
-  Remove all feature grid rules and media outlines. Fade the bottom 45% of each
+  Remove all feature grid rules and media outlines. Fade the bottom 25% of each
   visual smoothly into the page background, with 16px top corners and square
   bottom corners; offset visuals downward 16px. Feature paragraphs use the same
   text colour as their titles and a slightly smaller 15px size.
+  Bottom-align the first two screen recordings within their existing 16:9 frames,
+  with a 1px upward trim, to hide their captured white title ribbons. Keep the
+  source files unchanged and retain the default framing of all other visuals.
 - Horizontal separators outside Features span the full available page width, including grid row
   boundaries and the hero's trust strip. Vertical separators are confined to
   these rows, meeting horizontal rules above and below; no page-height rails.
