@@ -185,7 +185,7 @@ nav a:active {
   overflow: hidden;
   background: var(--ui-hero-surface);
   color: var(--ui-hero-text);
-  text-align: center;
+  text-align: left;
 }
 
 main {
@@ -238,7 +238,7 @@ main {
 .hero .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   min-height: min(44rem, calc(100svh - 5rem));
   padding-block: clamp(4rem, 10vh, 7rem);
@@ -253,12 +253,13 @@ main {
 }
 
 .hero-subtitle {
-  max-width: 36rem;
   color: var(--ui-hero-muted);
   font-family: var(--ui-font-serif);
   font-style: var(--ui-editorial-style);
   font-weight: var(--ui-weight-medium);
-  font-size: var(--ui-type-lead);
+  font-size: var(--ui-type-hero-subtitle);
+  line-height: var(--ui-leading-title);
+  white-space: nowrap;
 }
 
 .trust-badges {
@@ -303,76 +304,48 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 1 1 15rem;
-  min-height: 3.25rem;
-  padding: 0.875rem 1.5rem;
+  flex: 0 1 auto;
+  min-height: var(--ui-button-min-height);
+  padding: var(--ui-button-padding);
   border: var(--ui-control-rule);
-  border-radius: var(--ui-radius);
+  border-radius: var(--ui-button-radius);
   box-shadow: var(--ui-shadow);
-  font-size: var(--ui-label-size);
-  font-weight: var(--ui-label-weight);
+  font-family: var(--ui-button-font);
+  font-size: var(--ui-button-size);
+  font-weight: var(--ui-button-weight);
+  text-transform: var(--ui-button-case);
+  letter-spacing: var(--ui-button-tracking);
+  line-height: var(--ui-button-leading);
+  background: var(--ui-bg);
+  color: var(--ui-text);
   text-align: center;
   text-decoration: none;
 }
 
-.btn-primary {
-  background: var(--ui-accent);
+.btn:is(:hover, :focus-visible) {
   border-color: var(--ui-accent);
-  color: var(--ui-on-accent);
-}
-
-.btn-primary:hover {
-  background: var(--ui-accent-hover);
-  border-color: var(--ui-accent-hover);
+  color: var(--ui-accent);
   text-decoration: underline;
 }
 
-.btn-primary:active {
-  background: var(--ui-accent-pressed);
-  border-color: var(--ui-accent-pressed);
+.btn:active {
+  border-color: var(--ui-accent);
+  color: var(--ui-accent);
   text-decoration: underline double;
 }
 
-.btn-secondary {
-  background: var(--ui-bg);
-  color: var(--ui-text);
+.hero .cta-buttons {
+  justify-content: flex-start;
+  margin-inline: 0;
 }
 
-.btn-secondary:hover {
-  background: var(--ui-raised);
-  border-color: var(--ui-accent);
-  text-decoration: underline;
-}
-
-.btn-secondary:active {
-  background: var(--ui-pressed);
-  border-color: var(--ui-accent);
-  text-decoration: underline double;
-}
-
-.hero .btn-primary {
-  background: var(--ui-hero-link);
-  border-color: var(--ui-hero-link);
-  color: var(--ui-hero-on-accent);
-}
-
-.hero .btn-primary:hover {
-  background: var(--ui-hero-hover);
-  border-color: var(--ui-hero-hover);
-}
-
-.hero .btn-primary:active {
-  background: var(--ui-hero-pressed);
-  border-color: var(--ui-hero-pressed);
-}
-
-.hero .btn-secondary {
+.hero .btn {
   background: var(--ui-hero-surface);
   border-color: var(--ui-hero-edge);
   color: var(--ui-hero-text);
 }
 
-.hero .btn-secondary:is(:hover, :active) {
+.hero .btn:is(:hover, :active, :focus-visible) {
   border-color: var(--ui-hero-link);
   color: var(--ui-hero-link);
 }
@@ -692,10 +665,6 @@ footer a:focus-visible {
 
   .modules-grid {
     grid-template-columns: minmax(0, 1fr);
-  }
-
-  .hero h1 {
-    font-size: var(--ui-type-title);
   }
 
   .trust-badge {

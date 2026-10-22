@@ -280,3 +280,26 @@ bottom rules, with no clipped labels, page overflow, or axe WCAG A/AA violations
 Evidence: `tmp/ui-qa/separators-light.json`, `tmp/ui-qa/separators-dark.json`, and
 `tmp/ui-full-width-separators.png`. `npm test` (2 tests), `npm run build`, and
 `git diff --check` pass.
+
+## 11. Hero typography and BEMGen buttons (2026-10-21)
+
+The owner requested left-aligned hero type, a subtitle at 60% of the title size,
+and two lines split after "for". Both share the content grid's left edge, as do
+the hero actions. A forced line break keeps the wording unchanged. The phone
+title now uses the same responsive hero scale so the ratio holds at every width.
+
+Inspected the live BEMGen wiki and its `assets/stylesheets/bemgen.css`: its home
+page actions are square outlined buttons with Geist Mono 600, 11px uppercase
+labels, 0.12em tracking, and 12px/16px padding. Applied that appearance to all
+four site actions. Hero controls retain an opaque dark surface over the video;
+all targets remain at least 44px tall. Hover/focus use blue text and edges with
+an underline; pressed uses a double underline; keyboard focus retains its ring.
+These contrast and target-size adaptations are intentional.
+
+Production checks at 375, 1280, and 1920px in both themes verify matching left
+edges, a 0.6 font-size ratio, two rendered subtitle lines, no clipped labels or
+horizontal overflow, and zero axe WCAG A/AA violations. Live keyboard navigation
+confirms the blue 2px focus ring and blue underlined label. Evidence is saved in
+`tmp/ui-qa/hero-light.json`, `tmp/ui-qa/hero-dark.json`, and
+`tmp/ui-hero-left-aligned.png`. `npm test` (2 tests), `npm run build`, and
+`git diff --check` pass. Hero video sizing and separator rules remain unchanged.

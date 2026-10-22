@@ -44,6 +44,7 @@
   --ui-type-card: 1.25rem;
   --ui-type-title: clamp(1.75rem, 3vw, 2.5rem);
   --ui-type-hero: clamp(2.5rem, 6vw, 4.5rem);
+  --ui-type-hero-subtitle: calc(var(--ui-type-hero) * 0.6);
   --ui-type-wordmark: 1.25rem;
   --ui-brand-mark-size: 1.625rem;
   --ui-brand-mark-gap: calc(var(--ui-brand-mark-size) / 3);
@@ -60,6 +61,15 @@
   --ui-label-size: var(--ui-type-label);
   --ui-label-weight: var(--ui-weight-medium);
   --ui-label-tracking: 0;
+  --ui-button-font: var(--ui-font-mono);
+  --ui-button-size: 0.6875rem;
+  --ui-button-weight: 600;
+  --ui-button-case: uppercase;
+  --ui-button-tracking: 0.12em;
+  --ui-button-radius: 0;
+  --ui-button-leading: 1.6;
+  --ui-button-padding: 0.75rem 1rem;
+  --ui-button-min-height: 2.75rem;
   --ui-link-rule: 1px;
   --ui-link-rule-hover: 2px;
   --ui-link-offset: 0.2em;
