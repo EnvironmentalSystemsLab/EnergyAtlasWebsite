@@ -73,10 +73,11 @@ precedence over the reference recipes. This folder is internal and is not publis
   colour as its titles and 1.45 line height: 20px summary sentences and 14px
   supporting points. Use the shared 96–160px section spacing between feature
   rows, with no extra vertical card padding.
-  Give each visual a very faint neutral edge glow: black at 10% opacity on
-  light backgrounds and white at 12% on dark backgrounds, with 16px blur.
+  Give each visual a soft neutral edge glow: black at 20% opacity on
+  light backgrounds and white at 28% on dark backgrounds, with 24px blur and
+  2px spread. The owner requested more visibility after the initial faint pass.
   Composite the glow and visual through one shared bottom fade, accounting for
-  the glow's 24px drawing space so the visual's original fade position is kept.
+  the glow's 40px drawing space so the visual's original fade position is kept.
   Both disappear completely at the visual's bottom edge, with no bottom glow.
   Bottom-align the first two screen recordings within their existing 16:9 frames,
   with a 1px upward trim, to hide their captured white title ribbons. Keep the
@@ -607,3 +608,17 @@ screenshots show the glow fading away before the bottom edge. All 10 tests,
 `npm run build`, and `git diff --check` pass. Evidence:
 `tmp/ui-qa/feature-glow-light.json`, `tmp/ui-qa/feature-glow-dark.json`,
 `tmp/ui-feature-glow-light.png`, and `tmp/ui-feature-glow-dark.png`.
+
+## 25. Increase glow visibility (2026-10-22)
+
+The owner found the initial glow too faint. Increased opacity to 28% white in
+dark mode and 20% black in light mode, widened blur to 24px, and added 2px spread.
+Expanded drawing space to 40px and kept the shared mask aligned to the original
+media fade, with full transparency at its bottom edge. Screenshots confirm a
+visible soft halo at the top and sides in both themes, with no bottom halo.
+
+All 10 tests, the production build, and `git diff --check` pass. Browser checks
+at 375, 1280, and 1920px in both themes show no overflow, clipped headings, or
+axe WCAG A/AA violations. Evidence: `tmp/ui-qa/feature-glow-visible-light.json`,
+`tmp/ui-qa/feature-glow-visible-dark.json`, `tmp/ui-feature-glow-visible.png`, and
+`tmp/ui-feature-glow-visible-light.png`.

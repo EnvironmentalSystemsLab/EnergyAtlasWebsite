@@ -16,7 +16,7 @@
   --ui-focus: #125dae;
   --ui-selection: #e3ecf5;
   --ui-clear: transparent;
-  --ui-feature-glow-color: rgba(0, 0, 0, 0.1);
+  --ui-feature-glow-color: rgba(0, 0, 0, 0.2);
 
   /* Fixed dark roles for video-backed content and the footer in either scheme.
      70% black over a white video frame produces the worst-case backdrop below. */
@@ -49,9 +49,10 @@
   --ui-feature-bullet-gap: 0.5rem;
   --ui-feature-media-radius: 1rem;
   --ui-feature-media-offset: 1rem;
-  --ui-feature-glow-blur: 1rem;
-  --ui-feature-glow-space: 1.5rem;
-  --ui-feature-glow: 0 0 var(--ui-feature-glow-blur) var(--ui-feature-glow-color);
+  --ui-feature-glow-blur: 1.5rem;
+  --ui-feature-glow-space: 2.5rem;
+  --ui-feature-glow-spread: 2px;
+  --ui-feature-glow: 0 0 var(--ui-feature-glow-blur) var(--ui-feature-glow-spread) var(--ui-feature-glow-color);
   /* Account for the glow's padding while retaining the media's bottom 25% fade. */
   --ui-feature-media-mask: linear-gradient(to bottom, #000000 calc(75% - var(--ui-feature-glow-space) / 2), transparent calc(100% - var(--ui-feature-glow-space)));
   --ui-feature-screen-trim: 1px;
@@ -118,7 +119,7 @@
   :root:not([data-theme]) {
     color-scheme: dark;
     --ui-bg: #000000;
-    --ui-feature-glow-color: rgba(255, 255, 255, 0.12);
+    --ui-feature-glow-color: rgba(255, 255, 255, 0.28);
     --ui-surface: #1a1a1a;
     --ui-raised: #2a2a2a;
     --ui-pressed: #303030;
@@ -138,7 +139,7 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
   --ui-bg: #000000;
-  --ui-feature-glow-color: rgba(255, 255, 255, 0.12);
+  --ui-feature-glow-color: rgba(255, 255, 255, 0.28);
   --ui-surface: #1a1a1a;
   --ui-raised: #2a2a2a;
   --ui-pressed: #303030;
