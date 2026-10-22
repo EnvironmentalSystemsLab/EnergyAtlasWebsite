@@ -56,7 +56,13 @@ precedence over the reference recipes. This folder is internal and is not publis
   while preserving its content. Keep
   section titles on the page, without numbered strips or backdrops.
   Publications and Media each use exactly one full-width column at every
-  viewport; retain all entries and links in their existing order.
+  viewport; retain all entries and links in their existing order. Compact each
+  entry to two lines: a 16px linked title, then one 14px metadata line combining
+  venue/source with authors and date. Use 1.45 line height, 4px between lines,
+  and 12px vertical row padding. Remove separate DOI/domain rows and link the
+  title to the original destination. Keep full title/metadata strings in the
+  DOM and native tooltips; truncate each visual line with an ellipsis as needed
+  so entries never exceed two lines, including phones.
   Team remains two columns on desktop and one on phones. Reuse the Product
   sketch-paper hover/focus layer, including its mask, tint, gradient, 0.24s
   reveal, and reduced-motion handling. Dogan uses the MCP fixed transform;
@@ -891,3 +897,22 @@ no colour or font-size literals outside tokens. Evidence:
 `tmp/ui-qa/team-paper-light.png`, `tmp/ui-qa/team-paper-dark.png`,
 `tmp/ui-qa/team-paper-focus-dark.png`, and
 `tmp/ui-qa/team-paper-style-audit.json`.
+
+## 34. Compact linked reference entries (2026-10-22)
+
+Each Research and Media entry is now a two-line row: a linked 16px title and
+14px combined venue/source, author, and date metadata. Removed separate DOI and
+domain rows. All eight original destinations now belong to the title links,
+with existing new-tab behavior preserved. Full titles and metadata remain in
+the DOM and native tooltips; visual lines truncate with an ellipsis as needed.
+Rows use 1.45 line height, a 4px interline gap, and 12px vertical padding.
+
+Browser measurements in both themes at 375/800/1280/1920px confirm all eight
+rows stay at two lines (about 71.5px including padding), with no horizontal
+overflow or axe WCAG A/AA violations. All original link destinations match
+exactly. All 10 tests, build, whitespace check, and token style audit pass.
+Evidence: `tmp/ui-qa/compact-references-light.json`,
+`tmp/ui-qa/compact-references-dark.json`,
+`tmp/ui-qa/compact-references-style-audit.json`,
+`tmp/ui-qa/compact-research-dark.png`, and
+`tmp/ui-qa/compact-media-light.png`.

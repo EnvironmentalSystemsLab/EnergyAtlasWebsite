@@ -696,31 +696,29 @@ main > section:not(.hero) > .container {
   50% { transform: rotate(var(--ui-icon-tilt)); }
 }
 
-.publication-item h4, .media-item h4 {
-  margin-bottom: 1rem;
-  color: var(--ui-accent);
-  font-size: var(--ui-label-size);
-  font-weight: var(--ui-label-weight);
-  line-height: var(--ui-leading-body);
+.publication-item, .media-item {
+  padding-block: var(--ui-reference-row-space);
 }
 
-.publication-title, .media-title {
-  margin-bottom: 1rem;
-  font-size: var(--ui-type-lead);
+.reference-title {
+  font-size: var(--ui-reference-title-size);
   font-weight: var(--ui-weight-medium);
-  line-height: 1.5;
+  line-height: var(--ui-reference-leading);
+  letter-spacing: var(--ui-label-tracking);
 }
 
-.publication-authors, .media-authors {
-  margin-bottom: 1rem;
+.reference-title a, .reference-meta {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.reference-meta {
+  margin-top: var(--ui-reference-meta-gap);
   color: var(--ui-muted);
   font-size: var(--ui-type-label);
-}
-
-.publication-doi, .media-doi {
-  font-family: var(--ui-font-mono);
-  font-size: var(--ui-type-small);
-  overflow-wrap: anywhere;
+  line-height: var(--ui-reference-leading);
 }
 
 .team-member {
