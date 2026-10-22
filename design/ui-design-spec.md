@@ -17,8 +17,11 @@ precedence over the reference recipes. This folder is internal and is not publis
 - Use white/light-grey surfaces in light mode and black/charcoal in dark mode,
   thin grid rules, blue links and actions, and near-square corners. Remove glow,
   gradient buttons, floating card shadows, and card lift animations.
-- Keep system-preference themes with a CSS first-frame fallback. Do not add a
-  theme switch or persistence. No docking, grid, or chart libraries are involved.
+- Default to the system theme, with a CSS first-frame fallback. A sun/moon switch
+  in the top ribbon toggles light/dark and remembers an explicit choice locally.
+  Apply saved preferences before first paint, follow system changes until a
+  choice is made, and remain usable when browser storage is unavailable.
+  No docking, grid, or chart libraries are involved.
 - Use the template families, locally hosted: Geist for interface, headings,
   wordmark, and normal-case labels; Geist Mono for DOI/media identifiers; Cormorant
   Garamond italic 500 for the short hero subtitle. This replaces the earlier
@@ -48,6 +51,12 @@ precedence over the reference recipes. This folder is internal and is not publis
   12px/16px padding. Both action kinds use the reference's outlined appearance.
   Keep an opaque dark backing over video for contrast, a minimum 44px target,
   and visible hover, pressed, and focus indicators without moving controls.
+- The hero actions read "explore features" and "wiki" (displayed uppercase by the
+  existing button style). Both turn white with black text on hover, focus, and
+  press. Other calls to action retain their existing labels and appearance.
+- The theme switch has a 44px target, an accessible dark-theme on/off state,
+  sun/moon action icons, and visible hover/focus/pressed states. Keep it beside
+  the site name on phones, with all section navigation below it.
 - The header navigation beside the site name follows
   `https://energy-atlas.github.io/archetype-atlas/`: muted Geist Mono 600,
   11.5px uppercase labels with 0.14em tracking, compact square 24px chips, and
