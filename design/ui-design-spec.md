@@ -138,3 +138,50 @@ appearance regressions. Keep local QA fixtures and screenshots outside the repo.
   preview remains on port 4321. Internal design records are absent from `dist/`.
 
 No push, merge, tag, release, or deployment was performed.
+
+## 6. App-ui-alignment follow-up audit (2026-10-21)
+
+The owner's instruction to follow app-ui-alignment retains the decisions in
+section 0. No unresolved reference, precedence, brand, font, label, or theme
+decision was reopened. The application workflow is applied to the actual Astro
+landing page; there is no interactive workbench to invent or retrofit.
+
+| Phase | Application to this site |
+| --- | --- |
+| Read | One static page, CSS themes driven by system preference, local fonts, anchor controls; no UI libraries or canvas renderers |
+| Audit | Existing source inventory, reference translation, baseline screenshots, surface and state contrast |
+| Decisions | Owner-approved section 0; identity, content, system themes, and normal-case labels retained |
+| Record | This internal spec was committed before styling; AGENTS.md points to it |
+| Tokens | Shared semantic roles, split rule/control edges, explicit states and text-selection colours, contrast tests |
+| Implement | Local fonts, neutral shell and shared grids, blue controls, CSS colour transitions only |
+| Verify | Production build, Node contrast suite, skill contrast script, actual viewport dimensions, both themes, accessibility scans and screenshots |
+| Hand back | Local commits and evidence recorded; preview stays on 4321; no publication action |
+
+Follow-up gaps closed:
+
+- Ordinary links now have a 1px underline at rest, a 2px underline on hover, and a
+  double underline while pressed. The home wordmark acquires the same distinct
+  hover/pressed indicators. Indicators use the existing accessible text colours.
+- Navigation, button, metadata, integration, and role labels share the label-font,
+  weight, case, and tracking settings. Their approved size hierarchy is retained.
+- Text selection now uses `#e3ecf5` in light and `#112438` in dark, with the theme's
+  primary text colour. The new contrast assertion was observed failing before
+  these tokens were added, then passing in both themes.
+
+Verification after these fixes:
+
+- `npm test`: 2 passing theme tests, 41 contrast assertions per theme.
+- Skill `contrast.py check --suggest --failures-only`: 80 of 80 pairs pass
+  (the Node suite includes a repeated primary-action pair).
+- Both themes at confirmed 375, 1280, and 1920px widths: no page overflow, clipped
+  labels, external requests, or axe WCAG A/AA violations. Normal, hover, and
+  pressed link/wordmark styles were checked separately in both themes; all six
+  state scans are clear. Actual selection colours were read from computed CSS.
+- `npm run build` and `git diff --check` pass. Independent follow-up review found
+  no meaningful issues. Fresh screenshots/reports are in `tmp/ui-qa/follow-up*`.
+- Forms, selects, docking, tabs, menus, dialogs, loading/error UI, data palettes,
+  and status-tone tints are not shipped by this page. Their theming and greyscale
+  form checks are not applicable. No unused controls or tokens were added.
+
+The remaining deviations are the approved landing-page adaptations documented
+above. No content, behavior, or publishing change is included in this follow-up.

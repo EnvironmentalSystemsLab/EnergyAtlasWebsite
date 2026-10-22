@@ -14,6 +14,8 @@
   --ui-accent-pressed: #083d78;
   --ui-on-accent: #ffffff;
   --ui-focus: #125dae;
+  --ui-selection: #e3ecf5;
+  --ui-clear: transparent;
 
   /* Fixed dark roles for video-backed content and the footer in either scheme.
      70% black over a white video frame produces the worst-case backdrop below. */
@@ -54,6 +56,9 @@
   --ui-label-size: var(--ui-type-label);
   --ui-label-weight: var(--ui-weight-medium);
   --ui-label-tracking: 0;
+  --ui-link-rule: 1px;
+  --ui-link-rule-hover: 2px;
+  --ui-link-offset: 0.2em;
   --ui-radius: 2px;
   --ui-radius-portrait: 50%;
   --ui-shadow: none;
@@ -83,6 +88,7 @@
     --ui-accent-pressed: #8fc5ff;
     --ui-on-accent: #000000;
     --ui-focus: #4da3ff;
+    --ui-selection: #112438;
   }
 }
 

@@ -19,15 +19,27 @@ body {
   line-height: var(--ui-leading-body);
 }
 
+::selection {
+  background: var(--ui-selection);
+  color: var(--ui-text);
+}
+
 a {
   color: var(--ui-accent);
-  text-underline-offset: 0.2em;
+  text-decoration-thickness: var(--ui-link-rule);
+  text-underline-offset: var(--ui-link-offset);
   transition: color var(--ui-transition), background-color var(--ui-transition),
     border-color var(--ui-transition);
 }
 
 a:hover {
   text-decoration: underline;
+  text-decoration-thickness: var(--ui-link-rule-hover);
+}
+
+a:active {
+  text-decoration-style: double;
+  text-decoration-thickness: var(--ui-link-rule);
 }
 
 a:focus-visible {
@@ -108,6 +120,17 @@ header {
   text-decoration: none;
 }
 
+.logo:hover .logo-text {
+  text-decoration: underline;
+  text-decoration-thickness: var(--ui-link-rule-hover);
+  text-underline-offset: var(--ui-link-offset);
+}
+
+.logo:active .logo-text {
+  text-decoration-style: double;
+  text-decoration-thickness: var(--ui-link-rule);
+}
+
 .logo img {
   width: 2rem;
   height: 2rem;
@@ -127,18 +150,21 @@ nav ul {
   gap: 0.25rem;
 }
 
+nav a, .btn, .publication-item h4, .media-item h4, .tech-icon span, .team-title {
+  font-family: var(--ui-label-font);
+  font-weight: var(--ui-label-weight);
+  letter-spacing: var(--ui-label-tracking);
+  text-transform: var(--ui-label-case);
+}
+
 nav a {
   display: flex;
   align-items: center;
   min-height: 2.75rem;
   padding: 0.5rem 0.75rem;
-  border-bottom: var(--ui-focus-width) solid transparent;
+  border-bottom: var(--ui-focus-width) solid var(--ui-clear);
   color: var(--ui-text);
-  font-family: var(--ui-label-font);
   font-size: var(--ui-label-size);
-  font-weight: var(--ui-label-weight);
-  letter-spacing: var(--ui-label-tracking);
-  text-transform: var(--ui-label-case);
   text-decoration: none;
 }
 

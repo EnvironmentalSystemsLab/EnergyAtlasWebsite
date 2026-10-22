@@ -40,6 +40,7 @@ for (const [name, tokens] of [["light", light], ["dark", { ...light, ...dark }]]
       check("on-accent", state, 4.5);
       check(state, "bg", 3);
     }
+    check("text", "selection", 4.5);
     check("on-accent", "accent", 4.5);
     for (const foreground of ["hero-text", "hero-muted", "hero-link", "hero-edge"]) {
       check(foreground, "hero-surface", foreground === "hero-edge" ? 3 : 4.5);
