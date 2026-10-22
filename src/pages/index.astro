@@ -5,6 +5,7 @@ import "../styles/site.css";
 import themeScript from "../scripts/theme.js?raw";
 import ribbonScript from "../scripts/ribbon.js?raw";
 import EditorialIcon from "../components/EditorialIcon.astro";
+import productWash from "../assets/shapes/product-wash.svg?url";
 
 const products = [
   { icon: "mcp", name: "EnergyAtlas-MCP", summary: "Connect AI assistants to EnergyAtlas tools and city energy data." },
@@ -198,11 +199,15 @@ const products = [
             const href = "href" in product ? product.href : undefined;
             const Card = href ? "a" : "article";
             return (
-              <Card class:list={["product-card", { "product-card-link": href }]} href={href} aria-label={href ? product.name : undefined}>
+              <Card class:list={["product-card", { "product-card-link": href }]} data-product={product.icon} href={href} aria-label={href ? product.name : undefined}>
                 <EditorialIcon name={product.icon} class="product-icon" />
                 <h3>{product.name}{href && <span class="product-link-mark" aria-hidden="true"> ↗</span>}</h3>
                 <p>{product.summary}</p>
-                <EditorialIcon name={product.icon} class="product-card-backdrop" />
+                <span class="product-hover" style={`--ui-product-mask: url("${productWash}")`} aria-hidden="true">
+                  <span class="product-hover-sweep">
+                    <EditorialIcon name={product.icon} class="product-card-backdrop" />
+                  </span>
+                </span>
               </Card>
             );
           })}

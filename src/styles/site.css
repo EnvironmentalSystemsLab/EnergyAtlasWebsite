@@ -574,8 +574,7 @@ main > section:not(.hero) > .container {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .product-card:hover .product-icon,
-  .feature-item:hover .feature-icon {
+  .product-card:hover .product-icon {
     --ui-icon-active-motion: var(--ui-icon-motion, sketch-pulse);
   }
 }
@@ -594,36 +593,50 @@ main > section:not(.hero) > .container {
 .products-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--ui-product-edge);
-  border: var(--ui-product-rule);
-  background: var(--ui-border-interactive);
+  gap: 0;
 }
 
 .product-card {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
   min-width: 0;
   min-height: var(--ui-product-min-height);
   padding: var(--ui-product-padding);
-  background: var(--ui-bg);
+  background: var(--ui-clear);
   color: var(--ui-text);
   text-align: left;
   text-decoration: none;
 }
 
-.product-card::before {
-  content: "";
+.product-card[data-product="mcp"] { --ui-product-hover-transform: var(--ui-product-mcp-transform); }
+.product-card[data-product="agent"] { --ui-product-hover-transform: var(--ui-product-agent-transform); }
+.product-card[data-product="api"] { --ui-product-hover-transform: var(--ui-product-api-transform); }
+.product-card[data-product="wiki"] { --ui-product-hover-transform: var(--ui-product-wiki-transform); }
+
+.product-hover {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: var(--ui-product-wash);
+  transform: var(--ui-product-hover-transform);
+  mask-image: var(--ui-product-mask);
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  mask-mode: alpha;
   opacity: 0;
-  transition: opacity var(--ui-transition);
   pointer-events: none;
 }
 
-.product-card:is(:hover, :focus-visible)::before { opacity: 1; }
+.product-hover-sweep {
+  position: absolute;
+  inset: 0;
+  background: var(--ui-product-wash), var(--ui-product-paper);
+  clip-path: polygon(0 0, 0 0, 0 18%, 0 38%, 0 64%, 0 83%, 0 100%, 0 100%);
+}
+
+.product-card:is(:hover, :focus-visible) .product-hover { opacity: 1; }
+.product-card:is(:hover, :focus-visible) .product-hover-sweep {
+  animation: marker-sweep var(--ui-product-reveal-duration) linear both;
+}
 .product-card-link:hover { text-decoration: none; }
 .product-card-link:hover h3 { text-decoration-thickness: var(--ui-link-rule-hover); }
 .product-card-link:active { text-decoration: none; }
@@ -647,19 +660,24 @@ main > section:not(.hero) > .container {
 
 .product-card-backdrop {
   position: absolute;
-  z-index: -1;
   left: var(--ui-product-backdrop-x);
   top: var(--ui-product-backdrop-y);
   width: var(--ui-product-backdrop-size);
   aspect-ratio: 1;
   transform: translate(-50%, -50%);
-  opacity: 0;
+  opacity: var(--ui-product-backdrop-opacity);
   pointer-events: none;
-  transition: opacity var(--ui-transition);
 }
 
 .product-card-backdrop :is(.ink, .accent) { fill: var(--ui-accent); animation: none; }
-.product-card:is(:hover, :focus-visible) .product-card-backdrop { opacity: var(--ui-product-backdrop-opacity); }
+
+@keyframes marker-sweep {
+  0% { clip-path: polygon(0 0, 0 0, 0 18%, 0 38%, 0 64%, 0 83%, 0 100%, 0 100%); }
+  25% { clip-path: polygon(0 0, 28% 0, 24% 18%, 32% 38%, 25% 64%, 29% 83%, 24% 100%, 0 100%); }
+  55% { clip-path: polygon(0 0, 60% 0, 54% 18%, 64% 38%, 59% 64%, 65% 83%, 57% 100%, 0 100%); }
+  80% { clip-path: polygon(0 0, 88% 0, 82% 18%, 92% 38%, 84% 64%, 91% 83%, 85% 100%, 0 100%); }
+  100% { clip-path: polygon(0 0, 100% 0, 100% 18%, 100% 38%, 100% 64%, 100% 83%, 100% 100%, 0 100%); }
+}
 
 @keyframes sketch-pulse {
   0%, 100% { transform: scale(var(--ui-icon-scale-rest)); }
@@ -907,6 +925,10 @@ footer a:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
   .editorial-icon .accent { animation: none; }
+  .product-card:is(:hover, :focus-visible) .product-hover-sweep {
+    animation: none;
+    clip-path: inset(0);
+  }
   html {
     scroll-behavior: auto;
   }

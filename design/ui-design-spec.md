@@ -52,8 +52,8 @@ precedence over the reference recipes. This folder is internal and is not publis
   the title size, in exactly two lines with a break after "for". Keep the
   template serif italic family and a proportional scale on phone screens.
 - Align section headings and card copy to the same content grid. Keep borderless
-  grids for publications, media, and team. Products uses the bordered card row
-  described below; hide Tech Stack for now while preserving its content. Keep
+  grids for publications, media, team, and Products. Hide Tech Stack for now
+  while preserving its content. Keep
   section titles on the page, without numbered strips or backdrops.
 - Keep the `#features` bookmark and an accessible "Features" heading, but hide
   that generic heading visually. Use three vertically stacked video rows:
@@ -94,11 +94,23 @@ precedence over the reference recipes. This folder is internal and is not publis
   adjacent cards: EnergyAtlas-MCP, EnergyAtlas-Agent, EnergyAtlas-API, and
   EnergyAtlas-Wiki. Each has one short sentence and a 64px regular sketch icon.
   Only Wiki links to `https://energy-atlas.github.io/`; the other three remain
-  static articles without click targets or link affordances. Use one bordered
-  row of four equal cells spanning exactly the content width, with shared edges
+  static articles without click targets or link affordances. Use one borderless
+  row of four equal cells spanning exactly the content width
   and no gutters between cards; wrap to two columns on tablets and one on phones.
-  Adopt the wiki icon-card hover shade: a soft 16% accent gradient and a cropped
-  oversized copy of the icon at 14% opacity. Wiki also shows this on focus.
+  Hover reveals a very faint, fully filled sketch-paper rectangle (4% text-colour
+  tint), a soft 16% accent gradient, and a cropped backdrop icon at 14% opacity.
+  Clip all three through the same irregular SVG mask, generated from hardcoded
+  geometry in `design/product_hover_shape.py`. Edit the source and regenerate
+  `src/assets/shapes/product-wash.svg`; never hand-edit that output.
+  The paper layer has no border, shadow, or outline and extends slightly beyond
+  the unchanged card hit area. Keep text and foreground icons untransformed.
+  Each paper layer has its own hardcoded translation, rotation, and scale:
+  MCP (-3px, 2px), -1.6deg, (1.045, 1.035); Agent (4px, -3px), 1.2deg,
+  (1.055, 1.025); API (-2px, 4px), -0.9deg, (1.035, 1.055); Wiki (3px, -1px),
+  1.7deg, (1.045, 1.04). Both scale axes always enlarge; use no random values.
+  Reveal the fill, gradient, and motif together with a 0.4s left-to-right marker
+  sweep and an uneven advancing edge. Restart it on each hover. Wiki also shows
+  the paper on keyboard focus. Under reduced motion reveal it immediately.
 - Draw seven seeded editorial icons using `design/editorial_icons.py`, with
   regular (1.3) and bold (1.85) weights on the same 24-unit canvas. Deliver SVGs
   in `src/assets/icons/` and include them inline through one component; edit the
@@ -108,13 +120,14 @@ precedence over the reference recipes. This folder is internal and is not publis
   Wiki open book, city skyline within an open reasoning loop (Digital Twin
   candidate B), load chart, and distributed resource nodes. Keep the previous
   Digital Twin definition for comparison and later revisions.
-  Animate only the blue accent while its card is hovered with a mouse/fine
-  pointer; all icons rest completely still otherwise. Keep ink and decorative
+  Animate only Product foreground accents while their card is hovered with a
+  mouse/fine pointer, with a faster 1.6s cycle. All feature icons and other
+  non-card icons stay still, including on hover. Keep ink and decorative
   backdrop copies stable, and disable all icon motion for reduced-motion users.
   The owner delegated the complete initial icon set
   for later revision, superseding the skill's separate pilot approval gate;
   validate and inspect the API pilot before rendering the family.
-- Remove section and grid separators outside the requested Products cards. Retain
+- Remove all section and grid separators, including the Products card boundaries. Retain
   the top ribbon's existing bottom boundary and add a matching full-width top
   boundary to the footer. The footer uses the page background and theme-aware
   text/link colours in both modes; its copyright year is 2027. Publication and
@@ -173,7 +186,7 @@ The mobile stylesheet removes the hero overlay even though its text stays white.
 | Reference element | Website treatment | Decision |
 | --- | --- | --- |
 | Neutral base and raised surfaces | Page, header, cards | Adopt for both themes |
-| Ruled frame and shared cells | Connected Products cards; other grids borderless | Shared Products edges only; no outer page rails |
+| Ruled frame and shared cells | Adjacent, borderless Products cards | Rough filled paper on hover; no outer page rails |
 | Geist interface typography | Body and headings | Adopt |
 | Mono caps labels and editorial serif | Mono uppercase buttons/navigation; other labels normal-case sans; italic serif hero subtitle and feature summaries | Follow the owner's BEMGen and Archetype Atlas references |
 | Brand mark assets in skills | White-E header mark and favicon variants | Adopt at owner's request; retain site name and original gradient |
@@ -796,3 +809,34 @@ theme; reduced-motion fixtures report `none` for all seven, and backdrop copies
 always report `none`. Evidence: `tmp/ui-qa/icons-typography-light.json`,
 `tmp/ui-qa/icons-typography-dark.json`, `tmp/ui-qa/icons-hover-states.json`,
 `tmp/ui-icon-revisions.png`, and `tmp/ui-twin-candidate-in-page.png`.
+
+## 31. Borderless Products and marker-paper hover (2026-10-22)
+
+Removed all Product card boundaries. Each unchanged card hit area now reveals
+an enlarged, offset, rotated paper layer using the four fixed transforms in
+section 0. The filled SVG has slightly uneven edges, no outline, and masks the
+neutral tint, gradient, and backdrop icon together. Its source is
+`design/product_hover_shape.py`; Astro imports the generated SVG URL so the mask
+resolves correctly in development and the production bundle. The 0.4s reveal
+sweeps left to right with an uneven advancing edge and resets on pointer exit.
+Wiki keyboard focus also reveals the paper while preserving its focus ring.
+
+Only foreground Product icons animate on fine-pointer hover, at 1.6s per cycle
+(previously 4.8s). Feature icons remain still even when hovered. Decorative
+backdrop icons remain still. Reduced-motion mode disables icon and reveal
+animation and immediately displays the complete hovered/focused paper.
+
+Live pointer checks confirm the hovered Product alone animates, the other
+Products stop, and feature icons remain still. Production-fixture checks confirm
+the halfway clip exposes roughly half the paper at 0.2s, a 0.4s total duration,
+and an immediate full clip under reduced motion. Light and dark screenshots
+visibly confirm the shared mask and faint filled paper. Worst overlapping
+paper/wash/backdrop text contrast is 9.91:1 light and 10.13:1 dark.
+
+Both themes pass 375/800/1280/1920px checks with no horizontal overflow, clipped
+labels, or axe WCAG A/AA violations. The decorative SVG passes validation; the
+style audit finds no colour or font-size literals outside tokens. All 10 tests,
+`npm run build`, and `git diff --check` pass. Evidence:
+`tmp/ui-qa/sketch-paper-light.json`, `tmp/ui-qa/sketch-paper-dark.json`,
+`tmp/ui-qa/products-sketch-light.png`, `tmp/ui-qa/products-sketch-dark.png`, and
+`tmp/ui-qa/products-sketch-midpoint.png`.
