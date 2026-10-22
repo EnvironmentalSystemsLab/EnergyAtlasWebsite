@@ -5,7 +5,7 @@ import "../styles/site.css";
 import themeScript from "../scripts/theme.js?raw";
 import ribbonScript from "../scripts/ribbon.js?raw";
 import EditorialIcon from "../components/EditorialIcon.astro";
-import productWash from "../assets/shapes/product-wash.svg?url";
+import HoverPaper from "../components/HoverPaper.astro";
 
 const products = [
   { icon: "mcp", name: "EnergyAtlas-MCP", summary: "Connect AI assistants to EnergyAtlas tools and city energy data." },
@@ -203,11 +203,7 @@ const products = [
                 <EditorialIcon name={product.icon} class="product-icon" />
                 <h3>{product.name}{href && <span class="product-link-mark" aria-hidden="true"> ↗</span>}</h3>
                 <p>{product.summary}</p>
-                <span class="product-hover" style={`--ui-product-mask: url("${productWash}")`} aria-hidden="true">
-                  <span class="product-hover-sweep">
-                    <EditorialIcon name={product.icon} class="product-card-backdrop" />
-                  </span>
-                </span>
+                <HoverPaper icon={product.icon} />
               </Card>
             );
           })}
@@ -347,24 +343,26 @@ const products = [
         <div id="leadership" class="tab-content active">
           <div class="team-grid">
             <div class="team-member">
-              <a class="team-card" href="https://www.linkedin.com/in/timur-dogan-b28340a9/" target="_blank" rel="noopener noreferrer" aria-label="Open Dr. Timur Dogan LinkedIn in a new tab">
+              <a class="team-card" data-profile="dogan" href="https://www.linkedin.com/in/timur-dogan-b28340a9/" target="_blank" rel="noopener noreferrer" aria-label="Open Dr. Timur Dogan LinkedIn in a new tab">
                 <div class="team-photo">
                   <img src="/assets/img/team-dogan.jpg" alt="Dr. Timur Dogan" loading="lazy" />
                 </div>
                 <h3>Dr. Timur Dogan</h3>
                 <p class="team-title">Principal Investigator</p>
                 <p class="team-description">Dr. Timur Dogan is the Principal Investigator of EnergyAtlas.io, Associate Professor in the Department of Architecture, and Director of the Environmental Systems Lab at Cornell University. He supervises research direction, leads feature development, and coordinates collaborations and funding acquisition.</p>
+                <HoverPaper icon="profile" />
               </a>
             </div>
             
             <div class="team-member">
-              <a class="team-card" href="https://www.linkedin.com/in/chengxl/" target="_blank" rel="noopener noreferrer" aria-label="Open Chengxuan Li LinkedIn in a new tab">
+              <a class="team-card" data-profile="li" href="https://www.linkedin.com/in/chengxl/" target="_blank" rel="noopener noreferrer" aria-label="Open Chengxuan Li LinkedIn in a new tab">
                 <div class="team-photo">
                   <img src="/assets/img/team-li.jpg" alt="Chengxuan Li" loading="lazy" />
                 </div>
                 <h3>Chengxuan Li</h3>
                 <p class="team-title">Lead Developer</p>
                 <p class="team-description">Chengxuan Li is a PhD student in Systems Engineering at Cornell University. As lead developer at EnergyAtlas.io, he is responsible for core simulation engine development and validation, building template development, and large-scale urban data processing.</p>
+                <HoverPaper icon="profile" />
               </a>
             </div>
           </div>

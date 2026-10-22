@@ -55,6 +55,17 @@ precedence over the reference recipes. This folder is internal and is not publis
   grids for publications, media, team, and Products. Hide Tech Stack for now
   while preserving its content. Keep
   section titles on the page, without numbered strips or backdrops.
+  Publications and Media each use exactly one full-width column at every
+  viewport; retain all entries and links in their existing order.
+  Team remains two columns on desktop and one on phones. Reuse the Product
+  sketch-paper hover/focus layer, including its mask, tint, gradient, 0.24s
+  reveal, and reduced-motion handling. Dogan uses the MCP fixed transform;
+  Li uses Wiki's. Use a still head-and-shoulders editorial profile icon as the
+  cropped backdrop, generated in both weights from `design/editorial_icons.py`.
+  Preserve the real portraits and LinkedIn links. Names, roles, and descriptions
+  use the Product text colour in every state (white in dark mode, dark in light
+  mode); remove the old blue role/name hover and muted description treatments.
+  Keep name underline on hover, double underline on press, and keyboard focus.
 - Keep the `#features` bookmark and an accessible "Features" heading, but hide
   that generic heading visually. Use three vertically stacked video rows:
   "Agentic Digital Twin", "City-Scale Energy Insights", and "Distributed Energy
@@ -111,14 +122,15 @@ precedence over the reference recipes. This folder is internal and is not publis
   Reveal the fill, gradient, and motif together with a 0.24s left-to-right marker
   sweep and an uneven advancing edge. Restart it on each hover. Wiki also shows
   the paper on keyboard focus. Under reduced motion reveal it immediately.
-- Draw seven seeded editorial icons using `design/editorial_icons.py`, with
+- Draw eight seeded editorial icons using `design/editorial_icons.py`, with
   regular (1.3) and bold (1.85) weights on the same 24-unit canvas. Deliver SVGs
   in `src/assets/icons/` and include them inline through one component; edit the
   generator, never the rendered SVGs. Ink follows text, the single accent follows
   theme blue. Metaphors: MCP connector, Agent open infinity loop with a blue
   arrowhead pointing toward its tail across a small gap, API code brackets,
   Wiki open book, city skyline within an open reasoning loop (Digital Twin
-  candidate B), load chart, and distributed resource nodes. Keep the previous
+  candidate B), load chart, distributed resource nodes, and a profile silhouette.
+  Keep the previous
   Digital Twin definition for comparison and later revisions.
   Animate only Product foreground accents while their card is hovered with a
   mouse/fine pointer, with a faster 1.6s cycle. All feature icons and other
@@ -852,3 +864,30 @@ computed reveal duration, and no horizontal overflow. Worst overlapping text
 contrast remains above 9:1 in both themes. All 10 tests, production build, and
 diff whitespace check pass. Evidence: `tmp/ui-qa/products-stronger-light.png`
 and `tmp/ui-qa/products-stronger-dark.png`.
+
+## 33. Single-column references and Team paper hover (2026-10-22)
+
+Publications and Media now have one full-width column at every viewport. All
+four entries in each list retain their content, order, and destinations. Team
+cards reuse the Product paper through `HoverPaper.astro`, keeping the same
+sketch mask, tint, gradient, 0.24s reveal, and fixed enlarged transforms. A new
+seeded head-and-shoulders icon supplies their still blue backdrop. Both weights
+were generated from the icon source and pass SVG/canvas validation. Existing
+photographs and LinkedIn links are unchanged. Names, roles, and descriptions
+now share Product text colour instead of blue/muted treatments. Hover/press
+underlines and keyboard focus remain available.
+
+Both themes pass 375/800/1280/1920px checks with no overflow, clipped labels,
+or axe WCAG A/AA violations. Browser grid measurements confirm one column in
+both reference lists at all four widths. Light and dark Team screenshots show
+the shared paper and profile backdrop. Live keyboard navigation reveals only
+the focused card's paper and preserves its focus outline. Reduced-motion mode
+shows the full paper immediately with no reveal or backdrop animation. Text
+contrast over the existing treatment remains 9.27:1 light and 9.19:1 dark.
+
+All 10 tests, production build, and whitespace check pass. The style audit has
+no colour or font-size literals outside tokens. Evidence:
+`tmp/ui-qa/team-lists-light.json`, `tmp/ui-qa/team-lists-dark.json`,
+`tmp/ui-qa/team-paper-light.png`, `tmp/ui-qa/team-paper-dark.png`,
+`tmp/ui-qa/team-paper-focus-dark.png`, and
+`tmp/ui-qa/team-paper-style-audit.json`.

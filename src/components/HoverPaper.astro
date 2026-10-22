@@ -1,0 +1,12 @@
+---
+import EditorialIcon from "./EditorialIcon.astro";
+import productWash from "../assets/shapes/product-wash.svg?url";
+
+interface Props { icon: "mcp" | "agent" | "api" | "wiki" | "profile"; }
+const { icon } = Astro.props;
+---
+<span class="product-hover" style={`--ui-product-mask: url("${productWash}")`} aria-hidden="true">
+  <span class="product-hover-sweep">
+    <EditorialIcon name={icon} class="product-card-backdrop" />
+  </span>
+</span>

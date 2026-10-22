@@ -479,7 +479,11 @@ main > section:not(.hero) > .container {
   white-space: nowrap;
 }
 
-.publications-grid, .media-grid, .team-grid {
+.publications-grid, .media-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.team-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
@@ -547,10 +551,6 @@ main > section:not(.hero) > .container {
 
 .feature-copy li + li {
   margin-top: var(--ui-feature-bullet-gap);
-}
-
-.team-description {
-  color: var(--ui-muted);
 }
 
 .editorial-icon {
@@ -633,8 +633,8 @@ main > section:not(.hero) > .container {
   clip-path: polygon(0 0, 0 0, 0 18%, 0 38%, 0 64%, 0 83%, 0 100%, 0 100%);
 }
 
-.product-card:is(:hover, :focus-visible) .product-hover { opacity: 1; }
-.product-card:is(:hover, :focus-visible) .product-hover-sweep {
+:is(.product-card, .team-card):is(:hover, :focus-visible) .product-hover { opacity: 1; }
+:is(.product-card, .team-card):is(:hover, :focus-visible) .product-hover-sweep {
   animation: marker-sweep var(--ui-product-reveal-duration) linear both;
 }
 .product-card-link:hover { text-decoration: none; }
@@ -728,24 +728,34 @@ main > section:not(.hero) > .container {
 }
 
 .team-card {
+  position: relative;
+  isolation: isolate;
   display: block;
   height: 100%;
   padding: var(--ui-gutter);
   color: var(--ui-text);
   text-decoration: none;
+  background: var(--ui-clear);
 }
 
-.team-card:hover, .tech-icon:hover {
+.team-card[data-profile="dogan"] { --ui-product-hover-transform: var(--ui-product-mcp-transform); }
+.team-card[data-profile="li"] { --ui-product-hover-transform: var(--ui-product-wiki-transform); }
+
+.team-card:hover { text-decoration: none; }
+.team-card:hover h3 { text-decoration: underline; }
+.team-card:active h3 { text-decoration: underline double; }
+
+.tech-icon:hover {
   background: var(--ui-raised);
   text-decoration: none;
 }
 
-.team-card:hover h3, .tech-icon:hover span {
+.tech-icon:hover span {
   color: var(--ui-accent);
   text-decoration: underline;
 }
 
-.team-card:active, .tech-icon:active {
+.tech-icon:active {
   background: var(--ui-pressed);
   text-decoration: underline double;
 }
@@ -770,7 +780,7 @@ main > section:not(.hero) > .container {
 
 .team-title {
   margin-block: 0.5rem 1rem;
-  color: var(--ui-accent);
+  color: var(--ui-text);
   font-size: var(--ui-type-label);
   font-weight: var(--ui-weight-medium);
 }
@@ -925,7 +935,7 @@ footer a:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
   .editorial-icon .accent { animation: none; }
-  .product-card:is(:hover, :focus-visible) .product-hover-sweep {
+  :is(.product-card, .team-card):is(:hover, :focus-visible) .product-hover-sweep {
     animation: none;
     clip-path: inset(0);
   }

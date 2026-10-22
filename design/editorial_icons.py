@@ -86,6 +86,15 @@ def distributed_energy(pen: Pen) -> None:
     pen.blob([(12.5, 6.6), (9.7, 11.7), (12, 11.5), (11.3, 15.6), (14.7, 10.0), (12.6, 10.4)], accent=True)
 
 
+def profile(pen: Pen) -> None:
+    """An open shoulder silhouette and head, with one blue collar mark."""
+    pen.stroke(arc_points(12, 7.5, 3.7, 0, 360), closed=True, overshoot=0.8)
+    pen.stroke([(3.6, 20.5), (4.6, 17.2), (8, 14.5), (12, 13.8),
+                (16, 14.5), (19.4, 17.2), (20.4, 20.5)], taper=(0.65, 0.65))
+    pen.stroke([(10.1, 16.5), (12, 18.1), (13.9, 16.5)],
+               weight=0.85, taper=(0.7, 0.7), accent=True)
+
+
 ICONS = {
     "mcp": (mcp, 53),
     "agent": (agent, 73),
@@ -94,4 +103,5 @@ ICONS = {
     "digital-twin": (digital_twin, 113),
     "energy-insights": (energy_insights, 137),
     "distributed-energy": (distributed_energy, 157),
+    "profile": (profile, 179),
 }
