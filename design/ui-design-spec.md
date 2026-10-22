@@ -52,8 +52,12 @@ precedence over the reference recipes. This folder is internal and is not publis
   Keep an opaque dark backing over video for contrast, a minimum 44px target,
   and visible hover, pressed, and focus indicators without moving controls.
 - The hero actions read "explore features" and "wiki" (displayed uppercase by the
-  existing button style). Both turn white with black text on hover, focus, and
-  press. Other calls to action retain their existing labels and appearance.
+  existing button style). In dark mode both use the wiki's white text colour
+  (#e5e5e5) as fill and black (#000000) text; in light mode use the wiki's dark
+  text colour (#18202c) as fill and white (#ffffff) text. Hover and keyboard focus
+  use the theme's blue accent fill (#4da3ff dark / #125dae light), with the
+  corresponding contrast-tested text. Press uses the theme's pressed blue.
+  Keep a visible edge over the video. Other actions retain their current style.
 - The theme switch has a 44px target, an accessible dark-theme on/off state,
   sun/moon action icons, and visible hover/focus/pressed states. Keep it beside
   the site name on phones, with all section navigation below it.
