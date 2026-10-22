@@ -67,6 +67,11 @@ h3 {
   letter-spacing: var(--ui-tracking);
 }
 
+.hero-subtitle, .feature-copy p {
+  font-kerning: var(--ui-serif-kerning);
+  font-variant-ligatures: var(--ui-serif-ligatures);
+}
+
 .container {
   width: min(100%, var(--ui-max-width));
   margin-inline: auto;
@@ -565,12 +570,18 @@ main > section:not(.hero) > .container {
   fill: var(--ui-accent);
   transform-box: fill-box;
   transform-origin: center;
-  animation: var(--ui-icon-motion, sketch-pulse) var(--ui-icon-duration) ease-in-out infinite;
+  animation: var(--ui-icon-active-motion, none) var(--ui-icon-duration) ease-in-out infinite;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .product-card:hover .product-icon,
+  .feature-item:hover .feature-icon {
+    --ui-icon-active-motion: var(--ui-icon-motion, sketch-pulse);
+  }
 }
 
 .editorial-icon[data-icon="mcp"],
 .editorial-icon[data-icon="energy-insights"] { --ui-icon-motion: sketch-rise; }
-.editorial-icon[data-icon="agent"],
 .editorial-icon[data-icon="wiki"] { --ui-icon-motion: sketch-turn; }
 .editorial-icon[data-icon="api"] { --ui-icon-motion: sketch-lean; }
 

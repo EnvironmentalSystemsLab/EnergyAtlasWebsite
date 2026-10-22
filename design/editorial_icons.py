@@ -4,6 +4,8 @@ Render with the editorial-icons skill's scripts/ink_icons.py.
 Edit these definitions, never the rendered SVG assets.
 """
 
+import math
+
 from ink_icons import Pen, arc_points
 
 TITLE = "EnergyAtlas products and features"
@@ -29,10 +31,13 @@ def mcp(pen: Pen) -> None:
 
 
 def agent(pen: Pen) -> None:
-    """An open compass: reasoning has direction, rather than a robot face."""
-    pen.stroke(arc_points(12, 12, 8.1, 205, 550), weight=0.95)
-    pen.stroke([(10.0, 14.0), (8.1, 16.0), (14.0, 14.0), (16, 8.0)], weight=0.75)
-    pen.blob([(10, 10), (16, 8), (14, 14), (12.7, 11.2)], accent=True)
+    """An open infinity cycle; the blue head points down toward its loose tail."""
+    start, end = 0.26, 2 * math.pi - 0.11
+    points = [(12 + 8 * math.cos(t), 12 + 4.8 * math.sin(2 * t))
+              for t in [start + (end - start) * i / 64 for i in range(65)]]
+    pen.stroke(points, taper=(0.65, 0.8))
+    pen.stroke([(17.8, 9.0), (20.05, 11.6), (21.1, 8.5)],
+               weight=0.95, taper=(0.75, 0.7), spline=False, accent=True)
 
 
 def wiki(pen: Pen) -> None:
@@ -43,12 +48,24 @@ def wiki(pen: Pen) -> None:
     pen.blob([(15.1, 5.6), (17.8, 5.4), (17.7, 11.6), (16.3, 10.5), (15.1, 11.8)], accent=True)
 
 
-def digital_twin(pen: Pen) -> None:
+def digital_twin_previous(pen: Pen) -> None:
     """Two city-model blocks linked by an agent's curved connection."""
     pen.stroke(pen.rounded_rect(4.5, 11, 10, 20, 0.5), closed=True, overshoot=0.8)
     pen.stroke(pen.rounded_rect(13.5, 7.8, 19.5, 20, 0.5), closed=True, overshoot=0.8)
     pen.stroke([(5, 7.9), (7.2, 4.8), (11, 3.8), (14.4, 4.5)], weight=0.85)
     pen.dot(17.5, 4.8, 1.4, accent=True)
+
+
+def digital_twin(pen: Pen) -> None:
+    """Candidate B: a city model inside an open reasoning/feedback loop."""
+    for x0, top, x1 in [(4.6, 12.2, 8.0), (10.0, 7.8, 13.5), (15.6, 11.0, 19.0)]:
+        pen.stroke([(x0, 19.8), (x0, top), (x1, top), (x1, 19.8)],
+                   weight=0.85, spline=False)
+    pen.stroke([(3.5, 20), (11.5, 20), (20.0, 20)], weight=0.8)
+    pen.stroke([(3.5, 8.7), (5.5, 4.8), (11.4, 3.3), (17.8, 5.1),
+                (21.1, 9.5), (21.1, 12.7)], weight=0.8)
+    pen.stroke([(19.4, 11.7), (21.0, 14.4), (22.2, 11.5)],
+               weight=0.9, taper=(0.7, 0.7), spline=False, accent=True)
 
 
 def energy_insights(pen: Pen) -> None:

@@ -26,6 +26,8 @@ precedence over the reference recipes. This folder is internal and is not publis
 - Use the template families, locally hosted: Geist for interface, headings,
   wordmark, and normal-case labels; Geist Mono for DOI/media identifiers; Cormorant
   Garamond italic 500 for the short hero subtitle and feature summary sentences.
+  Explicitly enable normal kerning and common/contextual ligatures on these
+  serif roles, without changing font files or the established size scale.
   This replaces the earlier
   Roboto Flex wordmark and system-monospace exceptions at the owner's request.
   Keep wording as written. Button labels use the BEMGen wiki's mono uppercase
@@ -101,10 +103,15 @@ precedence over the reference recipes. This folder is internal and is not publis
   regular (1.3) and bold (1.85) weights on the same 24-unit canvas. Deliver SVGs
   in `src/assets/icons/` and include them inline through one component; edit the
   generator, never the rendered SVGs. Ink follows text, the single accent follows
-  theme blue. Metaphors: MCP connector, Agent compass, API code brackets, Wiki
-  open book, linked city blocks, load chart, and distributed resource nodes.
-  Animate the blue accent gently; keep ink stable and disable all icon motion
-  for reduced-motion users. The owner delegated the complete initial icon set
+  theme blue. Metaphors: MCP connector, Agent open infinity loop with a blue
+  arrowhead pointing toward its tail across a small gap, API code brackets,
+  Wiki open book, city skyline within an open reasoning loop (Digital Twin
+  candidate B), load chart, and distributed resource nodes. Keep the previous
+  Digital Twin definition for comparison and later revisions.
+  Animate only the blue accent while its card is hovered with a mouse/fine
+  pointer; all icons rest completely still otherwise. Keep ink and decorative
+  backdrop copies stable, and disable all icon motion for reduced-motion users.
+  The owner delegated the complete initial icon set
   for later revision, superseding the skill's separate pilot approval gate;
   validate and inspect the API pilot before rendering the family.
 - Remove section and grid separators outside the requested Products cards. Retain
@@ -758,3 +765,34 @@ review found no material issues. Evidence: `tmp/ui-qa/products-light.json`,
 `tmp/ui-qa/products-hover.json`, `tmp/ui-qa/products-style-audit.json`,
 `tmp/ui-products-light.png`, `tmp/ui-products-dark.png`,
 `tmp/ui-feature-editorial-icons.png`, and `tmp/ui-icon-family.png`.
+
+## 30. Hover-only motion, revised icons, and serif shaping (2026-10-22)
+
+Icons now have no animation at rest. A mouse/fine-pointer hover over a Product
+card or feature row activates only its foreground accent; leaving resets it to
+its original position. Keyboard focus alone does not start motion. Decorative
+backdrops remain still, and reduced-motion mode overrides hover animation.
+Live pointer checks confirm only Agent animates when its card is hovered and
+all product icons stop after the pointer returns to the ribbon.
+
+Replaced the Agent compass with a hand-drawn mathematical infinity loop, open
+on the right. Its single blue arrowhead points toward the loose tail across a
+small visible gap. Digital Twin candidate B shows a three-building city skyline
+inside an open reasoning/feedback loop, with a blue arrow tip. It is displayed
+in the page for review; the previous drawing remains in the generator as
+`digital_twin_previous` and in the comparison preview. Changed definitions and
+regenerated both weights, without hand-editing SVGs. All 14 family assets pass
+individual validation and the matching-canvas check; reviewed the revised
+regular and bold drawings at 150px and 24px on light and dark backgrounds.
+
+Explicitly enabled `font-kerning: normal` and common/contextual ligatures on the
+hero subtitle and all three serif summaries. Browser computed styles confirm
+these values on all four roles, with font families, files, and sizes preserved.
+
+All 10 tests, `npm run build`, and `git diff --check` pass. Both themes pass
+375/800/1280/1920px checks with no overflow, clipped headings, or axe WCAG A/AA
+violations. Hover fixtures activate all seven foreground accents in either
+theme; reduced-motion fixtures report `none` for all seven, and backdrop copies
+always report `none`. Evidence: `tmp/ui-qa/icons-typography-light.json`,
+`tmp/ui-qa/icons-typography-dark.json`, `tmp/ui-qa/icons-hover-states.json`,
+`tmp/ui-icon-revisions.png`, and `tmp/ui-twin-candidate-in-page.png`.

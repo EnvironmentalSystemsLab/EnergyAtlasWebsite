@@ -36,6 +36,8 @@
   --ui-font-brand: var(--ui-font-sans);
   --ui-font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
   --ui-font-serif: "Cormorant Garamond", Georgia, serif;
+  --ui-serif-kerning: normal;
+  --ui-serif-ligatures: common-ligatures contextual;
   --ui-editorial-style: italic;
   --ui-type-small: 0.75rem;
   --ui-type-label: 0.875rem;
