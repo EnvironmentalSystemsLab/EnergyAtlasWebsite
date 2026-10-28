@@ -100,11 +100,8 @@ const products = [
         <p class="hero-subtitle">agentic digital twins for<br /> city-scale energy insights.</p>
         
         <div class="cta-buttons">
-          <a href="#features" class="btn btn-primary">explore features</a>
+          <a href={surveyUrl} class="btn survey-cta" target="_blank" rel="noopener noreferrer">Take the survey ↗</a>
           <a href="https://energy-atlas.github.io/" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">wiki</a>
-          <div class="hero-survey-row">
-            <a href={surveyUrl} class="btn survey-cta" target="_blank" rel="noopener noreferrer">Take the survey ↗</a>
-          </div>
           <!-- <a href="#use-cases" class="btn btn-secondary">Explore Use Cases</a> -->
         </div>
       </div>
@@ -454,8 +451,9 @@ const products = [
       <p>&copy; 2027 EnergyAtlas.io — Environmental Systems Lab, Cornell University</p>
     </div>
   </footer>
-  <section id="survey-dialog" class="survey-dialog" role="dialog" aria-modal="false" aria-labelledby="survey-title" aria-describedby="survey-description" hidden>
-    <h2 id="survey-title">Tell us what your city needs</h2>
+  <section id="survey-dialog" class="survey-dialog" role="dialog" aria-modal="false" aria-labelledby="survey-title" aria-describedby="survey-subtitle survey-description" hidden>
+    <h2 id="survey-title">Tell us what your city needs!</h2>
+    <p id="survey-subtitle" class="survey-subtitle">Your city. Your priorities.</p>
     <div class="survey-actions">
       <a href={surveyUrl} class="btn survey-cta" target="_blank" rel="noopener noreferrer">Take the survey <span aria-hidden="true">↗</span></a>
       <button class="btn survey-dismiss" type="button" data-survey-close>Dismiss</button>

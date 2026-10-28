@@ -12,7 +12,8 @@ precedence over the reference recipes. This folder is internal and is not publis
   URLs. Show a compact, nonmodal invitation at the bottom-right on every page
   load for review, with no page overlay or scroll lock. Use the existing theme
   palette and a Geist headline. Remove the popup's "Help shape" sentence.
-  Use the heading "Tell us what your city needs" and a filled blue "Take the
+  Use the heading "Tell us what your city needs!", the 24px Cormorant italic
+  subtitle "Your city. Your priorities.", and a filled blue "Take the
   survey" link to the owner's Google Form, opening in a new tab. Do not dismiss
   the invitation on timer, outside click, or opening the form. Remove the eyebrow
   and branding. Replace X with a neutral outlined "Dismiss" button beside the
@@ -28,8 +29,8 @@ precedence over the reference recipes. This folder is internal and is not publis
   plus the approved sentence and survey CTA near the demo actions. No embedded
   form, response collection, or remembered dismissal in this mock. Review the
   presentation and recurrence policy before publication.
-  Add a filled blue "Take the survey" link on a new row beneath Explore Features
-  and Wiki in the hero. Preserve the existing first-row actions and their colours.
+  Replace Explore Features with a filled blue "Take the survey" link beside
+  Wiki in the hero's original action row. Remove the separate survey action row.
 
 - Reference: the EnergyAtlas visual family described by the app-ui-alignment and
   wiki-ui-alignment skills, rather than a particular live site or screenshot.
@@ -183,10 +184,11 @@ precedence over the reference recipes. This folder is internal and is not publis
   tracking, and 12px/16px padding. Demo actions stay outlined; hero actions use
   the fills specified below. Keep a minimum 44px target and visible hover,
   pressed, and focus indicators without moving controls.
-- The hero actions read "explore features" and "wiki" (displayed uppercase by the
-  existing button style). In both modes use the wiki's white (#e5e5e5) fill and
-  black (#000000) text. Hover and keyboard focus use the same blue (#4da3ff)
-  fill in both modes; press uses the fixed hero pressed blue. No text underline
+- The hero actions read "Take the survey" and "wiki" (displayed uppercase by the
+  existing button style). The survey uses the fixed hero blue (#4da3ff) fill
+  with black text in both modes, brightening on hover/focus. Wiki retains the
+  white (#e5e5e5) fill and black (#000000) text, turning blue (#4da3ff) on
+  hover/focus. Press uses the fixed hero pressed blue. No text underline
   appears on these two buttons, including hover; retain the focus ring and a
   visible edge over video. Other actions retain their current style.
 - Left-align the demo action group with its section heading. Use 96–160px of
@@ -1044,4 +1046,20 @@ All 12 tests, production build, whitespace check, and token audit pass. Both
 themes pass axe WCAG A/AA and overflow checks at 375/800/1280/1920px. Evidence
 in `tmp/ui-qa/survey/`: `actions-light.png`, `actions-dark.png`,
 `actions-light.json`, `actions-dark.json`, and `actions-style-audit.json`.
+Nothing was pushed.
+
+## 40. Primary hero survey link and popup subtitle (2026-10-27)
+
+Replaced Explore Features with the blue survey action in the hero's original
+row beside Wiki, removing the extra survey row. Updated the popup heading to
+"Tell us what your city needs!" and restored "Your city. Your priorities." as
+a smaller 24px Cormorant italic subtitle with the existing serif shaping rules.
+The popup remains nonblocking with neutral Dismiss and the existing survey URL.
+
+Browser measurements confirm the two desktop hero actions share the same row,
+with blue survey and white Wiki fills. The phone popup has no internal overflow.
+Both themes pass axe WCAG A/AA and page overflow checks at 375/800/1280/1920px.
+All 12 tests, production build, whitespace check, and token style audit pass.
+Evidence in `tmp/ui-qa/survey/`: `priority-light.png`, `priority-dark.png`,
+`priority-light.json`, `priority-dark.json`, and `priority-style-audit.json`.
 Nothing was pushed.

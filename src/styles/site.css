@@ -67,7 +67,7 @@ h3 {
   letter-spacing: var(--ui-tracking);
 }
 
-.hero-subtitle, .feature-copy p {
+.hero-subtitle, .feature-copy p, .survey-subtitle {
   font-kerning: var(--ui-serif-kerning);
   font-variant-ligatures: var(--ui-serif-ligatures);
 }
@@ -867,11 +867,6 @@ footer a:focus-visible {
   overflow: auto;
 }
 
-.hero-survey-row {
-  display: flex;
-  flex-basis: 100%;
-}
-
 .survey-actions {
   display: flex;
   align-items: center;
@@ -892,6 +887,14 @@ footer a:focus-visible {
   outline-offset: var(--ui-focus-offset);
 }
 .survey-dialog h2 { font-size: var(--ui-survey-title-size); }
+.survey-subtitle {
+  margin-top: var(--ui-survey-small-gap);
+  font-family: var(--ui-font-serif);
+  font-style: var(--ui-editorial-style);
+  font-weight: var(--ui-weight-medium);
+  font-size: var(--ui-survey-subtitle-size);
+  line-height: var(--ui-feature-copy-leading);
+}
 .survey-actions { gap: var(--ui-survey-gap); flex-wrap: wrap; margin-top: var(--ui-survey-gap); }
 .survey-actions .btn { width: auto; }
 .survey-cta {
