@@ -67,7 +67,7 @@ h3 {
   letter-spacing: var(--ui-tracking);
 }
 
-.hero-subtitle, .feature-copy p {
+.hero-subtitle, .feature-copy p, .survey-subtitle {
   font-kerning: var(--ui-serif-kerning);
   font-variant-ligatures: var(--ui-serif-ligatures);
 }
@@ -850,6 +850,67 @@ footer a {
 footer a:focus-visible {
   outline-color: var(--ui-focus);
 }
+
+.survey-dialog {
+  position: fixed;
+  inset: auto var(--ui-survey-inset) var(--ui-survey-inset) auto;
+  z-index: var(--ui-survey-layer);
+  width: min(var(--ui-survey-width), calc(100% - 2 * var(--ui-survey-inset)));
+  max-width: none;
+  max-height: calc(100svh - 2 * var(--ui-survey-inset));
+  margin: 0;
+  padding: var(--ui-survey-padding);
+  border: var(--ui-rule);
+  border-radius: var(--ui-radius);
+  background: var(--ui-bg);
+  color: var(--ui-text);
+  overflow: auto;
+}
+
+.survey-actions {
+  display: flex;
+  align-items: center;
+}
+.survey-dismiss {
+  background: var(--ui-clear);
+  color: var(--ui-text);
+  cursor: pointer;
+}
+.survey-dismiss:is(:hover, :focus-visible, :active) {
+  border-color: var(--ui-border-interactive);
+  background: var(--ui-raised);
+  color: var(--ui-text);
+}
+.survey-dismiss:active { background: var(--ui-pressed); }
+.survey-dismiss:focus-visible {
+  outline: var(--ui-focus-width) solid var(--ui-text);
+  outline-offset: var(--ui-focus-offset);
+}
+.survey-dialog h2 { font-size: var(--ui-survey-title-size); }
+.survey-subtitle {
+  margin-top: var(--ui-survey-small-gap);
+  font-family: var(--ui-font-serif);
+  font-style: var(--ui-editorial-style);
+  font-weight: var(--ui-weight-medium);
+  font-size: var(--ui-survey-subtitle-size);
+  line-height: var(--ui-feature-copy-leading);
+}
+.survey-actions { gap: var(--ui-survey-gap); flex-wrap: wrap; margin-top: var(--ui-survey-gap); }
+.survey-actions .btn { width: auto; }
+.survey-cta {
+  gap: var(--ui-survey-button-gap);
+  border-color: var(--ui-accent);
+  background: var(--ui-accent);
+  color: var(--ui-on-accent);
+}
+.survey-cta:is(:hover, :focus-visible) { background: var(--ui-accent-hover); color: var(--ui-on-accent); }
+.survey-cta:active { background: var(--ui-accent-pressed); color: var(--ui-on-accent); }
+.hero .survey-cta { background: var(--ui-hero-link); border-color: var(--ui-hero-link); color: var(--ui-hero-on-accent); }
+.hero .survey-cta:is(:hover, :focus-visible) { background: var(--ui-hero-hover); color: var(--ui-hero-on-accent); }
+.hero .survey-cta:active { background: var(--ui-hero-pressed); color: var(--ui-hero-on-accent); }
+.survey-note { margin-top: var(--ui-survey-small-gap); color: var(--ui-muted); font-size: var(--ui-type-small); }
+#demo .survey-demo-copy { color: var(--ui-text); }
+footer a { overflow-wrap: anywhere; }
 
 @media (max-width: 1024px) {
   .products-grid {

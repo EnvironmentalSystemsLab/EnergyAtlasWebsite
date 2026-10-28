@@ -6,6 +6,34 @@ Approved by the owner on 2026-10-21, before implementation, with the font-family
 and subsequent frame/brand corrections requested later that day. This section takes
 precedence over the reference recipes. This folder is internal and is not published.
 
+- Survey/contact changes (2026-10-27): the owner approved commit, push, and
+  deployment after reviewing the local mock. Update contact and demo mail links to `cl2749+energyatlas@cornell.edu`,
+  displaying the full address in the footer and encoding `+` as `%2B` in mailto
+  URLs. Request a Demo remains a direct mailto link with subject "Demo Request",
+  without an intermediate contact reveal or copy UI.
+  Show a compact, nonmodal invitation at the bottom-right on every page
+  load for review, with no page overlay or scroll lock. Use the existing theme
+  palette and a Geist headline. Remove the popup's "Help shape" sentence.
+  Use the heading "Tell us what your city needs!", the 24px Cormorant italic
+  subtitle "Your city. Your priorities.", and a filled blue "Take the
+  survey" link to the owner's Google Form, opening in a new tab. Do not dismiss
+  the invitation on timer, outside click, or opening the form. Remove the eyebrow
+  and branding. Replace X with a neutral outlined "Dismiss" button beside the
+  blue survey action; keep Dismiss neutral in hover, press, and focus states.
+  Escape also closes while focus is in the popup.
+  Leave page content interactive and do not move focus on initial appearance.
+  Feedback reopens it and focuses Dismiss; return focus after closing from inside it.
+  Desktop width is up to 480px, with 20px padding and a 20–28px headline.
+  Use the note "Google Forms, 2 minutes". Keep only a uniform neutral boundary,
+  removing the blue top rule. Wrap naturally on narrow screens.
+  Keep 16px clearance to the right/bottom and
+  allow internal scrolling on short screens. Add a Feedback ribbon entry that reopens the invitation,
+  plus the approved sentence and survey CTA near the demo actions. No embedded
+  form, response collection, or remembered dismissal in this mock. Review the
+  presentation and recurrence policy before publication.
+  Replace Explore Features with a filled blue "Take the survey" link beside
+  Wiki in the hero's original action row. Remove the separate survey action row.
+
 - Reference: the EnergyAtlas visual family described by the app-ui-alignment and
   wiki-ui-alignment skills, rather than a particular live site or screenshot.
 - Scope: appearance of the existing Astro landing page. Preserve the name,
@@ -158,10 +186,11 @@ precedence over the reference recipes. This folder is internal and is not publis
   tracking, and 12px/16px padding. Demo actions stay outlined; hero actions use
   the fills specified below. Keep a minimum 44px target and visible hover,
   pressed, and focus indicators without moving controls.
-- The hero actions read "explore features" and "wiki" (displayed uppercase by the
-  existing button style). In both modes use the wiki's white (#e5e5e5) fill and
-  black (#000000) text. Hover and keyboard focus use the same blue (#4da3ff)
-  fill in both modes; press uses the fixed hero pressed blue. No text underline
+- The hero actions read "Take the survey" and "wiki" (displayed uppercase by the
+  existing button style). The survey uses the fixed hero blue (#4da3ff) fill
+  with black text in both modes, brightening on hover/focus. Wiki retains the
+  white (#e5e5e5) fill and black (#000000) text, turning blue (#4da3ff) on
+  hover/focus. Press uses the fixed hero pressed blue. No text underline
   appears on these two buttons, including hover; retain the focus ring and a
   visible edge over video. Other actions retain their current style.
 - Left-align the demo action group with its section heading. Use 96–160px of
@@ -934,3 +963,119 @@ check, and token audit pass. Evidence: `tmp/ui-qa/reference-type-light.json`,
 `tmp/ui-qa/reference-type-dark.json`, `tmp/ui-qa/reference-type-light.png`,
 `tmp/ui-qa/reference-type-dark.png`, and
 `tmp/ui-qa/reference-type-style-audit.json`.
+
+## 36. Survey invitation and contact review mock (2026-10-27)
+
+Implemented the local-only review concept described in section 0 on
+`codex/survey-contact-preview`. The native dialog opens on every load and has
+explicit X, secondary close, and Escape dismissal. It has no automatic timeout
+or backdrop dismissal. Feedback in the ribbon reopens it. The owner's approved
+sentence appears unchanged in the invitation and beside the demo actions, where
+a filled survey link is also available. The Form destination was opened read-only
+and confirms a municipal UBEM interest survey taking about two minutes; that
+description supplies the eyebrow and timing note. No responses were submitted.
+The supplied plus-address is displayed in the footer; contact and demo mailto
+links encode the plus sign as `%2B`.
+
+The invitation uses existing text, background, accent, font, and control roles.
+Desktop max width is 672px, padding 24–48px, heading 40–64px, serif summary
+24–30px. A 66% black backdrop with 6px blur makes it prominent without adding
+card shadows or a new palette. It stays within the viewport and scrolls internally
+on short screens. Initial focus is on the noninteractive heading; its automatic
+outline is suppressed while all control focus indicators remain. Native dialog
+behavior makes underlying site content inert. Close events unlock page scrolling
+and return focus to Feedback; keyboard and secondary-close checks confirm this.
+
+Both themes pass axe WCAG A/AA and overflow checks at 375/800/1280/1920px.
+The 375px frame's dialog is approximately 343×504px with no content overflow.
+All 12 tests, production build, whitespace check, and token style audit pass.
+Evidence is in `tmp/ui-qa/survey/`: `light.json`, `dark.json`,
+`light-desktop.png`, `dark-desktop.png`, `dark-phone.png`,
+`contact-demo-dark.png`, and `style-audit.json`. The preview remains local;
+the invitation's presentation and repeat-on-load policy await owner review.
+
+## 37. Compact bottom-right invitation revision (2026-10-27)
+
+Replaced the centered blocking modal with a fixed nonmodal dialog region in the
+bottom-right corner. Removed the eyebrow and secondary close action. The title
+is one line at desktop size; the approved serif sentence also fits one line
+within the new 736px maximum width. The popup is approximately 259px tall at
+1280×720, down from about 558px, and covers roughly 21% of that viewport. It
+has 16px right/bottom clearance, no overlay or scroll lock, and no initial
+focus movement. Page navigation and the theme switch work while it remains
+visible. X closes it; Feedback reopens it with focus on X, and Escape from
+inside closes it and restores focus to Feedback. It still has no timer or
+outside-click dismissal.
+
+The popup wraps naturally on phones: the 375×800 frame has a 328×304px panel
+with no internal overflow. Both themes pass axe WCAG A/AA and page overflow
+checks at 375/800/1280/1920px. All 12 tests, production build, whitespace check,
+and token audit pass. Local-only evidence in `tmp/ui-qa/survey/` includes
+`corner-light.png`, `corner-dark.png`, `corner-phone.png`, `corner-light.json`,
+`corner-dark.json`, and `corner-style-audit.json`. Nothing was pushed.
+
+## 38. Simplified corner popup (2026-10-27)
+
+Removed the popup's serif summary, changed its heading to "Tell us what your
+city needs", and shortened its note to "Google Forms, 2 minutes". Reduced its
+maximum width from 736px to 480px and removed the blue top border; the neutral
+boundary is uniform on all sides. The popup is approximately 480×214px on
+desktop and 328×205px in the 375px phone frame, with no internal overflow.
+The approved sentence beside the demo actions remains unchanged.
+
+All 12 tests, production build, whitespace check, and style token audit pass.
+Both themes pass axe WCAG A/AA and overflow checks at 375/800/1280/1920px.
+Evidence in `tmp/ui-qa/survey/`: `refined-light.png`, `refined-dark.png`,
+`refined-light.json`, `refined-dark.json`, and `refined-style-audit.json`.
+This remains a local-only review change; nothing was pushed.
+
+## 39. Neutral Dismiss and hero survey action (2026-10-27)
+
+Removed the popup logo, wordmark, and X button. Dismiss is now a neutral
+outlined button beside the filled blue survey action. Its text, fill, border,
+and keyboard focus stay neutral in both themes. It uses the existing dismissal
+handler, including focus restoration and reopening from Feedback. The popup
+no longer reserves space for a branding/header row.
+
+Added a filled blue survey link on a separate row below Explore Features and
+Wiki. The original two hero buttons keep their previous fills and behavior.
+Live checks confirm the hero survey starts below both original buttons, its
+fill is blue, Dismiss closes the popup, and keyboard focus on Dismiss has no
+blue colour treatment. In the 375px frame, both popup actions share the same
+vertical position and fit side by side.
+
+All 12 tests, production build, whitespace check, and token audit pass. Both
+themes pass axe WCAG A/AA and overflow checks at 375/800/1280/1920px. Evidence
+in `tmp/ui-qa/survey/`: `actions-light.png`, `actions-dark.png`,
+`actions-light.json`, `actions-dark.json`, and `actions-style-audit.json`.
+Nothing was pushed.
+
+## 40. Primary hero survey link and popup subtitle (2026-10-27)
+
+Replaced Explore Features with the blue survey action in the hero's original
+row beside Wiki, removing the extra survey row. Updated the popup heading to
+"Tell us what your city needs!" and restored "Your city. Your priorities." as
+a smaller 24px Cormorant italic subtitle with the existing serif shaping rules.
+The popup remains nonblocking with neutral Dismiss and the existing survey URL.
+
+Browser measurements confirm the two desktop hero actions share the same row,
+with blue survey and white Wiki fills. The phone popup has no internal overflow.
+Both themes pass axe WCAG A/AA and page overflow checks at 375/800/1280/1920px.
+All 12 tests, production build, whitespace check, and token style audit pass.
+Evidence in `tmp/ui-qa/survey/`: `priority-light.png`, `priority-dark.png`,
+`priority-light.json`, `priority-dark.json`, and `priority-style-audit.json`.
+Nothing was pushed.
+
+## 41. Restore direct demo email action (2026-10-27)
+
+At the owner's request, revoked the inline contact reveal and copy-address
+change. Request a Demo is again a direct mailto link, with no click interception
+or intermediate UI. Removed the contact script, styles, tokens, and tests for
+that revoked behavior.
+
+Verified the production HTML's actual link: the mailto recipient decodes exactly
+to `cl2749+energyatlas@cornell.edu`, the subject decodes to "Demo Request", and
+no reveal/copy UI remains. All 12 retained tests and the production build pass.
+The preview previously blocked external email-handler navigation, so actual
+mail-app launch and delivery remain unverified; no bypass was attempted.
+Nothing was pushed.
