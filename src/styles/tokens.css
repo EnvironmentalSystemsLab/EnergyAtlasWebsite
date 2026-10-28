@@ -16,15 +16,13 @@
   --ui-focus: #125dae;
   --ui-selection: #e3ecf5;
   --ui-clear: transparent;
-  --ui-survey-width: 46rem;
+  --ui-survey-width: 30rem;
   --ui-survey-inset: 1rem;
   --ui-survey-padding: 1.25rem;
   --ui-survey-title-size: clamp(1.25rem, 2.5vw, 1.75rem);
-  --ui-survey-summary-size: 1.5rem;
   --ui-survey-gap: 0.75rem;
   --ui-survey-small-gap: 0.5rem;
   --ui-survey-layer: 110;
-  --ui-survey-top-rule: 3px solid var(--ui-accent);
   --ui-survey-button-gap: 0.75rem;
   --ui-feature-glow-color: rgba(0, 0, 0, 0.35);
 

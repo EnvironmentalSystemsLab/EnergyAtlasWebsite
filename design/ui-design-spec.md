@@ -11,17 +11,17 @@ precedence over the reference recipes. This folder is internal and is not publis
   displaying the full address in the footer and encoding `+` as `%2B` in mailto
   URLs. Show a compact, nonmodal invitation at the bottom-right on every page
   load for review, with no page overlay or scroll lock. Use the existing theme
-  palette, a Geist headline, and the Cormorant
-  italic sentence: "Help shape EnergyAtlas—tell us what your city needs."
-  Use the heading "Your city. Your priorities." and a filled blue "Take the
+  palette and a Geist headline. Remove the popup's "Help shape" sentence.
+  Use the heading "Tell us what your city needs" and a filled blue "Take the
   survey" link to the owner's Google Form, opening in a new tab. Do not dismiss
   the invitation on timer, outside click, or opening the form. Remove the eyebrow
   and secondary close link; close with X, or Escape while focus is in the popup.
   Leave page content interactive and do not move focus on initial appearance.
   Feedback reopens it and focuses X; return focus after closing from inside it.
-  Desktop width is up to 736px, with 20px padding, a 20–28px single-line headline
-  and 24px serif sentence. Keep the sentence on one line when space permits;
-  wrap naturally on narrow screens. Keep 16px clearance to the right/bottom and
+  Desktop width is up to 480px, with 20px padding and a 20–28px headline.
+  Use the note "Google Forms, 2 minutes". Keep only a uniform neutral boundary,
+  removing the blue top rule. Wrap naturally on narrow screens.
+  Keep 16px clearance to the right/bottom and
   allow internal scrolling on short screens. Add a Feedback ribbon entry that reopens the invitation,
   plus the approved sentence and survey CTA near the demo actions. No embedded
   form, response collection, or remembered dismissal in this mock. Review the
@@ -1005,3 +1005,18 @@ checks at 375/800/1280/1920px. All 12 tests, production build, whitespace check,
 and token audit pass. Local-only evidence in `tmp/ui-qa/survey/` includes
 `corner-light.png`, `corner-dark.png`, `corner-phone.png`, `corner-light.json`,
 `corner-dark.json`, and `corner-style-audit.json`. Nothing was pushed.
+
+## 38. Simplified corner popup (2026-10-27)
+
+Removed the popup's serif summary, changed its heading to "Tell us what your
+city needs", and shortened its note to "Google Forms, 2 minutes". Reduced its
+maximum width from 736px to 480px and removed the blue top border; the neutral
+boundary is uniform on all sides. The popup is approximately 480×214px on
+desktop and 328×205px in the 375px phone frame, with no internal overflow.
+The approved sentence beside the demo actions remains unchanged.
+
+All 12 tests, production build, whitespace check, and style token audit pass.
+Both themes pass axe WCAG A/AA and overflow checks at 375/800/1280/1920px.
+Evidence in `tmp/ui-qa/survey/`: `refined-light.png`, `refined-dark.png`,
+`refined-light.json`, `refined-dark.json`, and `refined-style-audit.json`.
+This remains a local-only review change; nothing was pushed.
