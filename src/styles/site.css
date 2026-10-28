@@ -827,29 +827,6 @@ main > section:not(.hero) > .container {
   justify-content: flex-start;
   margin-inline: 0;
 }
-#demo button.btn { cursor: pointer; }
-
-.demo-contact {
-  max-width: var(--ui-contact-width);
-  margin-top: var(--ui-contact-gap);
-  color: var(--ui-text);
-  font-size: var(--ui-type-label);
-  line-height: var(--ui-feature-copy-leading);
-}
-.demo-contact h3 { font-size: var(--ui-type-lead); }
-.demo-contact h3:focus { outline: none; }
-.demo-contact > p { margin-top: var(--ui-survey-small-gap); }
-.demo-contact-tools {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--ui-contact-gap);
-  margin-top: var(--ui-contact-gap);
-}
-.demo-contact-tools a { overflow-wrap: anywhere; }
-.demo-contact-tools .btn { width: auto; cursor: pointer; }
-.demo-contact-help { color: var(--ui-muted); }
-.demo-contact-status { min-height: calc(var(--ui-type-label) * var(--ui-feature-copy-leading)); }
 
 footer {
   background: var(--ui-bg);

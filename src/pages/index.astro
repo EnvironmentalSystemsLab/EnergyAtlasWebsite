@@ -5,7 +5,6 @@ import "../styles/site.css";
 import themeScript from "../scripts/theme.js?raw";
 import ribbonScript from "../scripts/ribbon.js?raw";
 import surveyScript from "../scripts/survey.js?raw";
-import contactScript from "../scripts/contact.js?raw";
 import EditorialIcon from "../components/EditorialIcon.astro";
 import HoverPaper from "../components/HoverPaper.astro";
 
@@ -29,7 +28,6 @@ const products = [
   <script is:inline set:html={themeScript}></script>
   <script is:inline set:html={ribbonScript}></script>
   <script is:inline set:html={surveyScript}></script>
-  <script is:inline set:html={contactScript}></script>
   <meta name="description" content="EnergyAtlas.io - Your city-scale digital twin for fast, validated urban energy insight. ISO-compliant UBEM platform with ~150× faster simulations." />
   
   <!-- Favicon -->
@@ -439,21 +437,10 @@ const products = [
         
         <div class="cta-buttons">
           <a href={surveyUrl} class="btn survey-cta" target="_blank" rel="noopener noreferrer">Take the survey ↗</a>
-          <button id="demo-request" type="button" class="btn btn-primary" aria-expanded="false" aria-controls="demo-contact">Request a Demo</button>
+          <a href={`${contactUrl}?subject=Demo%20Request`} class="btn btn-primary">Request a Demo</a>
           <a href="/assets/file/EnergyAtlas_Features.pdf" class="btn btn-secondary" download="EnergyAtlas-Feature-Brochure.pdf">Download feature brochure</a>
           <!-- <a href="#use-cases" class="btn btn-secondary">Explore Use Cases</a> -->
         </div>
-        <div id="demo-contact" class="demo-contact" role="region" aria-labelledby="demo-contact-title" hidden>
-          <h3 id="demo-contact-title" tabindex="-1">Arrange a demo by email</h3>
-          <p>Send us your city or organization and what you’d like to explore.</p>
-          <div class="demo-contact-tools">
-            <a id="demo-email" href={`${contactUrl}?subject=Demo%20Request`}>{contactEmail}</a>
-            <button id="demo-copy-email" class="btn" type="button">Copy email</button>
-          </div>
-          <p class="demo-contact-help">The email link opens your email app. If nothing opens, copy the address into your email service.</p>
-          <p id="demo-contact-status" class="demo-contact-status" role="status"></p>
-        </div>
-        <noscript><p class="demo-contact">To request a demo, email <a href={contactUrl}>{contactEmail}</a>.</p></noscript>
       </div>
     </section>
   </main>

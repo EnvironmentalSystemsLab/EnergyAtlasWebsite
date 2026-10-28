@@ -9,7 +9,9 @@ precedence over the reference recipes. This folder is internal and is not publis
 - Survey/contact review mock (2026-10-27): local branch only; do not push or
   deploy. Update contact and demo mail links to `cl2749+energyatlas@cornell.edu`,
   displaying the full address in the footer and encoding `+` as `%2B` in mailto
-  URLs. Show a compact, nonmodal invitation at the bottom-right on every page
+  URLs. Request a Demo remains a direct mailto link with subject "Demo Request",
+  without an intermediate contact reveal or copy UI.
+  Show a compact, nonmodal invitation at the bottom-right on every page
   load for review, with no page overlay or scroll lock. Use the existing theme
   palette and a Geist headline. Remove the popup's "Help shape" sentence.
   Use the heading "Tell us what your city needs!", the 24px Cormorant italic
@@ -31,13 +33,6 @@ precedence over the reference recipes. This folder is internal and is not publis
   presentation and recurrence policy before publication.
   Replace Explore Features with a filled blue "Take the survey" link beside
   Wiki in the hero's original action row. Remove the separate survey action row.
-  Request a Demo is a button that toggles an inline contact region beneath the
-  demo actions, with a noscript email fallback. Show the recipient address
-  and a Copy email action so an unavailable mail handler cannot cause a silent
-  failure. Keep the visible email as a standard mailto link for configured
-  clients. Copy feedback uses a polite live region; if clipboard access fails,
-  instruct the visitor to select and copy the visible address. Do not launch
-  another mail service, submit an inquiry, or require account sign-in.
 
 - Reference: the EnergyAtlas visual family described by the app-ui-alignment and
   wiki-ui-alignment skills, rather than a particular live site or screenshot.
@@ -1071,27 +1066,16 @@ Evidence in `tmp/ui-qa/survey/`: `priority-light.png`, `priority-dark.png`,
 `priority-light.json`, `priority-dark.json`, and `priority-style-audit.json`.
 Nothing was pushed.
 
-## 41. Demo contact fallback (2026-10-27)
+## 41. Restore direct demo email action (2026-10-27)
 
-The original demo action was a valid mailto link to the supplied plus-address,
-with subject Demo Request. Browser hit testing confirmed it was clickable and
-unobstructed. Its mail-handler navigation was rejected by the preview's browser
-security policy during testing; this does not establish a failure in every
-visitor's configured email client. No further external-handler launch was
-attempted.
+At the owner's request, revoked the inline contact reveal and copy-address
+change. Request a Demo is again a direct mailto link, with no click interception
+or intermediate UI. Removed the contact script, styles, tokens, and tests for
+that revoked behavior.
 
-Request a Demo now toggles an inline contact region with a visible recipient,
-standard email link, Copy email button, and instructions for unavailable mail
-handlers. The action itself performs no external navigation. It updates
-aria-expanded and focuses the revealed heading; clipboard feedback is announced
-through a status region. Clipboard failures leave manual-copy instructions, and
-noscript visitors receive an email fallback. No inquiry is sent automatically.
-
-Live checks confirm reveal and successful copy feedback. Unit checks verify
-the exact plus-address is copied and permission failures produce the fallback.
-All 15 tests, production build, whitespace check, and token audit pass. Expanded
-contact regions pass axe WCAG A/AA and overflow checks at 375/800/1280/1920px in
-both themes. Evidence in `tmp/ui-qa/survey/`: `demo-contact-light.png`,
-`demo-contact-dark.png`, `demo-contact-light.json`, `demo-contact-dark.json`, and
-`contact-style-audit.json`. Actual email composition/delivery was not tested.
+Verified the production HTML's actual link: the mailto recipient decodes exactly
+to `cl2749+energyatlas@cornell.edu`, the subject decodes to "Demo Request", and
+no reveal/copy UI remains. All 12 retained tests and the production build pass.
+The preview previously blocked external email-handler navigation, so actual
+mail-app launch and delivery remain unverified; no bypass was attempted.
 Nothing was pushed.
