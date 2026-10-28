@@ -6,8 +6,8 @@ Approved by the owner on 2026-10-21, before implementation, with the font-family
 and subsequent frame/brand corrections requested later that day. This section takes
 precedence over the reference recipes. This folder is internal and is not published.
 
-- Survey/contact review mock (2026-10-27): local branch only; do not push or
-  deploy. Update contact and demo mail links to `cl2749+energyatlas@cornell.edu`,
+- Survey/contact changes (2026-10-27): the owner approved commit, push, and
+  deployment after reviewing the local mock. Update contact and demo mail links to `cl2749+energyatlas@cornell.edu`,
   displaying the full address in the footer and encoding `+` as `%2B` in mailto
   URLs. Request a Demo remains a direct mailto link with subject "Demo Request",
   without an intermediate contact reveal or copy UI.
