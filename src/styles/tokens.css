@@ -25,6 +25,8 @@
   --ui-survey-small-gap: 0.5rem;
   --ui-survey-layer: 110;
   --ui-survey-button-gap: 0.75rem;
+  --ui-contact-width: 42rem;
+  --ui-contact-gap: 1rem;
   --ui-feature-glow-color: rgba(0, 0, 0, 0.35);
 
   /* Fixed dark roles for video-backed content in either scheme.
