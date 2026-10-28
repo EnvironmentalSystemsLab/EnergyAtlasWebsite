@@ -9,14 +9,20 @@ precedence over the reference recipes. This folder is internal and is not publis
 - Survey/contact review mock (2026-10-27): local branch only; do not push or
   deploy. Update contact and demo mail links to `cl2749+energyatlas@cornell.edu`,
   displaying the full address in the footer and encoding `+` as `%2B` in mailto
-  URLs. Add a prominent native modal invitation on every page load for review,
-  with a dimmed backdrop, existing theme palette, Geist headline, and Cormorant
+  URLs. Show a compact, nonmodal invitation at the bottom-right on every page
+  load for review, with no page overlay or scroll lock. Use the existing theme
+  palette, a Geist headline, and the Cormorant
   italic sentence: "Help shape EnergyAtlas—tell us what your city needs."
   Use the heading "Your city. Your priorities." and a filled blue "Take the
   survey" link to the owner's Google Form, opening in a new tab. Do not dismiss
-  the invitation on timer, backdrop click, or opening the form. Close explicitly
-  with X, "Close and explore", or Escape. Native modal makes background site
-  content inert; return focus after closing. Add a Feedback ribbon entry that reopens the invitation,
+  the invitation on timer, outside click, or opening the form. Remove the eyebrow
+  and secondary close link; close with X, or Escape while focus is in the popup.
+  Leave page content interactive and do not move focus on initial appearance.
+  Feedback reopens it and focuses X; return focus after closing from inside it.
+  Desktop width is up to 736px, with 20px padding, a 20–28px single-line headline
+  and 24px serif sentence. Keep the sentence on one line when space permits;
+  wrap naturally on narrow screens. Keep 16px clearance to the right/bottom and
+  allow internal scrolling on short screens. Add a Feedback ribbon entry that reopens the invitation,
   plus the approved sentence and survey CTA near the demo actions. No embedded
   form, response collection, or remembered dismissal in this mock. Review the
   presentation and recurrence policy before publication.
@@ -979,3 +985,23 @@ Evidence is in `tmp/ui-qa/survey/`: `light.json`, `dark.json`,
 `light-desktop.png`, `dark-desktop.png`, `dark-phone.png`,
 `contact-demo-dark.png`, and `style-audit.json`. The preview remains local;
 the invitation's presentation and repeat-on-load policy await owner review.
+
+## 37. Compact bottom-right invitation revision (2026-10-27)
+
+Replaced the centered blocking modal with a fixed nonmodal dialog region in the
+bottom-right corner. Removed the eyebrow and secondary close action. The title
+is one line at desktop size; the approved serif sentence also fits one line
+within the new 736px maximum width. The popup is approximately 259px tall at
+1280×720, down from about 558px, and covers roughly 21% of that viewport. It
+has 16px right/bottom clearance, no overlay or scroll lock, and no initial
+focus movement. Page navigation and the theme switch work while it remains
+visible. X closes it; Feedback reopens it with focus on X, and Escape from
+inside closes it and restores focus to Feedback. It still has no timer or
+outside-click dismissal.
+
+The popup wraps naturally on phones: the 375×800 frame has a 328×304px panel
+with no internal overflow. Both themes pass axe WCAG A/AA and page overflow
+checks at 375/800/1280/1920px. All 12 tests, production build, whitespace check,
+and token audit pass. Local-only evidence in `tmp/ui-qa/survey/` includes
+`corner-light.png`, `corner-dark.png`, `corner-phone.png`, `corner-light.json`,
+`corner-dark.json`, and `corner-style-audit.json`. Nothing was pushed.

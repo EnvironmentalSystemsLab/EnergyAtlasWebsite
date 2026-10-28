@@ -451,22 +451,20 @@ const products = [
       <p>&copy; 2027 EnergyAtlas.io — Environmental Systems Lab, Cornell University</p>
     </div>
   </footer>
-  <dialog id="survey-dialog" class="survey-dialog" aria-labelledby="survey-title" aria-describedby="survey-description">
+  <section id="survey-dialog" class="survey-dialog" role="dialog" aria-modal="false" aria-labelledby="survey-title" aria-describedby="survey-description" hidden>
     <div class="survey-topbar">
       <p class="survey-brand"><img src="/brand/energyatlas-mark.svg" alt="" /> EnergyAtlas.io</p>
       <button class="survey-close" type="button" data-survey-close aria-label="Close survey invitation">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
       </button>
     </div>
-    <p class="survey-eyebrow">Municipal interest survey</p>
-    <h2 id="survey-title" tabindex="-1" autofocus>Your city.<br />Your priorities.</h2>
+    <h2 id="survey-title">Your city. Your priorities.</h2>
     <p id="survey-description" class="survey-summary">Help shape EnergyAtlas—tell us what your city needs.</p>
     <div class="survey-actions">
       <a href={surveyUrl} class="btn survey-cta" target="_blank" rel="noopener noreferrer">Take the survey <span aria-hidden="true">↗</span></a>
-      <button class="survey-dismiss" type="button" data-survey-close>Close and explore</button>
     </div>
     <p class="survey-note">About 2 minutes · Google Forms · opens in a new tab</p>
-  </dialog>
+  </section>
   <script>
     function switchTeamTab(evt, tabName) {
       // Get all tab content elements

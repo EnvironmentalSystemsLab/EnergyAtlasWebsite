@@ -856,13 +856,14 @@ footer a:focus-visible {
   outline-color: var(--ui-focus);
 }
 
-html.survey-open { overflow: hidden; }
-
 .survey-dialog {
+  position: fixed;
+  inset: auto var(--ui-survey-inset) var(--ui-survey-inset) auto;
+  z-index: var(--ui-survey-layer);
   width: min(var(--ui-survey-width), calc(100% - 2 * var(--ui-survey-inset)));
   max-width: none;
   max-height: calc(100svh - 2 * var(--ui-survey-inset));
-  margin: auto;
+  margin: 0;
   padding: var(--ui-survey-padding);
   border: var(--ui-rule);
   border-top: var(--ui-survey-top-rule);
@@ -870,11 +871,6 @@ html.survey-open { overflow: hidden; }
   background: var(--ui-bg);
   color: var(--ui-text);
   overflow: auto;
-}
-
-.survey-dialog::backdrop {
-  background: var(--ui-survey-backdrop);
-  backdrop-filter: blur(var(--ui-survey-backdrop-blur));
 }
 
 .survey-topbar, .survey-brand, .survey-actions {
@@ -898,23 +894,13 @@ html.survey-open { overflow: hidden; }
 .survey-close svg { width: var(--ui-theme-icon-size); height: var(--ui-theme-icon-size); }
 .survey-close:hover { border-color: var(--ui-accent); color: var(--ui-accent); }
 .survey-close:active { background: var(--ui-selection); }
-.survey-close:focus-visible, .survey-dismiss:focus-visible {
+.survey-close:focus-visible {
   outline: var(--ui-focus-width) solid var(--ui-focus);
   outline-offset: var(--ui-focus-offset);
 }
-.survey-eyebrow {
-  margin-top: var(--ui-survey-gap);
-  margin-bottom: var(--ui-survey-small-gap);
-  font-family: var(--ui-font-mono);
-  font-size: var(--ui-type-small);
-  letter-spacing: var(--ui-survey-eyebrow-tracking);
-  text-transform: uppercase;
-  color: var(--ui-accent);
-}
-.survey-dialog h2 { font-size: var(--ui-survey-title-size); }
-.survey-dialog h2:focus { outline: none; }
+.survey-dialog h2 { margin-top: var(--ui-survey-gap); font-size: var(--ui-survey-title-size); }
 .survey-summary {
-  margin-top: var(--ui-survey-gap);
+  margin-top: var(--ui-survey-small-gap);
   font-family: var(--ui-font-serif);
   font-style: var(--ui-editorial-style);
   font-weight: var(--ui-weight-medium);
@@ -930,19 +916,6 @@ html.survey-open { overflow: hidden; }
 }
 .survey-cta:is(:hover, :focus-visible) { background: var(--ui-accent-hover); color: var(--ui-on-accent); }
 .survey-cta:active { background: var(--ui-accent-pressed); color: var(--ui-on-accent); }
-.survey-dismiss {
-  min-height: var(--ui-button-min-height);
-  border: 0;
-  background: var(--ui-clear);
-  color: var(--ui-text);
-  font: inherit;
-  font-size: var(--ui-type-label);
-  text-decoration: underline;
-  text-underline-offset: var(--ui-link-offset);
-  cursor: pointer;
-}
-.survey-dismiss:hover { text-decoration-thickness: var(--ui-link-rule-hover); }
-.survey-dismiss:active { text-decoration-style: double; }
 .survey-note { margin-top: var(--ui-survey-small-gap); color: var(--ui-muted); font-size: var(--ui-type-small); }
 #demo .survey-demo-copy { color: var(--ui-text); }
 footer a { overflow-wrap: anywhere; }

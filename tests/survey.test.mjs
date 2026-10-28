@@ -6,59 +6,54 @@ import { runInNewContext } from "node:vm";
 const source = readFileSync("src/scripts/survey.js", "utf8");
 
 function invitation() {
-  const ready = {};
-  const events = {};
-  const triggerEvents = {};
-  const closeEvents = [{}, {}];
-  const locked = new Set();
-  let focused = false;
+  const ready = {}, events = {}, triggerEvents = {}, closeEvents = {};
+  let focus = "page";
+  const close = {
+    addEventListener: (name, fn) => { closeEvents[name] = fn; },
+    focus: () => { focus = "close"; },
+  };
   const trigger = {
     addEventListener: (name, fn) => { triggerEvents[name] = fn; },
-    focus: () => { focused = true; },
+    focus: () => { focus = "trigger"; },
   };
-  const dialog = {
-    open: false,
-    showModal() { this.open = true; },
-    close() { this.open = false; events.close?.(); },
+  const panel = {
+    hidden: true,
+    querySelector: () => close,
+    contains: () => focus === "close",
     addEventListener: (name, fn) => { events[name] = fn; },
-    querySelectorAll: () => closeEvents.map(e => ({
-      addEventListener: (name, fn) => { e[name] = fn; },
-    })),
   };
   runInNewContext(source, { document: {
-    activeElement: null,
-    documentElement: { classList: {
-      add: (name) => locked.add(name), remove: (name) => locked.delete(name),
-    } },
-    getElementById: () => dialog,
+    get activeElement() { return focus === "close" ? close : trigger; },
+    getElementById: () => panel,
     querySelectorAll: () => [trigger],
     addEventListener: (name, fn) => { ready[name] = fn; },
   } });
-  return { dialog, events, triggerEvents, closeEvents, locked,
-    ready: () => ready.DOMContentLoaded(), focused: () => focused };
+  return { panel, events, triggerEvents, closeEvents,
+    ready: () => ready.DOMContentLoaded(), focus: () => focus };
 }
 
-test("survey opens on arrival and stays open until an explicit dismissal", () => {
+test("corner invitation opens without taking focus or blocking page interaction", () => {
   const ui = invitation();
   ui.ready();
-  assert.equal(ui.dialog.open, true);
-  assert.equal(ui.locked.has("survey-open"), true);
-  assert.equal(ui.events.click, undefined); // Backdrop clicks do not dismiss it.
-  ui.closeEvents[0].click();
-  assert.equal(ui.dialog.open, false);
-  assert.equal(ui.locked.size, 0);
-  assert.equal(ui.focused(), true);
+  assert.equal(ui.panel.hidden, false);
+  assert.equal(ui.focus(), "page");
+  assert.equal(ui.events.click, undefined);
+  ui.closeEvents.click();
+  assert.equal(ui.panel.hidden, true);
 });
 
-test("Feedback reopens the dialog and the secondary close action unlocks the page", () => {
+test("Feedback reopens the popup with keyboard access; Escape closes and restores focus", () => {
   const ui = invitation();
   ui.ready();
-  ui.dialog.close(); // Native Escape also dispatches close.
+  ui.closeEvents.click();
   let prevented = false;
   ui.triggerEvents.click({ preventDefault() { prevented = true; } });
   assert.equal(prevented, true);
-  assert.equal(ui.dialog.open, true);
-  ui.closeEvents[1].click();
-  assert.equal(ui.locked.size, 0);
-  assert.equal(ui.focused(), true);
+  assert.equal(ui.panel.hidden, false);
+  assert.equal(ui.focus(), "close");
+  ui.events.keydown({ key: "Tab", preventDefault() {} });
+  assert.equal(ui.panel.hidden, false);
+  ui.events.keydown({ key: "Escape", preventDefault() {} });
+  assert.equal(ui.panel.hidden, true);
+  assert.equal(ui.focus(), "trigger");
 });
