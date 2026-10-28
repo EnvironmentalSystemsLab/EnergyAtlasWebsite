@@ -4,8 +4,13 @@ import "../styles/fonts.css";
 import "../styles/site.css";
 import themeScript from "../scripts/theme.js?raw";
 import ribbonScript from "../scripts/ribbon.js?raw";
+import surveyScript from "../scripts/survey.js?raw";
 import EditorialIcon from "../components/EditorialIcon.astro";
 import HoverPaper from "../components/HoverPaper.astro";
+
+const surveyUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeiQBOMvQZMac5WWEB6uJz2H_m03xi0qLXLeXV31-NJ9VDkfw/viewform?usp=dialog";
+const contactEmail = "cl2749+energyatlas@cornell.edu";
+const contactUrl = "mailto:cl2749%2Benergyatlas@cornell.edu";
 
 const products = [
   { icon: "mcp", name: "EnergyAtlas-MCP", summary: "Connect AI assistants to EnergyAtlas tools and city energy data." },
@@ -22,6 +27,7 @@ const products = [
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script is:inline set:html={themeScript}></script>
   <script is:inline set:html={ribbonScript}></script>
+  <script is:inline set:html={surveyScript}></script>
   <meta name="description" content="EnergyAtlas.io - Your city-scale digital twin for fast, validated urban energy insight. ISO-compliant UBEM platform with ~150× faster simulations." />
   
   <!-- Favicon -->
@@ -68,6 +74,7 @@ const products = [
             <li><a href="#media"><span>Media</span></a></li>
             <li><a href="#team"><span>Team</span></a></li>
             <li><a href="#demo"><span>Demo</span></a></li>
+            <li><a href={surveyUrl} data-survey-open aria-haspopup="dialog" aria-controls="survey-dialog" target="_blank" rel="noopener noreferrer"><span>Feedback ↗</span></a></li>
           </ul>
         </nav>
         <button id="theme-toggle" class="theme-toggle" type="button" role="switch" aria-label="Dark theme" aria-checked="false" hidden>
@@ -425,11 +432,12 @@ const products = [
       <div class="container">
         <div class="section-header">
           <h2>Ready to Transform Your City?</h2>
+          <p class="survey-demo-copy">Help shape EnergyAtlas—tell us what your city needs.</p>
         </div>
         
         <div class="cta-buttons">
-          <!-- <a href="mailto:info@energyatlas.io?subject=Beta Program Inquiry" class="btn btn-primary">Join the Beta</a> -->
-          <a href="mailto:info@energyatlas.io?subject=Demo Request" class="btn btn-primary">Request a Demo</a>
+          <a href={surveyUrl} class="btn survey-cta" target="_blank" rel="noopener noreferrer">Take the survey ↗</a>
+          <a href={`${contactUrl}?subject=Demo%20Request`} class="btn btn-primary">Request a Demo</a>
           <a href="/assets/file/EnergyAtlas_Features.pdf" class="btn btn-secondary" download="EnergyAtlas-Feature-Brochure.pdf">Download feature brochure</a>
           <!-- <a href="#use-cases" class="btn btn-secondary">Explore Use Cases</a> -->
         </div>
@@ -439,10 +447,26 @@ const products = [
 
   <footer role="contentinfo">
     <div class="container">
-      <p><strong>Contact:</strong> <a href="mailto:info@energyatlas.io"> info@energyatlas.io</a></p>
+      <p><strong>Contact:</strong> <a href={contactUrl}>{contactEmail}</a></p>
       <p>&copy; 2027 EnergyAtlas.io — Environmental Systems Lab, Cornell University</p>
     </div>
   </footer>
+  <dialog id="survey-dialog" class="survey-dialog" aria-labelledby="survey-title" aria-describedby="survey-description">
+    <div class="survey-topbar">
+      <p class="survey-brand"><img src="/brand/energyatlas-mark.svg" alt="" /> EnergyAtlas.io</p>
+      <button class="survey-close" type="button" data-survey-close aria-label="Close survey invitation">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
+      </button>
+    </div>
+    <p class="survey-eyebrow">Municipal interest survey</p>
+    <h2 id="survey-title" tabindex="-1" autofocus>Your city.<br />Your priorities.</h2>
+    <p id="survey-description" class="survey-summary">Help shape EnergyAtlas—tell us what your city needs.</p>
+    <div class="survey-actions">
+      <a href={surveyUrl} class="btn survey-cta" target="_blank" rel="noopener noreferrer">Take the survey <span aria-hidden="true">↗</span></a>
+      <button class="survey-dismiss" type="button" data-survey-close>Close and explore</button>
+    </div>
+    <p class="survey-note">About 2 minutes · Google Forms · opens in a new tab</p>
+  </dialog>
   <script>
     function switchTeamTab(evt, tabName) {
       // Get all tab content elements

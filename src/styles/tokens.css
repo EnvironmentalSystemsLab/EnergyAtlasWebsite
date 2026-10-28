@@ -16,6 +16,18 @@
   --ui-focus: #125dae;
   --ui-selection: #e3ecf5;
   --ui-clear: transparent;
+  --ui-survey-width: 42rem;
+  --ui-survey-inset: 1rem;
+  --ui-survey-padding: clamp(1.5rem, 4vw, 3rem);
+  --ui-survey-title-size: clamp(2.5rem, 5vw, 4rem);
+  --ui-survey-summary-size: clamp(1.5rem, 3vw, 1.875rem);
+  --ui-survey-gap: 1.5rem;
+  --ui-survey-small-gap: 0.75rem;
+  --ui-survey-backdrop: rgba(0, 0, 0, 0.66);
+  --ui-survey-backdrop-blur: 6px;
+  --ui-survey-top-rule: 3px solid var(--ui-accent);
+  --ui-survey-eyebrow-tracking: 0.12em;
+  --ui-survey-button-gap: 0.75rem;
   --ui-feature-glow-color: rgba(0, 0, 0, 0.35);
 
   /* Fixed dark roles for video-backed content in either scheme.

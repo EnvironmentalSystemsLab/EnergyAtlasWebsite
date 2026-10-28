@@ -6,6 +6,21 @@ Approved by the owner on 2026-10-21, before implementation, with the font-family
 and subsequent frame/brand corrections requested later that day. This section takes
 precedence over the reference recipes. This folder is internal and is not published.
 
+- Survey/contact review mock (2026-10-27): local branch only; do not push or
+  deploy. Update contact and demo mail links to `cl2749+energyatlas@cornell.edu`,
+  displaying the full address in the footer and encoding `+` as `%2B` in mailto
+  URLs. Add a prominent native modal invitation on every page load for review,
+  with a dimmed backdrop, existing theme palette, Geist headline, and Cormorant
+  italic sentence: "Help shape EnergyAtlas—tell us what your city needs."
+  Use the heading "Your city. Your priorities." and a filled blue "Take the
+  survey" link to the owner's Google Form, opening in a new tab. Do not dismiss
+  the invitation on timer, backdrop click, or opening the form. Close explicitly
+  with X, "Close and explore", or Escape. Native modal makes background site
+  content inert; return focus after closing. Add a Feedback ribbon entry that reopens the invitation,
+  plus the approved sentence and survey CTA near the demo actions. No embedded
+  form, response collection, or remembered dismissal in this mock. Review the
+  presentation and recurrence policy before publication.
+
 - Reference: the EnergyAtlas visual family described by the app-ui-alignment and
   wiki-ui-alignment skills, rather than a particular live site or screenshot.
 - Scope: appearance of the existing Astro landing page. Preserve the name,
@@ -934,3 +949,33 @@ check, and token audit pass. Evidence: `tmp/ui-qa/reference-type-light.json`,
 `tmp/ui-qa/reference-type-dark.json`, `tmp/ui-qa/reference-type-light.png`,
 `tmp/ui-qa/reference-type-dark.png`, and
 `tmp/ui-qa/reference-type-style-audit.json`.
+
+## 36. Survey invitation and contact review mock (2026-10-27)
+
+Implemented the local-only review concept described in section 0 on
+`codex/survey-contact-preview`. The native dialog opens on every load and has
+explicit X, secondary close, and Escape dismissal. It has no automatic timeout
+or backdrop dismissal. Feedback in the ribbon reopens it. The owner's approved
+sentence appears unchanged in the invitation and beside the demo actions, where
+a filled survey link is also available. The Form destination was opened read-only
+and confirms a municipal UBEM interest survey taking about two minutes; that
+description supplies the eyebrow and timing note. No responses were submitted.
+The supplied plus-address is displayed in the footer; contact and demo mailto
+links encode the plus sign as `%2B`.
+
+The invitation uses existing text, background, accent, font, and control roles.
+Desktop max width is 672px, padding 24–48px, heading 40–64px, serif summary
+24–30px. A 66% black backdrop with 6px blur makes it prominent without adding
+card shadows or a new palette. It stays within the viewport and scrolls internally
+on short screens. Initial focus is on the noninteractive heading; its automatic
+outline is suppressed while all control focus indicators remain. Native dialog
+behavior makes underlying site content inert. Close events unlock page scrolling
+and return focus to Feedback; keyboard and secondary-close checks confirm this.
+
+Both themes pass axe WCAG A/AA and overflow checks at 375/800/1280/1920px.
+The 375px frame's dialog is approximately 343×504px with no content overflow.
+All 12 tests, production build, whitespace check, and token style audit pass.
+Evidence is in `tmp/ui-qa/survey/`: `light.json`, `dark.json`,
+`light-desktop.png`, `dark-desktop.png`, `dark-phone.png`,
+`contact-demo-dark.png`, and `style-audit.json`. The preview remains local;
+the invitation's presentation and repeat-on-load policy await owner review.
