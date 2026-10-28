@@ -15,9 +15,11 @@ precedence over the reference recipes. This folder is internal and is not publis
   Use the heading "Tell us what your city needs" and a filled blue "Take the
   survey" link to the owner's Google Form, opening in a new tab. Do not dismiss
   the invitation on timer, outside click, or opening the form. Remove the eyebrow
-  and secondary close link; close with X, or Escape while focus is in the popup.
+  and branding. Replace X with a neutral outlined "Dismiss" button beside the
+  blue survey action; keep Dismiss neutral in hover, press, and focus states.
+  Escape also closes while focus is in the popup.
   Leave page content interactive and do not move focus on initial appearance.
-  Feedback reopens it and focuses X; return focus after closing from inside it.
+  Feedback reopens it and focuses Dismiss; return focus after closing from inside it.
   Desktop width is up to 480px, with 20px padding and a 20–28px headline.
   Use the note "Google Forms, 2 minutes". Keep only a uniform neutral boundary,
   removing the blue top rule. Wrap naturally on narrow screens.
@@ -26,6 +28,8 @@ precedence over the reference recipes. This folder is internal and is not publis
   plus the approved sentence and survey CTA near the demo actions. No embedded
   form, response collection, or remembered dismissal in this mock. Review the
   presentation and recurrence policy before publication.
+  Add a filled blue "Take the survey" link on a new row beneath Explore Features
+  and Wiki in the hero. Preserve the existing first-row actions and their colours.
 
 - Reference: the EnergyAtlas visual family described by the app-ui-alignment and
   wiki-ui-alignment skills, rather than a particular live site or screenshot.
@@ -1020,3 +1024,24 @@ Both themes pass axe WCAG A/AA and overflow checks at 375/800/1280/1920px.
 Evidence in `tmp/ui-qa/survey/`: `refined-light.png`, `refined-dark.png`,
 `refined-light.json`, `refined-dark.json`, and `refined-style-audit.json`.
 This remains a local-only review change; nothing was pushed.
+
+## 39. Neutral Dismiss and hero survey action (2026-10-27)
+
+Removed the popup logo, wordmark, and X button. Dismiss is now a neutral
+outlined button beside the filled blue survey action. Its text, fill, border,
+and keyboard focus stay neutral in both themes. It uses the existing dismissal
+handler, including focus restoration and reopening from Feedback. The popup
+no longer reserves space for a branding/header row.
+
+Added a filled blue survey link on a separate row below Explore Features and
+Wiki. The original two hero buttons keep their previous fills and behavior.
+Live checks confirm the hero survey starts below both original buttons, its
+fill is blue, Dismiss closes the popup, and keyboard focus on Dismiss has no
+blue colour treatment. In the 375px frame, both popup actions share the same
+vertical position and fit side by side.
+
+All 12 tests, production build, whitespace check, and token audit pass. Both
+themes pass axe WCAG A/AA and overflow checks at 375/800/1280/1920px. Evidence
+in `tmp/ui-qa/survey/`: `actions-light.png`, `actions-dark.png`,
+`actions-light.json`, `actions-dark.json`, and `actions-style-audit.json`.
+Nothing was pushed.

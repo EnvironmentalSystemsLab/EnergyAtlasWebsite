@@ -102,6 +102,9 @@ const products = [
         <div class="cta-buttons">
           <a href="#features" class="btn btn-primary">explore features</a>
           <a href="https://energy-atlas.github.io/" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">wiki</a>
+          <div class="hero-survey-row">
+            <a href={surveyUrl} class="btn survey-cta" target="_blank" rel="noopener noreferrer">Take the survey ↗</a>
+          </div>
           <!-- <a href="#use-cases" class="btn btn-secondary">Explore Use Cases</a> -->
         </div>
       </div>
@@ -452,15 +455,10 @@ const products = [
     </div>
   </footer>
   <section id="survey-dialog" class="survey-dialog" role="dialog" aria-modal="false" aria-labelledby="survey-title" aria-describedby="survey-description" hidden>
-    <div class="survey-topbar">
-      <p class="survey-brand"><img src="/brand/energyatlas-mark.svg" alt="" /> EnergyAtlas.io</p>
-      <button class="survey-close" type="button" data-survey-close aria-label="Close survey invitation">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
-      </button>
-    </div>
     <h2 id="survey-title">Tell us what your city needs</h2>
     <div class="survey-actions">
       <a href={surveyUrl} class="btn survey-cta" target="_blank" rel="noopener noreferrer">Take the survey <span aria-hidden="true">↗</span></a>
+      <button class="btn survey-dismiss" type="button" data-survey-close>Dismiss</button>
     </div>
     <p id="survey-description" class="survey-note">Google Forms, 2 minutes</p>
   </section>

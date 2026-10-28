@@ -867,33 +867,33 @@ footer a:focus-visible {
   overflow: auto;
 }
 
-.survey-topbar, .survey-brand, .survey-actions {
+.hero-survey-row {
+  display: flex;
+  flex-basis: 100%;
+}
+
+.survey-actions {
   display: flex;
   align-items: center;
 }
-.survey-topbar { justify-content: space-between; gap: var(--ui-survey-gap); }
-.survey-brand { gap: var(--ui-brand-mark-gap); font-weight: var(--ui-weight-brand); }
-.survey-brand img { width: var(--ui-brand-mark-size); height: var(--ui-brand-mark-size); }
-.survey-close {
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  width: var(--ui-button-min-height);
-  height: var(--ui-button-min-height);
-  border: var(--ui-control-rule);
+.survey-dismiss {
   background: var(--ui-clear);
   color: var(--ui-text);
   cursor: pointer;
 }
-.survey-close svg { width: var(--ui-theme-icon-size); height: var(--ui-theme-icon-size); }
-.survey-close:hover { border-color: var(--ui-accent); color: var(--ui-accent); }
-.survey-close:active { background: var(--ui-selection); }
-.survey-close:focus-visible {
-  outline: var(--ui-focus-width) solid var(--ui-focus);
+.survey-dismiss:is(:hover, :focus-visible, :active) {
+  border-color: var(--ui-border-interactive);
+  background: var(--ui-raised);
+  color: var(--ui-text);
+}
+.survey-dismiss:active { background: var(--ui-pressed); }
+.survey-dismiss:focus-visible {
+  outline: var(--ui-focus-width) solid var(--ui-text);
   outline-offset: var(--ui-focus-offset);
 }
-.survey-dialog h2 { margin-top: var(--ui-survey-gap); font-size: var(--ui-survey-title-size); }
+.survey-dialog h2 { font-size: var(--ui-survey-title-size); }
 .survey-actions { gap: var(--ui-survey-gap); flex-wrap: wrap; margin-top: var(--ui-survey-gap); }
+.survey-actions .btn { width: auto; }
 .survey-cta {
   gap: var(--ui-survey-button-gap);
   border-color: var(--ui-accent);
@@ -902,6 +902,9 @@ footer a:focus-visible {
 }
 .survey-cta:is(:hover, :focus-visible) { background: var(--ui-accent-hover); color: var(--ui-on-accent); }
 .survey-cta:active { background: var(--ui-accent-pressed); color: var(--ui-on-accent); }
+.hero .survey-cta { background: var(--ui-hero-link); border-color: var(--ui-hero-link); color: var(--ui-hero-on-accent); }
+.hero .survey-cta:is(:hover, :focus-visible) { background: var(--ui-hero-hover); color: var(--ui-hero-on-accent); }
+.hero .survey-cta:active { background: var(--ui-hero-pressed); color: var(--ui-hero-on-accent); }
 .survey-note { margin-top: var(--ui-survey-small-gap); color: var(--ui-muted); font-size: var(--ui-type-small); }
 #demo .survey-demo-copy { color: var(--ui-text); }
 footer a { overflow-wrap: anywhere; }
